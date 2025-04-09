@@ -2,4 +2,21 @@
 title: "Proposal"
 ---
 
-Your proposal will go here.
+### Heyyy Batter Batter
+
+## Team Members
+
+  - Cristian Cano
+  - Wandi Dlamini
+  - Izzy Flood
+  - Zach Marshak
+  
+## Description
+
+We will be using the Baseballr package to expolre the 
+
+```{r}
+library(tidyverse)
+library(baseballr)
+```
+
