@@ -1,6 +1,10 @@
 ---
 title: "Proposal"
 ---
+```{r}
+#load need packages
+library(tidyverse)
+```
 
 ### Heyyy Batter Batter
 
@@ -15,8 +19,20 @@ title: "Proposal"
 
 We will be using the Baseballr package to expolre the 
 
-```{r}
-library(tidyverse)
-library(baseballr)
-```
+## Inspiration/Reasons
 
+
+## Responsibility Plan
+
+```{r}
+# Create a data frame with group members and their duties
+project_team <- tibble::tribble(
+  ~Member_Name, ~Responsibility,
+  "Cristian",   "",
+  "Wandi",   "Data Analysis, Report Generation",
+  "Izzy", "Software Development, Testing",
+  "Zach",     "Documentation, Presentation Preparation")
+
+# Display the table
+print(project_team)
+```
