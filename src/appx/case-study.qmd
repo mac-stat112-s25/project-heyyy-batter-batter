@@ -2,4 +2,21 @@
 title: "Case Study"
 ---
 
-Your case study will go here.
+Our case study is: 
+
+
+## Case Study: FiveThirtyEight:
+### **Uber Is Taking Millions Of Manhattan Rides Away From Taxis**
+https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/
+
+
+- This report includes many types of visualizations and types of graphs including:
+ - Line graphs with multiple observations
+ - Maps (spatial maps with faucets)
+ - Tables
+ - Plots with best fits and labeled points
+ 
+
+
+
+
