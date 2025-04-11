@@ -17,7 +17,7 @@ library(tidyverse)
   
 ## Description
 
-We will be using the Baseballr package to expolre the 
+We will be using the Baseball package to explore  how park factors in college baseball affect or can predict a player's career in professional baseball, such as which round they get picked in the draft, salary, and other factors.
 
 ## Inspiration/Reasons
 
@@ -29,9 +29,9 @@ We will be using the Baseballr package to expolre the
 project_team <- tibble::tribble(
   ~Member_Name, ~Responsibility,
   "Cristian",   "",
-  "Wandi",   "Data Analysis, Report Generation",
-  "Izzy", "Software Development, Testing",
-  "Zach",     "Documentation, Presentation Preparation")
+  "Wandi",   "",
+  "Izzy", "",
+  "Zach",     "")
 
 # Display the table
 print(project_team)
