@@ -37,6 +37,12 @@ book:
 
   chapters:
     - index.qmd
+    - part: "Exploratory Data Analysis (EDA)"
+      chapters:
+        - src/eda/WandiDEDA.qmd
+    
+
+  
 
   appendices:
   - src/appx/proposal.qmd
@@ -44,7 +50,6 @@ book:
   - src/appx/ZachM.qmd
   - src/appx/WandiD.qmd
   
-
 
 
 format:

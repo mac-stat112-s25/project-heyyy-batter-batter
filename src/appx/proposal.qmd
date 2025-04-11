@@ -38,15 +38,3 @@ project_team <- tibble::tribble(
 print(project_team)
 ```
 =======
-Your proposal will go here.
-
-```{r}
-library(baseballr)
-library(tidyverse)
-```
-
-```{r}
-fg_park(2023)
-```
-
->>>>>>> Stashed changes
