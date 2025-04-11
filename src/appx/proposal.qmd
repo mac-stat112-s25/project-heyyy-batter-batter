@@ -6,6 +6,7 @@ title: "Proposal"
 library(tidyverse)
 ```
 
+<<<<<<< Updated upstream
 ### Heyyy Batter Batter
 
 ## Team Members
@@ -36,3 +37,16 @@ project_team <- tibble::tribble(
 # Display the table
 print(project_team)
 ```
+=======
+Your proposal will go here.
+
+```{r}
+library(baseballr)
+library(tidyverse)
+```
+
+```{r}
+fg_park(2023)
+```
+
+>>>>>>> Stashed changes

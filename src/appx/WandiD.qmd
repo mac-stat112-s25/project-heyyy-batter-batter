@@ -1,0 +1,16 @@
+---
+title: "Wandi Dlamini Effective Teamwork"
+output: html_document
+---
+
+## Effective Teamwork
+
+In the article ["The Five Key Elements of Effective Teamwork"](https://www.forbes.com/sites), the author highlights five key elements that are essential for building successful teams. These elements include:
+
+1. **Clear Communication**: Ensuring that all team members have an open line of communication to share their thoughts, ideas, and concerns.
+2. **Trust**: Teams perform best when trust is established among members, allowing for collaboration without fear of judgment.
+3. **Roles and Responsibilities**: Clear definition of roles helps avoid confusion and ensures that everyone knows their contributions.
+4. **Conflict Resolution**: Effective teams know how to address and resolve conflicts constructively.
+5. **Goal Alignment**: Having a shared goal helps the team stay focused and motivated to work towards the same objectives.
+
+By emphasizing these key elements, teams can create an environment that fosters collaboration, creativity, and success.
