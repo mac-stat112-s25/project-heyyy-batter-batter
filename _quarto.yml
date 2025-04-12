@@ -43,6 +43,9 @@ book:
   - src/appx/case-study.qmd
   - src/appx/ZachM.qmd
   
+  EDA:
+  - src/EDA/ZachM_Eda.qmd
+  
 
 
 
