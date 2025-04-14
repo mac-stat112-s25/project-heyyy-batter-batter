@@ -39,9 +39,11 @@ book:
     
     - part: "EDA"
       - src/EDA/ZachM_Eda.qmd
+      - src/EDA/WandiDEDA.qmd
       
     - part: "Effective Teamwork"
       - src/et/ZachM.qmd
+      - src/et/WandiD.qmd
       
   appendices:
   - src/appx/proposal.qmd
