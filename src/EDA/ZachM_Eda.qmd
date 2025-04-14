@@ -1,0 +1,22 @@
+---
+title: "Zach M EDA"
+format: html
+---
+
+```{r}
+#load packages
+library(tidyverse)
+library(baseballr)
+```
+
+```{r}
+Park_data_24 <- fg_park(2024)
+```
+
+```{r}
+# view basics of data
+summary(Park_data_24) #get summary of values of each variable
+
+head(Park_data_24) #view what the data looks like
+
+```

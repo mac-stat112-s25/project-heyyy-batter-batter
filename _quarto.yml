@@ -36,11 +36,18 @@ book:
 
   chapters:
     - index.qmd
-
+    
+    - part: "EDA"
+      - src/EDA/ZachM_Eda.qmd
+      
+    - part: "Effective Teamwork"
+      - src/et/ZachM.qmd
+      
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case_study.qmd
   - src/appx/ZachM.qmd
+  
   
 
 

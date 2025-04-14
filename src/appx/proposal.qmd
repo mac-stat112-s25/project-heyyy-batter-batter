@@ -17,9 +17,13 @@ library(tidyverse)
   
 ## Description
 
-We will be using the Baseball package to explore  how park factors in college baseball affect or can predict a player's career in professional baseball, such as which round they get picked in the draft, salary, and other factors.
+Main Question: How do Park factors (how teams/players are predicted to perform at different stadiums) explain deviations between predicted values versus actual performance in the MLB
+
+We will be using the Baseballr package, which pulls data from various databases. In our project, we will mainly be using data from Baseball Savant, StatCast, and FanGraphs. 
 
 ## Inspiration/Reasons
+
+Izzy has been a baseball player and fan his entire life, he explained what park factors are to the rest of our group and we all found it very interesting.
 
 
 ## Responsibility Plan
@@ -28,10 +32,10 @@ We will be using the Baseball package to explore  how park factors in college ba
 # Create a data frame with group members and their duties
 project_team <- tibble::tribble(
   ~Member_Name, ~Responsibility,
-  "Cristian",   "",
-  "Wandi",   "",
-  "Izzy", "",
-  "Zach",     "")
+  "Cristian",   "Case study, visulization work",
+  "Wandi",   "Figuring out the BaseballR package, data vis work",
+  "Izzy", "Baseball expert, report writer",
+  "Zach",     "Proposal scribe, cleaning and wrangling")
 
 # Display the table
 print(project_team)
