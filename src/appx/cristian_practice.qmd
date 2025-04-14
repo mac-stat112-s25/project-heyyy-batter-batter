@@ -1,0 +1,25 @@
+---
+title: "This just practice not publication"
+---
+
+You can also get my work like graphs from this code
+
+```{r}
+library(baseballr)
+library(tidyverse)
+library(ggplot2)
+
+
+parkfactor24 <- fg_park(2024)
+
+parkfactor24
+
+parkfactor24 |>
+  ggplot(aes(x = single, y = double)) +
+  geom_point()
+  
+
+
+
+```
+
