@@ -10,7 +10,8 @@ library(baseballr)
 ```
 
 ```{r}
-Park_data_24 <- fg_park(2024)
+Park_data_24 <- fg_park(2024) |>
+  arrange(desc(basic_5yr))
 ```
 
 ```{r}
@@ -20,9 +21,39 @@ summary(Park_data_24) #get summary of values of each variable
 head(Park_data_24) #view what the data looks like
 
 ```
+```{r}
+#view basic stats of 5year park factor stats
+ggplot(Park_data_24, aes(x = basic_5yr)) +
+  geom_histogram()
+```
+
 
 ```{r}
-ggplot(Park_data_24, aes(x = hr, y = UIBB)) +
+# looking at park factor compared to home runs
+ggplot(Park_data_24, aes(x = hr, y = basic_5yr)) +
    geom_point() +
   geom_text(aes(label = home_team), angle = 360, vjust = 0, nudge_y = - 0.5)
+```
+
+```{r}
+#get batting data
+batting_data <- fg_batter_leaders(startseason = 2024, endseason = 2024)
+```
+
+```{r}
+# viwe home run data
+summary(batting_data)
+head(batting_data)
+```
+
+```{r}
+ggplot(batting_data, aes(x = HR)) +
+  geom_density()
+```
+
+```{r}
+batting_data|>
+  filter(team_name %in% c("COR", "BOS", "COL", "CIN", "KCR")) |>
+  ggplot(aes(x = HR, y = R, color = team_name)) +
+        geom_point()
 ```

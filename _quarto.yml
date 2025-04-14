@@ -46,7 +46,6 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case_study.qmd
-  - src/appx/ZachM.qmd
   
   
 
