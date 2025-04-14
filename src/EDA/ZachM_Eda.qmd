@@ -1,5 +1,5 @@
 ---
-title: "Zach M EDA"
+title: "Zach M"
 format: html
 ---
 
@@ -19,4 +19,10 @@ summary(Park_data_24) #get summary of values of each variable
 
 head(Park_data_24) #view what the data looks like
 
+```
+
+```{r}
+ggplot(Park_data_24, aes(x = hr, y = UIBB)) +
+   geom_point() +
+  geom_text(aes(label = home_team), angle = 360, vjust = 0, nudge_y = - 0.5)
 ```
