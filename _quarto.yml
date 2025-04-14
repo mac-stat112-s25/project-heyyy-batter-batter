@@ -36,15 +36,6 @@ book:
 
   chapters:
     - index.qmd
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-   
-    
-
-=======
-=======
->>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
     
     - part: "EDA"
       - src/EDA/ZachM_Eda.qmd
@@ -55,31 +46,6 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case_study.qmd
-<<<<<<< HEAD
- 
-  
->>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
-  
-=======
-  - src/appx/ZachM.qmd
->>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
-  
-  
-
-=======
-    
-    - part: "EDA"
-      - src/EDA/ZachM_Eda.qmd
-      
-    - part: "Effective Teamwork"
-      - src/et/ZachM.qmd
-      
->>>>>>> 08bee920211bbdd0476a2e515f6e6943aef1d1af
-  appendices:
-  - src/appx/proposal.qmd
-  - src/appx/case_study.qmd
-  - src/appx/ZachM.qmd
- 
   
   
 
