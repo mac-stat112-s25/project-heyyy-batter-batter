@@ -1,2 +1,25 @@
-gyvyh
-v
+---
+title: "Wandi Dlamini - Park Factors EDA"
+format: html
+---
+
+```{r}
+# Load libraries
+library(baseballr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+
+```
+
+```{r}
+
+# Fetch Retrosheet event data (example for a specific year)
+retrosheet_data <- retrosheet_data(year = 2021)
+
+# View a summary of the fetched data
+head(retrosheet_data)
+
+```
+

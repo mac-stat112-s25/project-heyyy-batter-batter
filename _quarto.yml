@@ -9,10 +9,9 @@ project:
   output-dir: docs
 
 
-
 book:
   title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name", "student 4 first and last name"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -37,18 +36,51 @@ book:
 
   chapters:
     - index.qmd
-    - part: "Exploratory Data Analysis (EDA)"
-      chapters:
-        - src/eda/WandiDEDA.qmd
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+   
     
 
-  
-
+=======
+=======
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
+    
+    - part: "EDA"
+      - src/EDA/ZachM_Eda.qmd
+      
+    - part: "Effective Teamwork"
+      - src/et/ZachM.qmd
+      
   appendices:
   - src/appx/proposal.qmd
-  - src/appx/case-study.qmd
+  - src/appx/case_study.qmd
+<<<<<<< HEAD
+ 
+  
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
+  
+=======
   - src/appx/ZachM.qmd
-  - src/appx/WandiD.qmd
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
+  
+  
+
+=======
+    
+    - part: "EDA"
+      - src/EDA/ZachM_Eda.qmd
+      
+    - part: "Effective Teamwork"
+      - src/et/ZachM.qmd
+      
+>>>>>>> 08bee920211bbdd0476a2e515f6e6943aef1d1af
+  appendices:
+  - src/appx/proposal.qmd
+  - src/appx/case_study.qmd
+  - src/appx/ZachM.qmd
+ 
+  
   
 
 

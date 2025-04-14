@@ -6,9 +6,10 @@ Our case study is:
 
 
 ## Case Study: FiveThirtyEight:
-### **Uber Is Taking Millions Of Manhattan Rides Away From Taxis**
-https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/
+### [**Uber Is Taking Millions Of Manhattan Rides Away From Taxis**](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 - **Concise and Clear**: The report is straightforward, presenting data in an easy-to-understand manner without unnecessary elaboration.
 - **Data-Driven**: Focuses heavily on numerical and statistical evidence to support key points.
 - **Use of Visuals**: Incorporates various types of visualizations, including:
@@ -20,6 +21,21 @@ https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-
 - **Neutral and Factual Tone**: The writing is objective and refrains from making subjective claims; it sticks to the data.
 - **Transparency**: References sources clearly (e.g., Freedom of Information Law request) to ensure credibility.
 - **Engaging Yet Professional**: The report balances technical detail with clear, accessible explanations, maintaining a formal but readable style.
+=======
+=======
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
+
+- This report includes many types of visualizations and types of graphs including:
+ - Line graphs with multiple observations
+ - Maps (spatial maps with faucets)
+ - Tables
+ - Plots with best fits and labeled points
+ 
+
+<<<<<<< HEAD
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
+=======
+>>>>>>> 59dfe8882cde17415c2855aa199b556eb783614b
 
 
 
