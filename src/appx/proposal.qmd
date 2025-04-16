@@ -6,9 +6,9 @@ title: "Proposal"
 library(tidyverse)
 ```
 
-### Heyyy Batter Batter
+### Team Name: Heyyy Batter Batter
 
-## Team Members
+## Team Members:
 
   - Cristian Cano
   - Wandi Dlamini
@@ -32,7 +32,7 @@ Izzy has been a baseball player and fan his entire life, he explained what park 
 # Create a data frame with group members and their duties
 project_team <- tibble::tribble(
   ~Member_Name, ~Responsibility,
-  "Cristian",   "Case study, visulization work",
+  "Cristian",   "Case Study, Visualization work",
   "Wandi",   "Figuring out the BaseballR package, data vis work",
   "Izzy", "Baseball expert, report writer",
   "Zach",     "Proposal scribe, cleaning and wrangling")
