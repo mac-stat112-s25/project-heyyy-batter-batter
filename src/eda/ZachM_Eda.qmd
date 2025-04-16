@@ -48,8 +48,9 @@ Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', seas
   select(player_id, team_name)
 ```
 
+
 ```{r}
-`2022HitterStats` |>
+Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
 
 ```
