@@ -42,12 +42,14 @@ book:
       - src/EDA/ZachM_Eda.qmd
       - src/EDA/WandiDEDA.qmd
       - src/EDA/Cristian-C.qmd
+      - src/EDA/IzzyF_EDA.qmd
       
     - part: "Effective Teamwork"
       chapters:
       - src/et/ZachM.qmd
       - src/et/WandiD.qmd
       - scr/et/Cristian-C.qmd
+      - src/et/Izzy F Effective Teamwork.qmd
       
   appendices:
   - src/appx/proposal.qmd
