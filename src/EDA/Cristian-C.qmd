@@ -1,0 +1,28 @@
+---
+title: "Cristian C EDA"
+format: html
+---
+
+```{r}
+#load packages
+library(tidyverse)
+library(readr)
+```
+
+```{r}
+
+# Download latest version
+stadium_data <- read_csv("~/GitHub/project-heyyy-batter-batter/data/ballparks_stadium_data.csv")
+
+stadium_data |>
+  head()
+
+```
+
+```{r}
+# view basics of data
+summary(stadium_data) #get summary of values of each variable
+
+head(stadium_data) #view what the data looks like
+
+```

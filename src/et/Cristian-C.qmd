@@ -1,0 +1,17 @@
+---
+title: "Cristian C Effective Teamwork Reading"
+format: html
+---
+
+### Summary of Medium True Teamwork in Software Development
+https://medium.com/@martinbaun/true-teamwork-in-software-development-ca2bd3709adc
+
+This reading says the following:
+- Open Communication
+- Feedback
+- Celebrating Successes
+- Learning from Failures
+- Everyone should commit to the set plans and the goals of collaboration will be achieved.
+
+
+
