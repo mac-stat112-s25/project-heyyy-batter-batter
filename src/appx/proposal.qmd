@@ -17,7 +17,7 @@ library(tidyverse)
   
 ## Description
 
-Main Question: How do Park factors (how teams/players are predicted to perform at different stadiums) explain deviations between predicted values versus actual performance in the MLB
+Main Question: How do Park factors (how teams/players are predicted to perform at different stadiums) explain deviations between predicted stats values, such as home runs, versus actual performance in the MLB
 
 We will be using the Baseballr package, which pulls data from various databases. In our project, we will mainly be using data from Baseball Savant, StatCast, and FanGraphs. 
 
