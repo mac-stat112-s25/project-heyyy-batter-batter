@@ -1,0 +1,46 @@
+---
+title: "Izzy F EDA"
+---
+
+
+```{r}
+library(baseballr)
+library(tidyverse)
+library(dplyr)
+```
+
+
+```{r}
+Park_data_23 <- fg_park(2023)
+
+summary(Park_data_23) 
+
+head(Park_data_23) 
+```
+```{r}
+
+ggplot(Park_data_23, aes(x = single, y = basic_5yr)) +
+  geom_point() +
+geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
+
+ggplot(Park_data_23, aes(x = double, y = basic_5yr)) +
+  geom_point() +
+geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
+
+ggplot(Park_data_23, aes(x = triple, y = basic_5yr)) +
+  geom_point() +
+geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
+
+ggplot(Park_data_23, aes(x = hr, y = basic_5yr)) +
+  geom_point() +
+geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
+
+```
+```{r}
+ggplot(Park_data_23, aes(x = IFFB, y = basic_5yr)) +
+  geom_point() +
+geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
+
+
+```
+
