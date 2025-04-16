@@ -41,6 +41,15 @@ ggplot(Park_data_23, aes(x = IFFB, y = basic_5yr)) +
   geom_point() +
 geom_text(aes(label = home_team), angle = 360, nudge_y = - 0.7)
 
+```
+```{r}
+fg_batter_leaders()
 
+team_pitch_data_2023 <- fg_team_pitcher(startseason = "2023", endseason = "2023")
+
+```
+```{r}
+ggplot(team_pitch_data_2023, aes(x = xFIP, y = WPA)) +
+         geom_point()
 ```
 
