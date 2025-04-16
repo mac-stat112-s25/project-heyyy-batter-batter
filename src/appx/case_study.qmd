@@ -9,17 +9,13 @@ Our case study is:
 ### [**Uber Is Taking Millions Of Manhattan Rides Away From Taxis**](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
 
 
-- **Concise and Clear**: The report is straightforward, presenting data in an easy-to-understand manner without unnecessary elaboration.
-- **Data-Driven**: Focuses heavily on numerical and statistical evidence to support key points.
-- **Use of Visuals**: Incorporates various types of visualizations, including:
-  - Line graphs with multiple data points.
-  - Spatial maps with labeled faucets.
-  - Tables with summarized data.
-  - Scatter plots with best-fit lines and labeled points.
-- **Accessible Language**: Avoids jargon and uses plain language, making it approachable for a broader audience.
-- **Neutral and Factual Tone**: The writing is objective and refrains from making subjective claims; it sticks to the data.
-- **Transparency**: References sources clearly (e.g., Freedom of Information Law request) to ensure credibility.
-- **Engaging Yet Professional**: The report balances technical detail with clear, accessible explanations, maintaining a formal but readable style.
+- This report includes many types of visualizations and types of graphs including:
+ - Line graphs with multiple observations
+ - Maps (spatial maps with faucets)
+ - Tables
+ - Plots with best fits and labeled points
+ 
+
 
 
 
