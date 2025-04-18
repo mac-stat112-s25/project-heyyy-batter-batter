@@ -1,6 +1,11 @@
 ---
 title: "Proposal"
 ---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
+```
+
 ```{r}
 #load need packages
 library(tidyverse)
@@ -17,14 +22,18 @@ library(tidyverse)
   
 ## Description
 
-Main Question: How do Park factors (how teams/players are predicted to perform at different stadiums) explain deviations between predicted stats values, such as home runs, versus actual performance in the MLB
+Research Question:
+How do Park Factors account for discrepancies between predicted and actual offensive statistics—such as home run totals—in Major League Baseball?
 
-We will be using the Baseballr package, which pulls data from various databases. In our project, we will mainly be using data from Baseball Savant, StatCast, and FanGraphs. 
+Descriotion:
+To investigate this, we will use the Baseballr package in R, which aggregates data from several key baseball databases. Our analysis will focus on data sourced from Baseball Savant, StatCast, and FanGraphs, allowing us to incorporate expected statistics (e.g., expected home runs) and compare them to actual outcomes across various MLB stadiums.
+
+Park Factors are metrics that quantify how a specific ballpark influences game outcomes, typically by comparing offensive production (e.g., runs, home runs, hits) in that stadium to league averages. They account for environmental and structural features such as altitude, weather, field dimensions, and wall height, which can make some parks more hitter- or pitcher-friendly. By incorporating Park Factors into our analysis, we aim to assess how stadium-specific conditions contribute to deviations between predicted and observed player performance, particularly in offensive metrics like home runs 
 
 ## Inspiration/Reasons
+Our interest in this topic was sparked during group discussions, particularly when Izzy—who has been a lifelong baseball player and fan—explained the concept of Park Factors to the rest of us. We found it fascinating how much a stadium’s environment can influence game outcomes, prompting us to dig deeper into this overlooked variable in performance analysis.
 
-Izzy has been a baseball player and fan his entire life, he explained what park factors are to the rest of our group and we all found it very interesting.
-
+On a broader level, understanding Park Factors highlights the importance of context in sports analytics. Just as environmental conditions shape outcomes in baseball, recognizing contextual influences can deepen our understanding of performance metrics in other sports and domains—emphasizing the value of situational awareness in data-driven decision-making worldwide.
 
 ## Responsibility Plan
 
@@ -32,10 +41,11 @@ Izzy has been a baseball player and fan his entire life, he explained what park 
 # Create a data frame with group members and their duties
 project_team <- tibble::tribble(
   ~Member_Name, ~Responsibility,
-  "Cristian",   "Case Study, Visualization work",
-  "Wandi",   "Figuring out the BaseballR package, data vis work",
-  "Izzy", "Baseball expert, report writer",
-  "Zach",     "Proposal scribe, cleaning and wrangling")
+  "Cristian", "Lead on case study development and data visualization design",
+  "Wandi", "Responsible for Baseballr package integration and contributing to data visualization",
+  "Izzy", "Baseball subject matter expert and primary report writer",
+  "Zach", "Lead on project proposal drafting, data cleaning, and wrangling"
+)
 
 # Display the table
 print(project_team)
