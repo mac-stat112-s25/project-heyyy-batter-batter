@@ -52,4 +52,53 @@ team_pitch_data_2023 <- fg_team_pitcher(startseason = "2023", endseason = "2023"
 ggplot(team_pitch_data_2023, aes(x = xFIP, y = WPA)) +
          geom_point()
 ```
+```{r}
+stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+
+stadium_data |>
+  head()
+
+stadium_data |>
+  ggplot(aes(y = hr_park_effects,  x = team_name, fill = team_name)) +
+  geom_col()
+
+stadium_data |>
+  ggplot(aes(x = extra_distance, y = hr_park_effects, color = ballpark)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_text(aes(label = ballpark), nudge_y = - 3, size = 1.5) +
+  labs(
+    title = "Extra Distance vs HR Park Effects by Ballpark",
+    x = "Extra Distance (yards)",
+    y = "HR Park Effects (100 = league avg)"
+  ) +
+  theme_minimal()
+```
+```{r}
+
+`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+head(`2022HitterStats`) 
+
+Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
+  select(player_id, team_name)
+head(Player_team_info)
+
+
+Full_22_Hitter_stats <- `2022HitterStats` |>
+  left_join(Player_team_info, join_by(player_id))
+head(Full_22_Hitter_stats)
+
+
+```
+```{r}
+
+ggplot(Full_22_Hitter_stats, aes(x = xslgdiff, color = team_name)) +
+  geom_bar() +
+  facet_wrap(~team_name)
+
+```
+```{r}
+
+
+
+```
 

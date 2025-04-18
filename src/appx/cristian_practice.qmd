@@ -66,9 +66,43 @@ Full_22_Hitter_stats <- `2022HitterStats` |>
 head(Full_22_Hitter_stats)
 
 
+```
+```{r}
+#expected vs observed slg by hitter (colored by Park)
+ggplot(Full_22_Hitter_stats, aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point(alpha = 0.6) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  labs(x = "Expected SLG", y = "Observed SLG",
+       title = "Observed vs. Expected SLG by Hitter (colored by Park)") +
+  theme_classic()
 
 
 ```
+```{r}
+library(ggridges)
+
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
+  geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
+  labs(x = "On Base %",
+       y = "Team",
+       title = "Distribution of OBP by Home Park (Ridgeline)") +
+  theme(legend.position = "none")
+
+```
+
+```{r}
+National_League_22_stats <- Full_22_Hitter_stats |>
+  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
+
+ggplot(National_League_22_stats, aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point()  +
+    geom_smooth(method = lm, se = FALSE) +
+  labs(x = "Expected SLG", y = "Observed SLG",
+       title = "Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams") +
+  theme_classic()
+
+```
+
 
 
 
