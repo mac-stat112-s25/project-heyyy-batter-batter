@@ -9,25 +9,10 @@ library(tidyverse)
 library(baseballr)
 ```
 
-```{r}
-Park_data_24 <- fg_park(2024)
-```
+
 
 ```{r}
-# view basics of data
-summary(Park_data_24) #get summary of values of each variable
-
-head(Park_data_24) #view what the data looks like
-
-```
-
-```{r}
-ggplot(Park_data_24, aes(x = hr, y = basic_5yr)) +
-   geom_point() +
-  geom_text(aes(label = home_team), angle = 360, vjust = 0, nudge_y = - 0.5)
-```
-
-```{r}
+# get park data
 ballparks_stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
 head(ballparks_stadium_data)
 ```
@@ -39,18 +24,21 @@ ggplot(ballparks_stadium_data, aes(x = center_field, y = hr_park_effects)) +
 ```
 
 ```{r}
+# get downloaded hitter stats
 `2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
 head(`2022HitterStats`)
 ```
 
 
 ```{r}
+# get player team info
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name)
 ```
 
 
 ```{r}
+# join hitter stats with players team
 Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
 
@@ -58,6 +46,7 @@ head(Full_22_Hitter_stats)
 ```
 
 ```{r}
+# join park stats and hitting stats
 player_and_park_stats <- Full_22_Hitter_stats |>
   left_join(ballparks_stadium_data) 
 ```
@@ -79,6 +68,7 @@ ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = avg_temp)) +
 ```
 
 ```{r}
+# find who overperforms weighted on base stats
 over_prefromers <- player_and_park_stats |>
   mutate(over_prefrom = woba > xwoba) |>
   filter(over_prefrom == TRUE)
