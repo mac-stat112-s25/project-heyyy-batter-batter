@@ -48,13 +48,12 @@ book:
       chapters:
       - src/et/ZachM.qmd
       - src/et/WandiD.qmd
-      - scr/et/Cristian-C.qmd
+      - scr/et/CristianC.qmd
       - src/et/Izzy F Effective Teamwork.qmd
       
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case_study.qmd
-  
   
 
 
