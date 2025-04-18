@@ -71,3 +71,15 @@ player_and_park_stats <- Full_22_Hitter_stats |>
 ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) +
   geom_point()
 ```
+
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = avg_temp)) +
+  geom_point()
+```
+
+```{r}
+over_prefromers <- player_and_park_stats |>
+  mutate(over_prefrom = woba > xwoba) |>
+  filter(over_prefrom == TRUE)
+```
