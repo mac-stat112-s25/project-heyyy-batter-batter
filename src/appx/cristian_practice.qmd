@@ -28,6 +28,7 @@ parkfactor22
 ```
 
 ```{r}
+#Stadium data with exploratory files
 stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
 
 stadium_data |>
@@ -56,11 +57,12 @@ head(`2022HitterStats`)
 
 ```
 ```{r}
+#player_id info
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name)
 head(Player_team_info)
 
-
+#Joined data set player_id with rest of player stats
 Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
 head(Full_22_Hitter_stats)
@@ -81,6 +83,7 @@ ggplot(Full_22_Hitter_stats, aes(x = xslg, y = slg_percent, color = team_name)) 
 ```{r}
 library(ggridges)
 
+#Density graph of On base % by different teams
 ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
   geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
   labs(x = "On Base %",
@@ -91,17 +94,52 @@ ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team
 ```
 
 ```{r}
-National_League_22_stats <- Full_22_Hitter_stats |>
+#new dataset National_League_West_22 includes only Western teams
+National_League_West_22 <- Full_22_Hitter_stats |>
   filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
 
-ggplot(National_League_22_stats, aes(x = xslg, y = slg_percent, color = team_name)) +
+ggplot(National_League_West_22, aes(x = xslg, y = slg_percent, color = team_name)) +
   geom_point()  +
     geom_smooth(method = lm, se = FALSE) +
-  labs(x = "Expected SLG", y = "Observed SLG",
+  labs(x = "Expected SLG", y = "Observed SLG", color = "Team Name",
        title = "Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams") +
   theme_classic()
 
 ```
+
+
+
+```{r}
+#Elevation column graph in different stadiums
+stadium_data |>
+  ggplot(aes(x = ballpark, y = elevation, fill = ballpark)) +
+  geom_col()
+
+```
+
+```{r}
+joined_stadium_data <- stadium_data |>
+  left_join(Full_22_Hitter_stats, join_by(team_name))
+head(joined_stadium_data, 20)
+
+joined_stadium_data |>
+  group_by(team_name) |>
+  summarise(mean(home_run))
+
+joined_stadium_data |>
+  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies") |>
+  ggplot(aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point()
+
+#Filter for teams with greater than certain ammount of observations
+# joined_stadium_data |>
+#   count(team_name) |>
+#   filter(n > 4)
+
+
+```
+
+
 
 
 
