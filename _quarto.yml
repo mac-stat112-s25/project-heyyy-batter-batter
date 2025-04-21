@@ -48,8 +48,8 @@ book:
       chapters:
       - src/et/ZachM.qmd
       - src/et/WandiD.qmd
-      - scr/et/CristianC.qmd
-      - src/et/Izzy F Effective Teamwork.qmd
+      - scr/et/Cristian-C.qmd
+      - src/et/IzzyF_EDA.qmd
       
   appendices:
   - src/appx/proposal.qmd
