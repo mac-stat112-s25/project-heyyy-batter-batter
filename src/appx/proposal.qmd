@@ -25,7 +25,7 @@ library(tidyverse)
 Research Question:
 How do Park Factors account for discrepancies between predicted and actual offensive statistics—such as home run totals—in Major League Baseball?
 
-Descriotion:
+Description:
 To investigate this, we will use the Baseballr package in R, which aggregates data from several key baseball databases. Our analysis will focus on data sourced from Baseball Savant, StatCast, and FanGraphs, allowing us to incorporate expected statistics (e.g., expected home runs) and compare them to actual outcomes across various MLB stadiums.
 
 Park Factors are metrics that quantify how a specific ballpark influences game outcomes, typically by comparing offensive production (e.g., runs, home runs, hits) in that stadium to league averages. They account for environmental and structural features such as altitude, weather, field dimensions, and wall height, which can make some parks more hitter- or pitcher-friendly. By incorporating Park Factors into our analysis, we aim to assess how stadium-specific conditions contribute to deviations between predicted and observed player performance, particularly in offensive metrics like home runs 
