@@ -6,9 +6,10 @@ title: "Proposal"
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
 ```
 
-```{r}
+```{r, echo=FALSE}
 #load need packages
 library(tidyverse)
+library(knitr)
 ```
 
 ### Team Name: Heyyy Batter Batter
@@ -37,18 +38,19 @@ On a broader level, understanding Park Factors highlights the importance of cont
 
 ## Responsibility Plan
 
-```{r}
-# Create a data frame with group members and their duties
-project_team <- tibble::tribble(
-  ~Member_Name, ~Responsibility,
-  "Cristian", "Lead on case study development and data visualization design",
-  "Wandi", "Responsible for Baseballr package integration and contributing to data visualization",
-  "Izzy", "Baseball subject matter expert and primary report writer",
-  "Zach", "Lead on project proposal drafting, data cleaning, and wrangling"
+```{r, echo=FALSE}
+team_info <- tibble::tibble(
+  Member_Name = c("Cristian", "Wandi", "Izzy", "Zach"),
+  Responsibility = c(
+    "Lead on case study development and data visualization design",
+    "Responsible for Baseballr package integration, contributing to data visualization and website formatting",
+    "Baseball subject matter expert and primary report writer",
+    "Lead on project proposal drafting, data cleaning, and wrangling"
+  )
 )
 
-# Display the table
-print(project_team)
+# Render table nicely
+kable(team_info, col.names = c("Member Name", "Responsibility"))
 ```
 =======
 

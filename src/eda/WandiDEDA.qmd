@@ -15,7 +15,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(lubridate)
-
+library(readr)
 ```
 
 
@@ -25,7 +25,6 @@ expectedPerformance <- read_csv("../../data/wandiEDAdata/xWOBA.csv")
 homeSplit <- read_csv("../../data/wandiEDAdata/Splits Leaderboard Data Home.csv")
 awaySplit <- read_csv("../../data/wandiEDAdata/Splits Leaderboard Data Away.csv")
 parkFactors <- read_csv("../../data/wandiEDAdata/FanGraphs Park Factors Leaderboard.csv")
-
 ```
 
 ```{r}
