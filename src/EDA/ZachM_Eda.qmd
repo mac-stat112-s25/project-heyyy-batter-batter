@@ -67,9 +67,50 @@ ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = avg_temp)) +
   geom_point()
 ```
 
+
+
 ```{r}
-# find who overperforms weighted on base stats
-over_prefromers <- player_and_park_stats |>
-  mutate(over_prefrom = woba > xwoba) |>
-  filter(over_prefrom == TRUE)
+#find which teams may have players more likely to over preform WOBA
+player_and_park_stats |>
+  filter(wobadiff > 0) |>
+  group_by(team_name) |>
+  count() |>
+  arrange(desc(n))
+```
+
+```{r}
+#find which team's players are likely to underprefroma
+player_and_park_stats |>
+  filter(wobadiff < 0) |>
+  group_by(team_name) |>
+  count() |>
+  arrange(desc(n))
+```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in%c ( "Cleveland Guardians", "Houston Astros	", "Houston Astros", "Los Angeles Dodgers", "New York Yankees", "New York Mets")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point() 
+```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in%c("Atlanta Braves", "Seattle Mariners", "Toronto Blue Jays")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point() 
+```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
+ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point()
+```
+
+```{r}
+player_and_park_stats |>
+  group_by(team_name) |>
+  count() |>
+  arrange(n)
 ```
