@@ -109,6 +109,7 @@ ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
 ```
 
 ```{r}
+# Find what teams have enough players to be statistically significant
 player_and_park_stats |>
   group_by(team_name) |>
   count() |>
