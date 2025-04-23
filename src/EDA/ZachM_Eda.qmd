@@ -33,7 +33,7 @@ head(`2022HitterStats`)
 ```{r}
 # get player team info
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
-  select(player_id, team_name)
+  select(player_id, team_name, league_name)
 ```
 
 
@@ -79,7 +79,7 @@ player_and_park_stats |>
 ```
 
 ```{r}
-#find which team's players are likely to underprefroma
+#find which team's players are likely to underpreform
 player_and_park_stats |>
   filter(wobadiff < 0) |>
   group_by(team_name) |>
@@ -114,4 +114,25 @@ player_and_park_stats |>
   group_by(team_name) |>
   count() |>
   arrange(n)
+```
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = hr_park_effects)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~league_name)
+```
+
+```{r}
+player_and_park_stats |>
+  group_by(league_name) |>
+  summarise(mean(hr_park_effects))
+```
+
+```{r}
+player_and_park_stats |>
+  mutate(overpreform_woba = xslgdiff > 0) |>
+ggplot( aes(x = hr_park_effects, y = xslgdiff, color = overpreform_woba)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~league_name)
 ```
