@@ -8,6 +8,107 @@ code-fold: false  # change to true to fold the code chunks
 Your report will go here.
 
 ```{r}
-# this is a test code
+# Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)
+
+#Density graph of On base % by different teams
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
+  geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
+  labs(x = "On Base %",
+       y = "Team",
+       title = "Distribution of OBP by Home Park (Ridgeline)") +
+  theme(legend.position = "none")
+```
+
+```{r}
+
+# Expected vs Observed slugging percentage by teams in national league west
+ggplot(National_League_West_22, aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point()  +
+    geom_smooth(method = lm, se = FALSE) +
+  labs(x = "Expected SLG", y = "Observed SLG", color = "Team Name",
+       title = "Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams") +
+  theme_classic()
+```
+
+```{r}
+# Actual vs Expected Batting Average
+ggplot(df, aes(x = xba, y = batting_avg, color = league_name)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.7, size = 2.5) +
+  labs(
+    title = "Actual vs. Expected Batting Average",
+    x = "Expected BA (xba)",
+    y = "Observed BA (batting_avg)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#Actual vs Expected Slugging
+ggplot(df, aes(x = xslg, y = slg_percent, color = league_name)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.7, size = 2.5) +
+  labs(
+    title = "Actual vs. Expected Slugging %",
+    x = "Expected SLG (xslg)",
+    y = "Observed SLG (slg_percent)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#Park Effects vs. Hard-Hit % 
+ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "HR Park Effects vs. Hard-Hit %",
+    x = "HR Park Effects (100 = avg)",
+    y = "Hard-Hit %"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+```{r}
+#Extra Distance → Home Runs
+ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
+  labs(
+    title = "Extra Distance vs. Home Runs",
+    x = "Extra Distance (yards)",
+    y = "Home Runs"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r}
+# Field Dimensions: Left vs. Right (size = park factor)
+ggplot(df, aes(x = left_field, y = right_field, size = hr_park_effects)) +
+  geom_point(alpha = 0.7) +
+  labs(
+    title = "Left‐Field vs. Right‐Field Distance\n(point size ∝ HR Park Effects)",
+    x = "Left Field Distance (yd)",
+    y = "Right Field Distance (yd)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+# Roof Cover vs. Day Games
+ggplot(df, aes(x = roof, y = daytime)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Pct. Roofed Games vs. Pct. Daytime Games",
+    x = "Roof Cover (%)",
+    y = "Daytime Games (%)"
+  ) +
+  theme_minimal()
+
 ```
 
