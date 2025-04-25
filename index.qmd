@@ -112,3 +112,24 @@ ggplot(df, aes(x = roof, y = daytime)) +
 
 ```
 
+```{r}
+# difference in expected vs actual weighted on base avreage compared to park effects
+ggplot(player_and_park_stats, aes(x = hr_park_effects, y = wobadiff)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+# difference in expected vs actual slugging compared to park effects
+ggplot(player_and_park_stats, aes(x = hr_park_effects, y = xslgdiff)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+# Vis of teams with over six batters on the dataset
+player_and_park_stats |>
+  filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
+ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point()
+```
