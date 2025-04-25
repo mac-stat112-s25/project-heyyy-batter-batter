@@ -179,7 +179,7 @@ ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
   theme_minimal() +
   theme(legend.position = "bottom")
 
-# 4) Extra Distance → Home Runs
+# 4) Extra Distance vs Home Runs
 ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +

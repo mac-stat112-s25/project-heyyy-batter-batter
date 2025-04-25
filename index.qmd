@@ -177,3 +177,19 @@ player_and_park_stats |>
 ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
   geom_point()
 ```
+
+```{r}
+#| fig-cap: "Extra distance of field vs number of Home runs per player on team"
+#Extra Distance vs Home Runs
+ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
+  labs(
+    title = "Extra Distance vs. Home Runs",
+    x = "Extra Distance (yards)",
+    y = "Home Runs"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
