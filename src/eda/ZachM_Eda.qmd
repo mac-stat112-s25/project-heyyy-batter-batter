@@ -102,6 +102,7 @@ player_and_park_stats |>
 ```
 
 ```{r}
+# Vis off teams with over six batters on the dataset
 player_and_park_stats |>
   filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
 ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
@@ -131,8 +132,14 @@ player_and_park_stats |>
 
 ```{r}
 player_and_park_stats |>
-  mutate(overpreform_woba = xslgdiff > 0) |>
-ggplot( aes(x = hr_park_effects, y = xslgdiff, color = overpreform_woba)) +
+ggplot( aes(x = hr_park_effects, y = xslgdiff)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~league_name)
+```
+
+```{r}
+player_and_park_stats |>
+ggplot( aes(x = hr_park_effects, y = wobadiff)) +
   geom_point(alpha = 0.5) +
   facet_wrap(~league_name)
 ```
