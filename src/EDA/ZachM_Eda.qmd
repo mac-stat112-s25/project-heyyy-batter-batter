@@ -59,7 +59,7 @@ ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team
 ```
 
 ```{r}
-
+#same graph as above with effective viz applied
 #|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
 
 ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = reorder(team_name, on_base_percent), fill = team_name)) +
