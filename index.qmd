@@ -8,15 +8,32 @@ code-fold: false  # change to true to fold the code chunks
 Your report will go here.
 
 ```{r}
-# Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)
+#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
 
-#Density graph of On base % by different teams
-ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
-  geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
-  labs(x = "On Base %",
-       y = "Team",
-       title = "Distribution of OBP by Home Park (Ridgeline)") +
-  theme(legend.position = "none")
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = reorder(team_name, on_base_percent), fill = team_name)) +
+  geom_density_ridges(
+    scale = 2.5, 
+    alpha = 0.9, 
+    size = 0.3, 
+    color = "white"
+  ) +
+  scale_fill_viridis_d(option = "plasma", begin = 0.1, end = 0.9) +  # broader color range
+  labs(
+    x = "On-Base Percentage",
+    y = "Team Name",
+    title = "Distribution of On-Base Percentage by Team (2022 Season)",
+    subtitle = "Ridgeline plot showing variability across teams",
+    caption = "Source: 2022 MLB Hitter Stats"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face = "italic"),
+    axis.title.y = element_text(margin = margin(r = 8)),
+    axis.title.x = element_text(margin = margin(t = 8)),
+    axis.text.y = element_text(size = 7)  # make team names smaller to avoid overlapping
+  )
 ```
 
 ```{r}
