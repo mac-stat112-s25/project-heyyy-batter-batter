@@ -5,7 +5,42 @@ echo: true      # change to true to show the code
 code-fold: false  # change to true to fold the code chunks
 ---
 
+
+```{r}
+#THis code chunck to run that defines the datasets using their relative file path. Sometimes it does not work, but if not Go to -> src -> appx -> cristian_practice.qmd and run the code chunks there to define the dataset.
+library(readr)
+
+`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+head(`2022HitterStats`) 
+#player_id info
+Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
+  select(player_id, team_name, league_name)
+head(Player_team_info)
+
+#Joined data set player_id with rest of player stats
+Full_22_Hitter_stats <- `2022HitterStats` |>
+  left_join(Player_team_info, join_by(player_id))
+head(Full_22_Hitter_stats)
+
+#new dataset National_League_West_22 includes only Western teams
+National_League_West_22 <- Full_22_Hitter_stats |>
+  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
+
+
+stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+
+#joined_stadium_data is for most of our graphs below in the index.qmd
+joined_stadium_data <- stadium_data |>
+  left_join(Full_22_Hitter_stats, join_by(team_name))
+
+```
+
+
 Your report will go here.
+
+
+
+
 
 ```{r}
 #|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
@@ -49,7 +84,7 @@ ggplot(National_League_West_22, aes(x = xslg, y = slg_percent, color = team_name
 
 ```{r}
 # Actual vs Expected Batting Average
-ggplot(df, aes(x = xba, y = batting_avg, color = league_name)) +
+ggplot(joined_stadium_data, aes(x = xba, y = batting_avg, color = league_name)) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   geom_point(alpha = 0.7, size = 2.5) +
   labs(
@@ -62,7 +97,7 @@ ggplot(df, aes(x = xba, y = batting_avg, color = league_name)) +
 
 ```{r}
 #Actual vs Expected Slugging
-ggplot(df, aes(x = xslg, y = slg_percent, color = league_name)) +
+ggplot(joined_stadium_data, aes(x = xslg, y = slg_percent, color = league_name)) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   geom_point(alpha = 0.7, size = 2.5) +
   labs(
@@ -75,7 +110,7 @@ ggplot(df, aes(x = xslg, y = slg_percent, color = league_name)) +
 
 ```{r}
 #Park Effects vs. Hard-Hit % 
-ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
+ggplot(joined_stadium_data, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE) +
   labs(
@@ -89,7 +124,7 @@ ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
 
 ```{r}
 #Extra Distance → Home Runs
-ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
+ggplot(joined_stadium_data, aes(x = extra_distance, y = home_run, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
@@ -103,7 +138,7 @@ ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
 
 ```{r}
 # Field Dimensions: Left vs. Right (size = park factor)
-ggplot(df, aes(x = left_field, y = right_field, size = hr_park_effects)) +
+ggplot(joined_stadium_data, aes(x = left_field, y = right_field, size = hr_park_effects)) +
   geom_point(alpha = 0.7) +
   labs(
     title = "Left‐Field vs. Right‐Field Distance\n(point size ∝ HR Park Effects)",
@@ -113,21 +148,7 @@ ggplot(df, aes(x = left_field, y = right_field, size = hr_park_effects)) +
   theme_minimal()
 ```
 
-```{r}
-# Roof Cover vs. Day Games
-ggplot(df, aes(x = roof, y = daytime)) +
-  geom_point(alpha = 0.7) +
-  geom_smooth(method = "lm", se = FALSE) +
-  scale_x_continuous(labels = scales::percent) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(
-    title = "Pct. Roofed Games vs. Pct. Daytime Games",
-    x = "Roof Cover (%)",
-    y = "Daytime Games (%)"
-  ) +
-  theme_minimal()
 
-```
 
 ```{r}
 # Vis of woba vs xwoba vs park effect
