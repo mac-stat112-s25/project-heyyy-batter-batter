@@ -129,3 +129,10 @@ ggplot(df, aes(x = roof, y = daytime)) +
 
 ```
 
+```{r}
+# Vis of woba vs xwoba vs park effect
+player_and_park_stats |>
+  filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
+ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point()
+```
