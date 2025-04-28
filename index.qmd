@@ -9,13 +9,16 @@ code-fold: false  # change to true to fold the code chunks
 ```{r}
 #THis code chunck to run that defines the datasets using their relative file path. Sometimes it does not work, but if not Go to -> src -> appx -> cristian_practice.qmd and run the code chunks there to define the dataset.
 library(readr)
+library(tidyverse)
+library(baseballr)
 
-`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+`2022HitterStats` <- read_csv("data/2022HitterStats.csv")
 head(`2022HitterStats`) 
 #player_id info
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name, league_name)
 head(Player_team_info)
+
 
 #Joined data set player_id with rest of player stats
 Full_22_Hitter_stats <- `2022HitterStats` |>
@@ -27,7 +30,7 @@ National_League_West_22 <- Full_22_Hitter_stats |>
   filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
 
 
-stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
 
 #joined_stadium_data is for most of our graphs below in the index.qmd
 joined_stadium_data <- stadium_data |>
