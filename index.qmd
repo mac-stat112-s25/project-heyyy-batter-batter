@@ -1,48 +1,31 @@
 ---
 title: "Report"
-execute: 
 echo: true      # change to true to show the code
 code-fold: false  # change to true to fold the code chunks
 ---
 
 
-```{r}
-#THis code chunck to run that defines the datasets using their relative file path. Sometimes it does not work, but if not Go to -> src -> appx -> cristian_practice.qmd and run the code chunks there to define the dataset.
-library(readr)
-library(tidyverse)
-library(baseballr)
 
-`2022HitterStats` <- read_csv("data/2022HitterStats.csv")
-head(`2022HitterStats`) 
-#player_id info
+Your report will go here.
+
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r}
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name, league_name)
 head(Player_team_info)
 
 
-#Joined data set player_id with rest of player stats
 Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
 head(Full_22_Hitter_stats)
 
-#new dataset National_League_West_22 includes only Western teams
-National_League_West_22 <- Full_22_Hitter_stats |>
-  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
-
-
-stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
-
-#joined_stadium_data is for most of our graphs below in the index.qmd
-joined_stadium_data <- stadium_data |>
-  left_join(Full_22_Hitter_stats, join_by(team_name))
 
 ```
-
-
-Your report will go here.
-
-
-
 
 
 ```{r}
@@ -127,16 +110,40 @@ ggplot(joined_stadium_data, aes(x = hr_park_effects, y = hard_hit_percent, color
 
 ```{r}
 #Extra Distance → Home Runs
-ggplot(joined_stadium_data, aes(x = extra_distance, y = home_run, color = ballpark)) +
+# If you haven't already installed showtext, do it first
+# install.packages("showtext")
+
+library(showtext)
+
+# Add custom font (e.g., Press Start 2P)
+font_add_google("Press Start 2P", "baseball_font")
+showtext_auto()
+
+joined_stadium_data %>%
+  filter(!is.na(extra_distance), !is.na(home_run)) %>%
+  group_by(ballpark) %>%
+  filter(n() > 0) %>%
+  ungroup() %>%
+  ggplot(aes(x = extra_distance, y = home_run, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
-    title = "Extra Distance vs. Home Runs",
-    x = "Extra Distance (yards)",
-    y = "Home Runs"
+    title = "Relationship Between Extra Distance and Home Runs",
+    caption = "Source: Baseball Savant 2022",
+    x = "Extra Distance (in Yards)",
+    y = "Total Number of Home Runs",
+    color = "Ballpark"
   ) +
-  theme_minimal() +
-  theme(legend.position = "none")
+  theme_minimal(base_size = 10) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 9, family = "baseball_font"),
+    plot.subtitle = element_text(hjust = 0.5, size = 8, family = "baseball_font"),
+    axis.title = element_text(face = "bold", family = "baseball_font"),
+    axis.text = element_text(size = 10, family = "baseball_font")
+  )
+
+
 ```
 
 ```{r}
@@ -155,8 +162,113 @@ ggplot(joined_stadium_data, aes(x = left_field, y = right_field, size = hr_park_
 
 ```{r}
 # Vis of woba vs xwoba vs park effect
-player_and_park_stats |>
-  filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
-ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
-  geom_point()
+
+library(mlbplotR)
+library(ggplot2)
+library(dplyr)
+library(scales)
+
+# Load MLB team logos and other info
+teams_colors_logos <- mlbplotR::load_mlb_teams() |> 
+  dplyr::filter(!team_abbr %in% c("AL", "NL", "MLB"))
+
+# Merge the logos with your data
+player_and_park_stats_with_logos <- player_and_park_stats |>
+  dplyr::left_join(teams_colors_logos, by = c("team_name" = "team_name"))
+
+# Filter for specific teams (example teams)
+filtered_data <- player_and_park_stats_with_logos |>
+  filter(team_name %in% c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", 
+                          "New York Mets", "New York Yankees", "Seattle Mariners", 
+                          "Toronto Blue Jays", "San Diego Padres"))
+
+# Normalize the 'hr_park_effects' column for logo size scaling (to keep sizes reasonable)
+filtered_data$logo_size <- scales::rescale(filtered_data$hr_park_effects, to = c(0.1, 0.2))  # Adjusted scaling
+
+# Adjust logo size by applying a scaling factor to make all logos smaller overall
+scaling_factor <- 0.3  # New factor for overall smaller logos
+
+# Create the plot with trend line, logos, and size variation
+ggplot(filtered_data, aes(x = woba, y = xwoba)) +
+  mlbplotR::geom_mlb_logos(aes(team_abbr = team_abbr), 
+                           width = scaling_factor * filtered_data$logo_size, 
+                           alpha = 0.8) +  # Adjust logo size by the scaling factor
+  scale_size_continuous(name = "Park Effects Size", range = c(1, 6), guide = guide_legend(title = "Park Effects")) +  # Size legend
+  labs(
+    title = "Actual vs. Expected wOBA by MLB Team",
+    x = "wOBA",
+    y = "xwOBA",
+    caption = "Source: Baseball Savant 2022"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 10, face = "bold", family = "baseball_font"),
+    axis.title = element_text(face = "bold", family = "baseball_font"),
+    legend.position = "right",  # Place legend on the right
+    legend.title = element_text(face = "bold"),
+    legend.key.size = unit(1, "cm")  # Adjust legend size
+  ) +
+  # Add trend line using geom_abline (with slope = 1 and intercept = 0)
+  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) 
+
+
+
 ```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in% c("Baltimore Orioles", "Seattle Mariners", "Los Angeles Dodgers")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point(alpha = 0.8) +  # Adjust alpha for better visibility
+  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) +  # Add trend line (y = x line)
+  labs(
+    title = "Actual vs Expected wOBA for Selected MLB Teams",
+    x = "wOBA",
+    y = "xwOBA",
+    caption = "Source: Baseball Savant 2022",
+    color = "Team",
+    size = "Park Factor"
+  
+  ) +
+  scale_color_manual(values = c("Baltimore Orioles" = "orange", 
+                                "Seattle Mariners" = "green", 
+                                "Los Angeles Dodgers" = "red")) +  # Set team-specific colors
+  scale_size_continuous(name = "Park Effect Size", range = c(3, 8)) +  # Adjust point sizes based on park effect, with a more readable range
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 9, face = "bold", family = "baseball_font"),  # Smaller title size
+    axis.title = element_text(face = "bold", size = 8, "baseball_font"),  # Smaller axis title size
+    legend.position = "right",  # Place legend on the right
+    legend.title = element_text(face = "bold", size = 9),  # Smaller legend title size
+    legend.key.size = unit(1, "cm")  # Adjust legend size
+  )
+
+player_and_park_stats |>
+  filter(team_name %in% c("Baltimore Orioles", "Seattle Mariners", "Los Angeles Dodgers")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point(alpha = 0.8) +  # Adjust alpha for better visibility
+  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) +  # Add trend line (y = x line)
+  labs(
+    title = "Actual vs Expected wOBA for Selected MLB Teams",
+    x = "wOBA",
+    y = "xwOBA",
+    caption = "Source: Baseball Savant 2022",
+    color = "Team",
+    size = "Park Factor"
+  ) +
+  scale_color_manual(values = c("Baltimore Orioles" = "orange", 
+                                "Seattle Mariners" = "green", 
+                                "Los Angeles Dodgers" = "red")) +  # Set team-specific colors
+  scale_size_continuous(name = "Park Effect Size", range = c(3, 8)) +  # Adjust point sizes based on park effect, with a more readable range
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 9, face = "bold", family = "baseball_font"),  # Smaller title size
+    axis.title = element_text(face = "bold", size = 8, family = "baseball_font"),  # Smaller axis title size
+    legend.position = "none",  # Remove all legends
+    legend.title = element_text(face = "bold", size = 9),  # Remove legend title adjustments
+    legend.key.size = unit(1, "cm")  # Remove legend size adjustments
+  )
+
+
+```
+
