@@ -11,7 +11,10 @@ Your report will go here.
 ```{r}
 library(ggplot2)
 library(tidyverse)
-
+library(baseballr)
+library(showtext)
+library(mlbplotR)
+library(scales)
 ```
 
 ```{r}
@@ -26,6 +29,11 @@ head(ballparks_stadium_data)
 head(`2022HitterStats`)
 ```
 
+```{r}
+# join park stats and hitting stats
+player_and_park_stats <- Full_22_Hitter_stats |>
+  left_join(ballparks_stadium_data) 
+```
 
 ```{r}
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
@@ -51,10 +59,7 @@ ggplot(ballparks_stadium_data, aes(x = elevation)) +
 
 ```{r}
 #Extra Distance → Home Runs
-# If you haven't already installed showtext, do it first
-# install.packages("showtext")
 
-library(showtext)
 
 # Add custom font (e.g., Press Start 2P)
 font_add_google("Press Start 2P", "baseball_font")
@@ -92,10 +97,6 @@ joined_stadium_data %>%
 ```{r}
 # Vis of woba vs xwoba vs park effect
 
-library(mlbplotR)
-library(ggplot2)
-library(dplyr)
-library(scales)
 
 # Load MLB team logos and other info
 teams_colors_logos <- mlbplotR::load_mlb_teams() |> 
