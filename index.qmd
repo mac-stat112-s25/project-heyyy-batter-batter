@@ -39,7 +39,13 @@ head(Full_22_Hitter_stats)
 
 
 ```
-
+```{r}
+# elevation density plot
+ggplot(ballparks_stadium_data, aes(x = elevation)) +
+  geom_density() +
+  theme_classic() +
+  labs(title = "Distribution of MLB Park Elevations", x = "Elevation (feet)")
+```
 
 ```{r}
 #|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
