@@ -15,6 +15,19 @@ library(tidyverse)
 ```
 
 ```{r}
+# get park data
+ballparks_stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+head(ballparks_stadium_data)
+```
+
+```{r}
+# get downloaded hitter stats
+`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+head(`2022HitterStats`)
+```
+
+
+```{r}
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name, league_name)
 head(Player_team_info)
