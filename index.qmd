@@ -39,6 +39,7 @@ head(Full_22_Hitter_stats)
 
 
 ```
+
 ```{r}
 # elevation density plot
 ggplot(ballparks_stadium_data, aes(x = elevation)) +
@@ -47,85 +48,9 @@ ggplot(ballparks_stadium_data, aes(x = elevation)) +
   labs(title = "Distribution of MLB Park Elevations", x = "Elevation (feet)")
 ```
 
-```{r}
-#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
 
-ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = reorder(team_name, on_base_percent), fill = team_name)) +
-  geom_density_ridges(
-    scale = 2.5, 
-    alpha = 0.9, 
-    size = 0.3, 
-    color = "white"
-  ) +
-  scale_fill_viridis_d(option = "plasma", begin = 0.1, end = 0.9) +  # broader color range
-  labs(
-    x = "On-Base Percentage",
-    y = "Team Name",
-    title = "Distribution of On-Base Percentage by Team (2022 Season)",
-    subtitle = "Ridgeline plot showing variability across teams",
-    caption = "Source: 2022 MLB Hitter Stats"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    legend.position = "none",
-    plot.title = element_text(face = "bold"),
-    plot.subtitle = element_text(face = "italic"),
-    axis.title.y = element_text(margin = margin(r = 8)),
-    axis.title.x = element_text(margin = margin(t = 8)),
-    axis.text.y = element_text(size = 7)  # make team names smaller to avoid overlapping
-  )
-```
 
-```{r}
 
-# Expected vs Observed slugging percentage by teams in national league west
-ggplot(National_League_West_22, aes(x = xslg, y = slg_percent, color = team_name)) +
-  geom_point()  +
-    geom_smooth(method = lm, se = FALSE) +
-  labs(x = "Expected SLG", y = "Observed SLG", color = "Team Name",
-       title = "Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams") +
-  theme_classic()
-```
-
-```{r}
-# Actual vs Expected Batting Average
-ggplot(joined_stadium_data, aes(x = xba, y = batting_avg, color = league_name)) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
-  geom_point(alpha = 0.7, size = 2.5) +
-  labs(
-    title = "Actual vs. Expected Batting Average",
-    x = "Expected BA (xba)",
-    y = "Observed BA (batting_avg)"
-  ) +
-  theme_minimal()
-```
-
-```{r}
-#Actual vs Expected Slugging
-ggplot(joined_stadium_data, aes(x = xslg, y = slg_percent, color = league_name)) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
-  geom_point(alpha = 0.7, size = 2.5) +
-  labs(
-    title = "Actual vs. Expected Slugging %",
-    x = "Expected SLG (xslg)",
-    y = "Observed SLG (slg_percent)"
-  ) +
-  theme_minimal()
-```
-
-```{r}
-#Park Effects vs. Hard-Hit % 
-ggplot(joined_stadium_data, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
-  geom_point(alpha = 0.8) +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(
-    title = "HR Park Effects vs. Hard-Hit %",
-    x = "HR Park Effects (100 = avg)",
-    y = "Hard-Hit %"
-  ) +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-```
 
 ```{r}
 #Extra Distance → Home Runs
@@ -163,18 +88,6 @@ joined_stadium_data %>%
   )
 
 
-```
-
-```{r}
-# Field Dimensions: Left vs. Right (size = park factor)
-ggplot(joined_stadium_data, aes(x = left_field, y = right_field, size = hr_park_effects)) +
-  geom_point(alpha = 0.7) +
-  labs(
-    title = "Left‐Field vs. Right‐Field Distance\n(point size ∝ HR Park Effects)",
-    x = "Left Field Distance (yd)",
-    y = "Right Field Distance (yd)"
-  ) +
-  theme_minimal()
 ```
 
 
