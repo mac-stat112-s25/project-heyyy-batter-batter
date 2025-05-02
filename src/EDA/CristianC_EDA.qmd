@@ -10,6 +10,7 @@ library(tidyverse)
 library(ggplot2)
 library(readr)
 library(dplyr)
+library(ggridges)
 
 
 parkfactor22 <- fg_park(2022)
@@ -98,8 +99,6 @@ ggplot(Full_22_Hitter_stats, aes(x = xslg, y = slg_percent, color = team_name)) 
 
 ```
 ```{r}
-library(ggridges)
-
 #Density graph of On base % by different teams
 ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
   geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
@@ -135,6 +134,7 @@ stadium_data |>
 ```
 
 ```{r}
+#Joining stadium data
 joined_stadium_data <- stadium_data |>
   left_join(Full_22_Hitter_stats, join_by(team_name))
 head(joined_stadium_data, 20)
@@ -156,14 +156,10 @@ joined_stadium_data |>
 
 ```
 ```{r}
-head(joined_stadium_data)
-
-# shorthand
-df <- joined_stadium_data
-
+#Some preliminary graphs
 
 # 1) Actual vs Expected Batting Average
-ggplot(df, aes(x = xba, y = batting_avg, color = league_name)) +
+ggplot(joined_stadium_data, aes(x = xba, y = batting_avg, color = league_name)) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   geom_point(alpha = 0.7, size = 2.5) +
   labs(
@@ -174,7 +170,7 @@ ggplot(df, aes(x = xba, y = batting_avg, color = league_name)) +
   theme_minimal()
 
 # 2) Actual vs Expected Slugging
-ggplot(df, aes(x = xslg, y = slg_percent, color = league_name)) +
+ggplot(joined_stadium_data, aes(x = xslg, y = slg_percent, color = league_name)) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   geom_point(alpha = 0.7, size = 2.5) +
   labs(
@@ -185,7 +181,7 @@ ggplot(df, aes(x = xslg, y = slg_percent, color = league_name)) +
   theme_minimal()
 
 # 3) Park Effects vs. Hard-Hit % 
-ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
+ggplot(joined_stadium_data, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE) +
   labs(
@@ -197,7 +193,7 @@ ggplot(df, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
   theme(legend.position = "bottom")
 
 # 4) Extra Distance vs Home Runs
-ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
+ggplot(joined_stadium_data, aes(x = extra_distance, y = home_run, color = ballpark)) +
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
