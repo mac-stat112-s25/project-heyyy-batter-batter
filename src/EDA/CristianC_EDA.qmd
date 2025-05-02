@@ -1,16 +1,15 @@
 ---
-title: "This just practice not publication"
+title: "Cristian C EDA"
+format: html
 ---
 
-You can also get my work like graphs from this code
-
 ```{r}
+#load packages
 library(baseballr)
 library(tidyverse)
 library(ggplot2)
 library(readr)
 library(dplyr)
-
 
 
 parkfactor22 <- fg_park(2022)
@@ -19,11 +18,16 @@ parkfactor22
 ```
 
 ```{r}
-#Stadium data with exploratory files
+#Stadium data
 stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
 
-stadium_data |>
-  head()
+```
+
+
+```{r}
+# view basics of data
+summary(stadium_data) #get summary of values of each variable
+head(stadium_data) #view what the data looks like
 
 stadium_data |>
   ggplot(aes(y = hr_park_effects,  x = team_name, fill = team_name)) +
@@ -41,11 +45,33 @@ stadium_data |>
 
 ```
 
+##These is the codebook for stadium_data
+
+team_name
+ball_park
+left_field - Distance from the home plate to 'the nearest fence or obstruction' in left field, measured in yards.
+center_field - Distance from the home plate to 'the nearest fence or obstruction' in center field, measured in yards.
+right_field - Distance from the home plate to 'the nearest fence or obstruction' in right field, measured in yards.
+min_wall_height - Minimum wall height, measured in yards.
+max_wall_height - Maximum wall height, measured in yards.
+hr_park_effects - Total "park effects" on home run rate, with 100 being a baseline average.
+extra_distance - Total extra distance that a particular ballpark adds to hits.
+avg_temp - Average temperature at each ballpark, measured in Fahrenheit.
+elevation - Elevation height above sea level, measured in feet.
+roof - Percentage of all games that are played with roof cover on.
+daytime - Percentage of all games that are played during the day.
+
+
+**##However we later join in into joined_stadium_data with the 2022 hitter stats**
+The code to do this are below
+
+
 ```{r}
 `2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
 head(`2022HitterStats`) 
 
 ```
+
 ```{r}
 #player_id info
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
@@ -57,8 +83,9 @@ Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
 head(Full_22_Hitter_stats)
 
-
 ```
+
+
 ```{r}
 #expected vs observed slg by hitter (colored by Park)
 ggplot(Full_22_Hitter_stats, aes(x = xslg, y = slg_percent, color = team_name)) +
@@ -183,10 +210,3 @@ ggplot(df, aes(x = extra_distance, y = home_run, color = ballpark)) +
 
 
 ```
-
-
-
-
-
-
-
