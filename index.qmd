@@ -11,9 +11,9 @@ Your report will go here.
 ```{r}
 library(ggplot2)
 library(tidyverse)
+
 ```
 
-<<<<<<< HEAD
 ```{r}
 # get park data
 ballparks_stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
@@ -48,11 +48,6 @@ ggplot(ballparks_stadium_data, aes(x = elevation)) +
   labs(title = "Distribution of MLB Park Elevations", x = "Elevation (feet)")
 ```
 
-
-
-
-=======
->>>>>>> b67fbfee1164c419bf3021e13278e532e5da5e0b
 
 ```{r}
 #Extra Distance → Home Runs
