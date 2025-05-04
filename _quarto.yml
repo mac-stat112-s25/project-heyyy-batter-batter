@@ -41,7 +41,7 @@ book:
       chapters:
       - src/EDA/ZachM_Eda.qmd
       - src/EDA/WandiDEDA.qmd
-      - src/EDA/Cristian-C.qmd
+      - src/EDA/CristianC_EDA.qmd
       - src/EDA/IzzyF_EDA.qmd
       
     - part: "Effective Teamwork"
