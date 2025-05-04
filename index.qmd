@@ -470,12 +470,6 @@ discuss the distribution of the graph
 
 ```{r}
 #Home_runs vs park_effects
-head(joined_stadium_data)
-
-joined_stadium_data |>
-  group_by(hr_park_effects) |>
-  head(20)
-
 
 ggplot(joined_stadium_data, aes(x = hr_park_effects, y = home_run, size = hr_park_effects)) +
   geom_point(alpha = 0.7, color = "#2E86AB") +
@@ -500,6 +494,8 @@ ggplot(joined_stadium_data, aes(x = hr_park_effects, y = home_run, size = hr_par
   )
 
 
-
 ```
 
+***Park Factors vs Home Runs***
+
+Scatterplot of player total home runs versus HR Park Effect for the 2022 MLB season. Each point represents one player’s home run total (y-axis) plotted against their home ballpark’s HR Park Effect (x-axis), with point size scaled to the magnitude of that effect. The HR Park Effect is a standardized measure of how a stadium’s dimensions, altitude, and other characteristics influence home run production relative to league average (values > 100 indicate a hitter-friendly park that boosts home runs; values < 1 indicate a pitcher-friendly park that suppresses them). The dashed line shows the overall linear trend, highlighting the relationship between park environment and observed home run counts. You can see there are alot of outliers, showing that many times Home Runs are more determined by averaged individual player performance for that season.
