@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Cristian Cano">
+<meta name="author" content="Wandi Dlamini">
+<meta name="author" content="Izzy Flood">
+<meta name="author" content="Zach Marshak">
+<title>Evaluating the Effects of Park Factors on Offensive Performance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./src/EDA/ZachM_Eda.html" rel="next">
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script><style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="style/custom.css">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Report</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">sidebar title</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Report</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">EDA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/EDA/ZachM_Eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/EDA/WandiDEDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Wandi Dlamini - Park Factors EDA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/EDA/CristianC_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cristian C EDA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/EDA/IzzyF_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Izzy F EDA</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Effective Teamwork</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/ZachM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Zach M Effective Teamwork Reading</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/WandiD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wandi Dlamini Effective Teamwork</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/CristianC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cristian C Effective Teamwork Reading</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/Izzy F Effective Teamwork.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Izzy Flood Effective Teamwork</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/appx/proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Proposal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/appx/case_study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Evaluating the Effects of Park Factors on Offensive Performance</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cristian Cano </p>
+             <p>Wandi Dlamini </p>
+             <p>Izzy Flood </p>
+             <p>Zach Marshak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Sunday, May 4, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'patchwork' was built under R version 4.4.3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 30 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): abrev_team_name, team_name, ballpark
+dbl (11): left_field, center_field, right_field, min_wall_height, max_wall_h...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 130 Columns: 28
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): last_name, first_name
+dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(team_name)`</code></pre>
+</div>
+</div>
+<p>Izzy’s Intro Parts will go here</p>
+<p><strong>How Ballparks Influence Offensive Performance</strong></p>
+<p>Baseball is unique among major sports in that each team’s home field can vary significantly in its dimensions and environmental conditions. Unlike the standardized courts and fields used in basketball or football, Major League Baseball stadiums differ widely — from outfield wall height and distance to foul territory and elevation. These physical characteristics, known collectively as park effects, can have a significant impact on offensive performance. Whether it’s a fly ball turning into a home run or a double dying at the warning track, the stadium itself becomes a player in the game. In this article, we explore a few of the most influential park effects — focusing specifically on elevation, extra outfield distance, and home run park factor — to better understand how ballparks shape the game’s offensive metrics.</p>
+<p><strong>The Role of Elevation</strong></p>
+<p>One of the most important — yet often overlooked — physical features influencing offense is elevation. Ballparks located at higher altitudes, such as Denver’s Coors Field, have thinner air due to lower atmospheric pressure. This reduced air resistance allows baseballs to travel farther, increasing the likelihood of extra-base hits and home runs. As a result, elevation can significantly inflate offensive statistics, making it essential to consider when comparing player performance across different ballparks.</p>
+<p>To illustrate this, the figure below shows the distribution of stadium elevations across Major League ballparks, highlighting the stark contrast between high-altitude parks and those at or near sea level.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Discuss elevation plot distribution</p>
+<p><strong>Extra Distance in the Outfield</strong></p>
+<p>Beyond elevation, the distance from home plate to the outfield walls — or “extra distance” — plays a significant role in determining offensive success. Ballparks with deeper outfields tend to suppress home runs, giving pitchers an edge by demanding greater power to clear the fences. On the other hand, parks with short porches or shallow gaps can inflate home run totals and alter hitting strategies.</p>
+<p>The following figure explores the distribution of extra distance across MLB stadiums, helping us visualize how varying field dimensions contribute to the offensive landscape.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>discuss the distance plot</p>
+<p><strong>Understanding Park Factors</strong></p>
+<p>Lastly, park factors — sometimes referred to as park effects — are composite metrics designed to quantify how a stadium impacts offensive production relative to league norms. These values incorporate a range of influences, including stadium dimensions, altitude, and even typical weather conditions. Calculated from historical data on runs, hits, home runs, and other offensive stats, a park factor above 100 signals a hitter-friendly environment, while values below 100 denote a pitcher’s park.</p>
+<p>The chart below displays the distribution of park factors across MLB stadiums, offering a clearer picture of how each park may shape in-game performance.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>discuss park effect distribution</p>
+<p><strong>Linking Physical Features to Offensive Output</strong></p>
+<p>While it’s clear that ballpark characteristics can influence offense, it’s important to examine how specific variables relate directly to offensive metrics — particularly home run totals. By comparing elevation and outfield distance to the number of home runs hit at each stadium, we can gain insight into which physical attributes have the most measurable impact. These visualizations help move beyond assumptions and allow for a more data-driven understanding of park effects.</p>
+<p><em>Elevation vs.&nbsp;Home Runs</em></p>
+<p>The first plot explores the relationship between a stadium’s elevation and its total number of home runs. Given that thinner air at higher altitudes reduces drag on a baseball, we expect to see more home runs in elevated stadiums. This visualization allows us to test that hypothesis and spot outliers where home run rates may not align with elevation alone.</p>
+<p>**add plot here</p>
+<p><em>Extra Distance vs.&nbsp;Home Runs</em></p>
+<p>Next, we look at how extra distance — the average length from home plate to the outfield wall — correlates with home run totals. Intuitively, greater distance should suppress home runs, while shorter dimensions should lead to more. This chart reveals whether that trend holds across the league and which parks defy the expected relationship.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>**discuss the extra distance vs homeruns plot</p>
+<p><strong>From Ballparks to Batters: Evaluating Performance with wOBA</strong> After exploring how park features shape overall offensive output, the next logical step is to assess how these environments influence individual player performance. To do this, we turn to wOBA (weighted On-Base Average), a comprehensive offensive metric that assigns value to each outcome (walks, singles, doubles, etc.) rather than treating all times on base equally. Unlike traditional stats, wOBA better captures a player’s true offensive contributions.</p>
+<p>By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality of contact (exit velocity, launch angle, etc.) — we can evaluate how much a player’s environment may have helped or hurt their results. This progression from park-level analysis to player-level metrics allows us to ask: are some players over- or under-performing expectations because of where they play?</p>
+<p><em>wOBA Discrepancies by Elevation</em></p>
+<p>In the first plot, each player’s actual vs.&nbsp;expected wOBA is shown, with color indicating the elevation of their home stadium. This lets us examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>wOBA Discrepancies by Extra Distance</em></p>
+<p>The second visualization repeats the comparison, this time coloring players by their park’s average outfield distance. If players in shorter parks tend to outperform expectations, this could suggest that geometry — not just skill — plays a large role in statistical outcomes.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Team-Level Trends in wOBA Discrepancies</strong></p>
+<p>To round out our analysis, we broadened the lens from individual players to team-level performance by comparing each team’s actual wOBA vs.&nbsp;expected wOBA. This gives a higher-level view of whether entire lineups tend to outperform or underperform relative to what their batted-ball data suggests. Such differences may reflect the cumulative impact of park effects, coaching strategies, or even player profiles tailored to specific environments.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gridExtra' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gridExtra'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    combine</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>discuss the woba vs xwoba graph</p>
+<p><strong><em>Highlighting Park Factors with Visual Emphasis</em></strong></p>
+<p>To deepen this comparison, we created a second version of the team plot in which each team’s point is scaled by its park factor. This allows us to visually emphasize how hitter- or pitcher-friendly environments correlate with discrepancies between actual and expected offensive output. Teams in more hitter-friendly parks may appear further above the identity line, suggesting that the stadium may be inflating results beyond what expected metrics alone would predict.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>discuss the distribution of the graph</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 43
+  abrev_team_name team_name         ballpark left_field center_field right_field
+  &lt;chr&gt;           &lt;chr&gt;             &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1 ATL             Atlanta Braves    Truist …        335          400         325
+2 ATL             Atlanta Braves    Truist …        335          400         325
+3 ATL             Atlanta Braves    Truist …        335          400         325
+4 ATL             Atlanta Braves    Truist …        335          400         325
+5 ATL             Atlanta Braves    Truist …        335          400         325
+6 AZ              Arizona Diamondb… Chase F…        328          407         335
+# ℹ 37 more variables: min_wall_height &lt;dbl&gt;, max_wall_height &lt;dbl&gt;,
+#   hr_park_effects &lt;dbl&gt;, extra_distance &lt;dbl&gt;, avg_temp &lt;dbl&gt;,
+#   elevation &lt;dbl&gt;, roof &lt;dbl&gt;, daytime &lt;dbl&gt;, `last_name, first_name` &lt;chr&gt;,
+#   player_id &lt;dbl&gt;, year &lt;dbl&gt;, pa &lt;dbl&gt;, hit &lt;dbl&gt;, single &lt;dbl&gt;,
+#   double &lt;dbl&gt;, triple &lt;dbl&gt;, home_run &lt;dbl&gt;, batting_avg &lt;dbl&gt;,
+#   slg_percent &lt;dbl&gt;, on_base_percent &lt;dbl&gt;, on_base_plus_slg &lt;dbl&gt;,
+#   isolated_power &lt;dbl&gt;, xba &lt;dbl&gt;, xslg &lt;dbl&gt;, woba &lt;dbl&gt;, xwoba &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 43
+# Groups:   hr_park_effects [4]
+   abrev_team_name team_name        ballpark left_field center_field right_field
+   &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+ 1 ATL             Atlanta Braves   Truist …        335          400         325
+ 2 ATL             Atlanta Braves   Truist …        335          400         325
+ 3 ATL             Atlanta Braves   Truist …        335          400         325
+ 4 ATL             Atlanta Braves   Truist …        335          400         325
+ 5 ATL             Atlanta Braves   Truist …        335          400         325
+ 6 AZ              Arizona Diamond… Chase F…        328          407         335
+ 7 AZ              Arizona Diamond… Chase F…        328          407         335
+ 8 AZ              Arizona Diamond… Chase F…        328          407         335
+ 9 AZ              Arizona Diamond… Chase F…        328          407         335
+10 BAL             Baltimore Oriol… Oriole …        333          400         318
+11 BAL             Baltimore Oriol… Oriole …        333          400         318
+12 BAL             Baltimore Oriol… Oriole …        333          400         318
+13 BAL             Baltimore Oriol… Oriole …        333          400         318
+14 BAL             Baltimore Oriol… Oriole …        333          400         318
+15 BAL             Baltimore Oriol… Oriole …        333          400         318
+16 BOS             Boston Red Sox   Fenway …        310          420         302
+17 BOS             Boston Red Sox   Fenway …        310          420         302
+18 BOS             Boston Red Sox   Fenway …        310          420         302
+19 BOS             Boston Red Sox   Fenway …        310          420         302
+20 BOS             Boston Red Sox   Fenway …        310          420         302
+# ℹ 37 more variables: min_wall_height &lt;dbl&gt;, max_wall_height &lt;dbl&gt;,
+#   hr_park_effects &lt;dbl&gt;, extra_distance &lt;dbl&gt;, avg_temp &lt;dbl&gt;,
+#   elevation &lt;dbl&gt;, roof &lt;dbl&gt;, daytime &lt;dbl&gt;, `last_name, first_name` &lt;chr&gt;,
+#   player_id &lt;dbl&gt;, year &lt;dbl&gt;, pa &lt;dbl&gt;, hit &lt;dbl&gt;, single &lt;dbl&gt;,
+#   double &lt;dbl&gt;, triple &lt;dbl&gt;, home_run &lt;dbl&gt;, batting_avg &lt;dbl&gt;,
+#   slg_percent &lt;dbl&gt;, on_base_percent &lt;dbl&gt;, on_base_plus_slg &lt;dbl&gt;,
+#   isolated_power &lt;dbl&gt;, xba &lt;dbl&gt;, xslg &lt;dbl&gt;, woba &lt;dbl&gt;, xwoba &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: size.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family not found in Windows font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database
+Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+not found in Windows font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family not found in Windows font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family not found in Windows font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family not found in Windows font database
+Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+family not found in Windows font database</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database
+Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+font family not found in Windows font database</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./src/EDA/ZachM_Eda.html" class="pagination-link" aria-label="Zach M">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">---</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="an">title:</span><span class="co"> "Report"</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="an">echo:</span><span class="co"> false     # change to true to show the code</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="an">code-fold:</span><span class="co"> false  # change to true to fold the code chunks</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co">---</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="in">knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="in">```</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="in">```{r}</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb21-19"><a href="#cb21-19"></a><span class="fu">library</span>(mlbplotR)</span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="fu">library</span>(scales)</span>
+<span id="cb21-21"><a href="#cb21-21"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb21-22"><a href="#cb21-22"></a><span class="in">```</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a></span>
+<span id="cb21-26"><a href="#cb21-26"></a><span class="in">```{r}</span></span>
+<span id="cb21-27"><a href="#cb21-27"></a><span class="co"># get park data</span></span>
+<span id="cb21-28"><a href="#cb21-28"></a>ballparks_stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ballparks_stadium_data_2022.csv"</span>)</span>
+<span id="cb21-29"><a href="#cb21-29"></a><span class="in">```</span></span>
+<span id="cb21-30"><a href="#cb21-30"></a></span>
+<span id="cb21-33"><a href="#cb21-33"></a><span class="in">```{r}</span></span>
+<span id="cb21-34"><a href="#cb21-34"></a><span class="co"># get downloaded hitter stats</span></span>
+<span id="cb21-35"><a href="#cb21-35"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/2022HitterStats.csv"</span>)</span>
+<span id="cb21-36"><a href="#cb21-36"></a><span class="in">```</span></span>
+<span id="cb21-37"><a href="#cb21-37"></a></span>
+<span id="cb21-40"><a href="#cb21-40"></a><span class="in">```{r}</span></span>
+<span id="cb21-41"><a href="#cb21-41"></a><span class="co">#Join 2022HitterStats to mlb_stats</span></span>
+<span id="cb21-42"><a href="#cb21-42"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-43"><a href="#cb21-43"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span>
+<span id="cb21-44"><a href="#cb21-44"></a></span>
+<span id="cb21-45"><a href="#cb21-45"></a></span>
+<span id="cb21-46"><a href="#cb21-46"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb21-47"><a href="#cb21-47"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb21-48"><a href="#cb21-48"></a></span>
+<span id="cb21-49"><a href="#cb21-49"></a><span class="in">```</span></span>
+<span id="cb21-50"><a href="#cb21-50"></a></span>
+<span id="cb21-53"><a href="#cb21-53"></a><span class="in">```{r}</span></span>
+<span id="cb21-54"><a href="#cb21-54"></a><span class="co"># join park stats and hitting stats</span></span>
+<span id="cb21-55"><a href="#cb21-55"></a>player_and_park_stats <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
+<span id="cb21-56"><a href="#cb21-56"></a>  <span class="fu">left_join</span>(ballparks_stadium_data) </span>
+<span id="cb21-57"><a href="#cb21-57"></a><span class="in">```</span></span>
+<span id="cb21-60"><a href="#cb21-60"></a><span class="in">```{r}</span></span>
+<span id="cb21-61"><a href="#cb21-61"></a><span class="co">#joined_stadium_data with with Full_22_Hitter_stats</span></span>
+<span id="cb21-62"><a href="#cb21-62"></a>joined_stadium_data <span class="ot">&lt;-</span> ballparks_stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb21-63"><a href="#cb21-63"></a>  <span class="fu">left_join</span>(Full_22_Hitter_stats, <span class="fu">join_by</span>(team_name))</span>
+<span id="cb21-64"><a href="#cb21-64"></a><span class="in">```</span></span>
+<span id="cb21-65"><a href="#cb21-65"></a></span>
+<span id="cb21-66"><a href="#cb21-66"></a></span>
+<span id="cb21-67"><a href="#cb21-67"></a>Izzy's Intro Parts will go here</span>
+<span id="cb21-68"><a href="#cb21-68"></a></span>
+<span id="cb21-69"><a href="#cb21-69"></a></span>
+<span id="cb21-70"><a href="#cb21-70"></a>**How Ballparks Influence Offensive Performance**</span>
+<span id="cb21-71"><a href="#cb21-71"></a></span>
+<span id="cb21-72"><a href="#cb21-72"></a>Baseball is unique among major sports in that each team's home field can vary significantly in its dimensions and environmental conditions. Unlike the standardized courts and fields used in basketball or football, Major League Baseball stadiums differ widely — from outfield wall height and distance to foul territory and elevation. These physical characteristics, known collectively as park effects, can have a significant impact on offensive performance. Whether it’s a fly ball turning into a home run or a double dying at the warning track, the stadium itself becomes a player in the game. In this article, we explore a few of the most influential park effects — focusing specifically on elevation, extra outfield distance, and home run park factor — to better understand how ballparks shape the game’s offensive metrics.</span>
+<span id="cb21-73"><a href="#cb21-73"></a></span>
+<span id="cb21-74"><a href="#cb21-74"></a></span>
+<span id="cb21-75"><a href="#cb21-75"></a></span>
+<span id="cb21-76"><a href="#cb21-76"></a>**The Role of Elevation**</span>
+<span id="cb21-77"><a href="#cb21-77"></a></span>
+<span id="cb21-78"><a href="#cb21-78"></a>One of the most important — yet often overlooked — physical features influencing offense is elevation. Ballparks located at higher altitudes, such as Denver’s Coors Field, have thinner air due to lower atmospheric pressure. This reduced air resistance allows baseballs to travel farther, increasing the likelihood of extra-base hits and home runs. As a result, elevation can significantly inflate offensive statistics, making it essential to consider when comparing player performance across different ballparks.</span>
+<span id="cb21-79"><a href="#cb21-79"></a></span>
+<span id="cb21-80"><a href="#cb21-80"></a>To illustrate this, the figure below shows the distribution of stadium elevations across Major League ballparks, highlighting the stark contrast between high-altitude parks and those at or near sea level.</span>
+<span id="cb21-81"><a href="#cb21-81"></a></span>
+<span id="cb21-84"><a href="#cb21-84"></a><span class="in">```{r}</span></span>
+<span id="cb21-85"><a href="#cb21-85"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-86"><a href="#cb21-86"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb21-87"><a href="#cb21-87"></a></span>
+<span id="cb21-88"><a href="#cb21-88"></a><span class="co"># Calculate mean elevation</span></span>
+<span id="cb21-89"><a href="#cb21-89"></a>mean_elev <span class="ot">&lt;-</span> <span class="fu">mean</span>(ballparks_stadium_data<span class="sc">$</span>elevation, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-90"><a href="#cb21-90"></a></span>
+<span id="cb21-91"><a href="#cb21-91"></a><span class="co"># Density plot (no caption)</span></span>
+<span id="cb21-92"><a href="#cb21-92"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb21-93"><a href="#cb21-93"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"#4682B4"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#333333"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb21-94"><a href="#cb21-94"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_elev, <span class="at">color =</span> <span class="st">"#D62728"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-95"><a href="#cb21-95"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mean_elev <span class="sc">+</span> <span class="dv">100</span>, <span class="at">y =</span> <span class="fl">0.0008</span>, <span class="at">label =</span> <span class="st">"Mean Elevation"</span>, </span>
+<span id="cb21-96"><a href="#cb21-96"></a>           <span class="at">color =</span> <span class="st">"#D62728"</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">"italic"</span>, <span class="at">family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-97"><a href="#cb21-97"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-98"><a href="#cb21-98"></a>    <span class="at">title =</span> <span class="st">"Distribution of Ball Park Elevation Across MLB Parks"</span>,</span>
+<span id="cb21-99"><a href="#cb21-99"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-100"><a href="#cb21-100"></a>    <span class="at">y =</span> <span class="st">"Density"</span></span>
+<span id="cb21-101"><a href="#cb21-101"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-102"><a href="#cb21-102"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-103"><a href="#cb21-103"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-104"><a href="#cb21-104"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.4</span>),</span>
+<span id="cb21-105"><a href="#cb21-105"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="fl">0.1</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-106"><a href="#cb21-106"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>),</span>
+<span id="cb21-107"><a href="#cb21-107"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb21-108"><a href="#cb21-108"></a>  )</span>
+<span id="cb21-109"><a href="#cb21-109"></a></span>
+<span id="cb21-110"><a href="#cb21-110"></a><span class="co"># Box plot</span></span>
+<span id="cb21-111"><a href="#cb21-111"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb21-112"><a href="#cb21-112"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#FFD700"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#444444"</span>, <span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb21-113"><a href="#cb21-113"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb21-114"><a href="#cb21-114"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-115"><a href="#cb21-115"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-116"><a href="#cb21-116"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-117"><a href="#cb21-117"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>),</span>
+<span id="cb21-118"><a href="#cb21-118"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb21-119"><a href="#cb21-119"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb21-120"><a href="#cb21-120"></a>  )</span>
+<span id="cb21-121"><a href="#cb21-121"></a></span>
+<span id="cb21-122"><a href="#cb21-122"></a><span class="co"># Combine plots with caption</span></span>
+<span id="cb21-123"><a href="#cb21-123"></a>(p1 <span class="sc">/</span> p2) <span class="sc">+</span> </span>
+<span id="cb21-124"><a href="#cb21-124"></a>  <span class="fu">plot_layout</span>(<span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-125"><a href="#cb21-125"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb21-126"><a href="#cb21-126"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant"</span>,</span>
+<span id="cb21-127"><a href="#cb21-127"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(</span>
+<span id="cb21-128"><a href="#cb21-128"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">"sans"</span>)</span>
+<span id="cb21-129"><a href="#cb21-129"></a>    )</span>
+<span id="cb21-130"><a href="#cb21-130"></a>  )</span>
+<span id="cb21-131"><a href="#cb21-131"></a></span>
+<span id="cb21-132"><a href="#cb21-132"></a></span>
+<span id="cb21-133"><a href="#cb21-133"></a></span>
+<span id="cb21-134"><a href="#cb21-134"></a><span class="in">```</span></span>
+<span id="cb21-135"><a href="#cb21-135"></a>Discuss elevation plot distribution</span>
+<span id="cb21-136"><a href="#cb21-136"></a></span>
+<span id="cb21-137"><a href="#cb21-137"></a></span>
+<span id="cb21-138"><a href="#cb21-138"></a></span>
+<span id="cb21-139"><a href="#cb21-139"></a></span>
+<span id="cb21-140"><a href="#cb21-140"></a>**Extra Distance in the Outfield**</span>
+<span id="cb21-141"><a href="#cb21-141"></a></span>
+<span id="cb21-142"><a href="#cb21-142"></a>Beyond elevation, the distance from home plate to the outfield walls — or “extra distance” — plays a significant role in determining offensive success. Ballparks with deeper outfields tend to suppress home runs, giving pitchers an edge by demanding greater power to clear the fences. On the other hand, parks with short porches or shallow gaps can inflate home run totals and alter hitting strategies.</span>
+<span id="cb21-143"><a href="#cb21-143"></a></span>
+<span id="cb21-144"><a href="#cb21-144"></a>The following figure explores the distribution of extra distance across MLB stadiums, helping us visualize how varying field dimensions contribute to the offensive landscape.</span>
+<span id="cb21-145"><a href="#cb21-145"></a></span>
+<span id="cb21-146"><a href="#cb21-146"></a></span>
+<span id="cb21-149"><a href="#cb21-149"></a><span class="in">```{r}</span></span>
+<span id="cb21-150"><a href="#cb21-150"></a><span class="co"># Calculate mean extra distance</span></span>
+<span id="cb21-151"><a href="#cb21-151"></a>mean_extra_distance <span class="ot">&lt;-</span> <span class="fu">mean</span>(joined_stadium_data<span class="sc">$</span>extra_distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-152"><a href="#cb21-152"></a></span>
+<span id="cb21-153"><a href="#cb21-153"></a><span class="co"># Density plot</span></span>
+<span id="cb21-154"><a href="#cb21-154"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> extra_distance)) <span class="sc">+</span></span>
+<span id="cb21-155"><a href="#cb21-155"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"#6CA6CD"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#2F4F4F"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb21-156"><a href="#cb21-156"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> mean_extra_distance), </span>
+<span id="cb21-157"><a href="#cb21-157"></a>             <span class="at">color =</span> <span class="st">"#D62728"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-158"><a href="#cb21-158"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
+<span id="cb21-159"><a href="#cb21-159"></a>           <span class="at">x =</span> (mean_extra_distance <span class="sc">+</span> <span class="dv">1</span>), </span>
+<span id="cb21-160"><a href="#cb21-160"></a>           <span class="at">y =</span> <span class="fl">0.08</span>, <span class="at">label =</span> <span class="st">"Mean Distance"</span>, </span>
+<span id="cb21-161"><a href="#cb21-161"></a>           <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">color =</span> <span class="st">"#D62728"</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">"italic"</span>, <span class="at">family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-162"><a href="#cb21-162"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-163"><a href="#cb21-163"></a>    <span class="at">title =</span> <span class="st">"Distribution of Ball Park Extra Distance Across MLB Parks"</span>,</span>
+<span id="cb21-164"><a href="#cb21-164"></a>    <span class="at">y =</span> <span class="st">"Density"</span>,</span>
+<span id="cb21-165"><a href="#cb21-165"></a>    <span class="at">x =</span> <span class="cn">NULL</span></span>
+<span id="cb21-166"><a href="#cb21-166"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-167"><a href="#cb21-167"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-168"><a href="#cb21-168"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-169"><a href="#cb21-169"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-170"><a href="#cb21-170"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="fl">0.2</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-171"><a href="#cb21-171"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb21-172"><a href="#cb21-172"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>),</span>
+<span id="cb21-173"><a href="#cb21-173"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb21-174"><a href="#cb21-174"></a>  )</span>
+<span id="cb21-175"><a href="#cb21-175"></a></span>
+<span id="cb21-176"><a href="#cb21-176"></a><span class="co"># Box plot</span></span>
+<span id="cb21-177"><a href="#cb21-177"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> extra_distance)) <span class="sc">+</span></span>
+<span id="cb21-178"><a href="#cb21-178"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#FFD700"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#444444"</span>, <span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb21-179"><a href="#cb21-179"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb21-180"><a href="#cb21-180"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-181"><a href="#cb21-181"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-182"><a href="#cb21-182"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>( <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),  </span>
+<span id="cb21-183"><a href="#cb21-183"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>)</span>
+<span id="cb21-184"><a href="#cb21-184"></a>  )</span>
+<span id="cb21-185"><a href="#cb21-185"></a></span>
+<span id="cb21-186"><a href="#cb21-186"></a><span class="co"># Combine density plot with caption at the bottom</span></span>
+<span id="cb21-187"><a href="#cb21-187"></a>(p1 <span class="sc">/</span> p2) <span class="sc">+</span> </span>
+<span id="cb21-188"><a href="#cb21-188"></a>  <span class="fu">plot_layout</span>(<span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-189"><a href="#cb21-189"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb21-190"><a href="#cb21-190"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant"</span>,</span>
+<span id="cb21-191"><a href="#cb21-191"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(</span>
+<span id="cb21-192"><a href="#cb21-192"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">"sans"</span>)</span>
+<span id="cb21-193"><a href="#cb21-193"></a>    )</span>
+<span id="cb21-194"><a href="#cb21-194"></a>  )</span>
+<span id="cb21-195"><a href="#cb21-195"></a></span>
+<span id="cb21-196"><a href="#cb21-196"></a></span>
+<span id="cb21-197"><a href="#cb21-197"></a></span>
+<span id="cb21-198"><a href="#cb21-198"></a><span class="in">```</span></span>
+<span id="cb21-199"><a href="#cb21-199"></a>discuss the distance plot</span>
+<span id="cb21-200"><a href="#cb21-200"></a></span>
+<span id="cb21-201"><a href="#cb21-201"></a></span>
+<span id="cb21-202"><a href="#cb21-202"></a></span>
+<span id="cb21-203"><a href="#cb21-203"></a></span>
+<span id="cb21-204"><a href="#cb21-204"></a>**Understanding Park Factors**</span>
+<span id="cb21-205"><a href="#cb21-205"></a></span>
+<span id="cb21-206"><a href="#cb21-206"></a>Lastly, park factors — sometimes referred to as park effects — are composite metrics designed to quantify how a stadium impacts offensive production relative to league norms. These values incorporate a range of influences, including stadium dimensions, altitude, and even typical weather conditions. Calculated from historical data on runs, hits, home runs, and other offensive stats, a park factor above 100 signals a hitter-friendly environment, while values below 100 denote a pitcher’s park.</span>
+<span id="cb21-207"><a href="#cb21-207"></a></span>
+<span id="cb21-208"><a href="#cb21-208"></a>The chart below displays the distribution of park factors across MLB stadiums, offering a clearer picture of how each park may shape in-game performance.</span>
+<span id="cb21-209"><a href="#cb21-209"></a></span>
+<span id="cb21-212"><a href="#cb21-212"></a><span class="in">```{r}</span></span>
+<span id="cb21-213"><a href="#cb21-213"></a><span class="co"># Calculate the mean park factor</span></span>
+<span id="cb21-214"><a href="#cb21-214"></a>mean_hr_pf <span class="ot">&lt;-</span> <span class="fu">mean</span>(joined_stadium_data<span class="sc">$</span>hr_park_effects, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-215"><a href="#cb21-215"></a></span>
+<span id="cb21-216"><a href="#cb21-216"></a><span class="co"># Density plot</span></span>
+<span id="cb21-217"><a href="#cb21-217"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb21-218"><a href="#cb21-218"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"#7BAFD4"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#2F4F4F"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb21-219"><a href="#cb21-219"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_hr_pf, <span class="at">color =</span> <span class="st">"#D62728"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-220"><a href="#cb21-220"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>,</span>
+<span id="cb21-221"><a href="#cb21-221"></a>           <span class="at">x =</span> mean_hr_pf <span class="sc">+</span> <span class="dv">4</span>, </span>
+<span id="cb21-222"><a href="#cb21-222"></a>           <span class="at">y =</span> <span class="fl">0.75</span> <span class="sc">*</span> <span class="fu">max</span>(<span class="fu">density</span>(joined_stadium_data<span class="sc">$</span>hr_park_effects, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>y),</span>
+<span id="cb21-223"><a href="#cb21-223"></a>           <span class="at">label =</span> <span class="st">"Mean Park Factor"</span>, <span class="at">color =</span> <span class="st">"#D62728"</span>,</span>
+<span id="cb21-224"><a href="#cb21-224"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">"italic"</span>, <span class="at">family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-225"><a href="#cb21-225"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-226"><a href="#cb21-226"></a>    <span class="at">title =</span> <span class="st">"Distribution of Home Run Park Effects Across MLB Stadiums"</span>,</span>
+<span id="cb21-227"><a href="#cb21-227"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-228"><a href="#cb21-228"></a>    <span class="at">y =</span> <span class="st">"Density"</span></span>
+<span id="cb21-229"><a href="#cb21-229"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-230"><a href="#cb21-230"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-231"><a href="#cb21-231"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-232"><a href="#cb21-232"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-233"><a href="#cb21-233"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>),</span>
+<span id="cb21-234"><a href="#cb21-234"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-235"><a href="#cb21-235"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb21-236"><a href="#cb21-236"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb21-237"><a href="#cb21-237"></a>  )</span>
+<span id="cb21-238"><a href="#cb21-238"></a></span>
+<span id="cb21-239"><a href="#cb21-239"></a><span class="co"># Box plot</span></span>
+<span id="cb21-240"><a href="#cb21-240"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb21-241"><a href="#cb21-241"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#FFD700"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#444444"</span>, <span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb21-242"><a href="#cb21-242"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Park Factor"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb21-243"><a href="#cb21-243"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-244"><a href="#cb21-244"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-245"><a href="#cb21-245"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>( <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-246"><a href="#cb21-246"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#333333"</span>),</span>
+<span id="cb21-247"><a href="#cb21-247"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb21-248"><a href="#cb21-248"></a>  )</span>
+<span id="cb21-249"><a href="#cb21-249"></a></span>
+<span id="cb21-250"><a href="#cb21-250"></a><span class="co"># Combine with patchwork and add caption at bottom</span></span>
+<span id="cb21-251"><a href="#cb21-251"></a>(p1 <span class="sc">/</span> p2) <span class="sc">+</span></span>
+<span id="cb21-252"><a href="#cb21-252"></a>  <span class="fu">plot_layout</span>(<span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-253"><a href="#cb21-253"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb21-254"><a href="#cb21-254"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span>,</span>
+<span id="cb21-255"><a href="#cb21-255"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(</span>
+<span id="cb21-256"><a href="#cb21-256"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">"sans"</span>)</span>
+<span id="cb21-257"><a href="#cb21-257"></a>    )</span>
+<span id="cb21-258"><a href="#cb21-258"></a>  )</span>
+<span id="cb21-259"><a href="#cb21-259"></a></span>
+<span id="cb21-260"><a href="#cb21-260"></a><span class="in">```</span></span>
+<span id="cb21-261"><a href="#cb21-261"></a>discuss park effect distribution</span>
+<span id="cb21-262"><a href="#cb21-262"></a></span>
+<span id="cb21-263"><a href="#cb21-263"></a>**Linking Physical Features to Offensive Output**</span>
+<span id="cb21-264"><a href="#cb21-264"></a></span>
+<span id="cb21-265"><a href="#cb21-265"></a>While it’s clear that ballpark characteristics can influence offense, it’s important to examine how specific variables relate directly to offensive metrics — particularly home run totals. By comparing elevation and outfield distance to the number of home runs hit at each stadium, we can gain insight into which physical attributes have the most measurable impact. These visualizations help move beyond assumptions and allow for a more data-driven understanding of park effects.</span>
+<span id="cb21-266"><a href="#cb21-266"></a></span>
+<span id="cb21-267"><a href="#cb21-267"></a></span>
+<span id="cb21-268"><a href="#cb21-268"></a>*Elevation vs. Home Runs*</span>
+<span id="cb21-269"><a href="#cb21-269"></a></span>
+<span id="cb21-270"><a href="#cb21-270"></a>The first plot explores the relationship between a stadium’s elevation and its total number of home runs. Given that thinner air at higher altitudes reduces drag on a baseball, we expect to see more home runs in elevated stadiums. This visualization allows us to test that hypothesis and spot outliers where home run rates may not align with elevation alone.</span>
+<span id="cb21-271"><a href="#cb21-271"></a></span>
+<span id="cb21-272"><a href="#cb21-272"></a>**add plot here</span>
+<span id="cb21-273"><a href="#cb21-273"></a></span>
+<span id="cb21-274"><a href="#cb21-274"></a>*Extra Distance vs. Home Runs*</span>
+<span id="cb21-275"><a href="#cb21-275"></a></span>
+<span id="cb21-276"><a href="#cb21-276"></a>Next, we look at how extra distance — the average length from home plate to the outfield wall — correlates with home run totals. Intuitively, greater distance should suppress home runs, while shorter dimensions should lead to more. This chart reveals whether that trend holds across the league and which parks defy the expected relationship.</span>
+<span id="cb21-277"><a href="#cb21-277"></a></span>
+<span id="cb21-280"><a href="#cb21-280"></a><span class="in">```{r}</span></span>
+<span id="cb21-281"><a href="#cb21-281"></a><span class="co">#Extra Distance → Home Runs</span></span>
+<span id="cb21-282"><a href="#cb21-282"></a></span>
+<span id="cb21-283"><a href="#cb21-283"></a>joined_stadium_data <span class="sc">%&gt;%</span></span>
+<span id="cb21-284"><a href="#cb21-284"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(extra_distance), <span class="sc">!</span><span class="fu">is.na</span>(home_run)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-285"><a href="#cb21-285"></a>  <span class="fu">group_by</span>(ballpark) <span class="sc">%&gt;%</span></span>
+<span id="cb21-286"><a href="#cb21-286"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-287"><a href="#cb21-287"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-288"><a href="#cb21-288"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> home_run, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb21-289"><a href="#cb21-289"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb21-290"><a href="#cb21-290"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-291"><a href="#cb21-291"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-292"><a href="#cb21-292"></a>    <span class="at">title =</span> <span class="st">"The Effect Extra Outfield Distance Impacts Home Run Totals Across MLB Stadiums"</span>,</span>
+<span id="cb21-293"><a href="#cb21-293"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span>,</span>
+<span id="cb21-294"><a href="#cb21-294"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (in Yards)"</span>,</span>
+<span id="cb21-295"><a href="#cb21-295"></a>    <span class="at">y =</span> <span class="st">"Total Number of Home Runs"</span>,</span>
+<span id="cb21-296"><a href="#cb21-296"></a>    <span class="at">color =</span> <span class="st">"Ballpark"</span></span>
+<span id="cb21-297"><a href="#cb21-297"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-298"><a href="#cb21-298"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-299"><a href="#cb21-299"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-300"><a href="#cb21-300"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.1</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>),</span>
+<span id="cb21-301"><a href="#cb21-301"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb21-302"><a href="#cb21-302"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
+<span id="cb21-303"><a href="#cb21-303"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb21-304"><a href="#cb21-304"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb21-305"><a href="#cb21-305"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)</span>
+<span id="cb21-306"><a href="#cb21-306"></a>  )</span>
+<span id="cb21-307"><a href="#cb21-307"></a></span>
+<span id="cb21-308"><a href="#cb21-308"></a></span>
+<span id="cb21-309"><a href="#cb21-309"></a></span>
+<span id="cb21-310"><a href="#cb21-310"></a><span class="in">```</span></span>
+<span id="cb21-311"><a href="#cb21-311"></a></span>
+<span id="cb21-312"><a href="#cb21-312"></a>**discuss the extra distance vs homeruns plot</span>
+<span id="cb21-313"><a href="#cb21-313"></a></span>
+<span id="cb21-314"><a href="#cb21-314"></a>**From Ballparks to Batters: Evaluating Performance with wOBA**</span>
+<span id="cb21-315"><a href="#cb21-315"></a>After exploring how park features shape overall offensive output, the next logical step is to assess how these environments influence individual player performance. To do this, we turn to wOBA (weighted On-Base Average), a comprehensive offensive metric that assigns value to each outcome (walks, singles, doubles, etc.) rather than treating all times on base equally. Unlike traditional stats, wOBA better captures a player's true offensive contributions.</span>
+<span id="cb21-316"><a href="#cb21-316"></a></span>
+<span id="cb21-317"><a href="#cb21-317"></a>By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality of contact (exit velocity, launch angle, etc.) — we can evaluate how much a player's environment may have helped or hurt their results. This progression from park-level analysis to player-level metrics allows us to ask: are some players over- or under-performing expectations because of where they play?</span>
+<span id="cb21-318"><a href="#cb21-318"></a></span>
+<span id="cb21-319"><a href="#cb21-319"></a>*wOBA Discrepancies by Elevation*</span>
+<span id="cb21-320"><a href="#cb21-320"></a></span>
+<span id="cb21-321"><a href="#cb21-321"></a>In the first plot, each player’s actual vs. expected wOBA is shown, with color indicating the elevation of their home stadium. This lets us examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude.</span>
+<span id="cb21-322"><a href="#cb21-322"></a></span>
+<span id="cb21-325"><a href="#cb21-325"></a><span class="in">```{r}</span></span>
+<span id="cb21-326"><a href="#cb21-326"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb21-327"><a href="#cb21-327"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>  <span class="co"># Adjust size and transparency for better visibility</span></span>
+<span id="cb21-328"><a href="#cb21-328"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>  <span class="co"># Add trend line</span></span>
+<span id="cb21-329"><a href="#cb21-329"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"green"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span>  <span class="co"># Color gradient for 'extra_distance'</span></span>
+<span id="cb21-330"><a href="#cb21-330"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-331"><a href="#cb21-331"></a>    <span class="at">title =</span> <span class="st">"wOBA vs. xwOBA: How Elevation Influences Offensive Metrics"</span>,</span>
+<span id="cb21-332"><a href="#cb21-332"></a>    <span class="at">x =</span> <span class="st">"wOBA"</span>,</span>
+<span id="cb21-333"><a href="#cb21-333"></a>    <span class="at">y =</span> <span class="st">"xwOBA"</span>,</span>
+<span id="cb21-334"><a href="#cb21-334"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span>,</span>
+<span id="cb21-335"><a href="#cb21-335"></a>    <span class="at">color =</span> <span class="st">"Elevation(feet)"</span>  <span class="co"># Label for the color scale</span></span>
+<span id="cb21-336"><a href="#cb21-336"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-337"><a href="#cb21-337"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-338"><a href="#cb21-338"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-339"><a href="#cb21-339"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-340"><a href="#cb21-340"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb21-341"><a href="#cb21-341"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb21-342"><a href="#cb21-342"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb21-343"><a href="#cb21-343"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb21-344"><a href="#cb21-344"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>)</span>
+<span id="cb21-345"><a href="#cb21-345"></a>  )</span>
+<span id="cb21-346"><a href="#cb21-346"></a><span class="in">```</span></span>
+<span id="cb21-347"><a href="#cb21-347"></a></span>
+<span id="cb21-348"><a href="#cb21-348"></a>*wOBA Discrepancies by Extra Distance*</span>
+<span id="cb21-349"><a href="#cb21-349"></a></span>
+<span id="cb21-350"><a href="#cb21-350"></a>The second visualization repeats the comparison, this time coloring players by their park’s average outfield distance. If players in shorter parks tend to outperform expectations, this could suggest that geometry — not just skill — plays a large role in statistical outcomes.</span>
+<span id="cb21-351"><a href="#cb21-351"></a></span>
+<span id="cb21-354"><a href="#cb21-354"></a><span class="in">```{r}</span></span>
+<span id="cb21-355"><a href="#cb21-355"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> extra_distance)) <span class="sc">+</span></span>
+<span id="cb21-356"><a href="#cb21-356"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.9</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>  <span class="co"># Adjust size and transparency for better visibility</span></span>
+<span id="cb21-357"><a href="#cb21-357"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>  <span class="co"># Add trend line</span></span>
+<span id="cb21-358"><a href="#cb21-358"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"green"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span>  <span class="co"># Color gradient for 'extra_distance'</span></span>
+<span id="cb21-359"><a href="#cb21-359"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-360"><a href="#cb21-360"></a>    <span class="at">title =</span> <span class="st">"wOBA vs. xwOBA: How Extra Distance Influences Offensive Metrics"</span>,</span>
+<span id="cb21-361"><a href="#cb21-361"></a>    <span class="at">x =</span> <span class="st">"wOBA"</span>,</span>
+<span id="cb21-362"><a href="#cb21-362"></a>    <span class="at">y =</span> <span class="st">"xwOBA"</span>,</span>
+<span id="cb21-363"><a href="#cb21-363"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span>,</span>
+<span id="cb21-364"><a href="#cb21-364"></a>    <span class="at">color =</span> <span class="st">"Extra Distance(yards)"</span>  <span class="co"># Label for the color scale</span></span>
+<span id="cb21-365"><a href="#cb21-365"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-366"><a href="#cb21-366"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-367"><a href="#cb21-367"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-368"><a href="#cb21-368"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-369"><a href="#cb21-369"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb21-370"><a href="#cb21-370"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb21-371"><a href="#cb21-371"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb21-372"><a href="#cb21-372"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb21-373"><a href="#cb21-373"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>)</span>
+<span id="cb21-374"><a href="#cb21-374"></a>  )</span>
+<span id="cb21-375"><a href="#cb21-375"></a><span class="in">```</span></span>
+<span id="cb21-376"><a href="#cb21-376"></a></span>
+<span id="cb21-377"><a href="#cb21-377"></a>**Team-Level Trends in wOBA Discrepancies**</span>
+<span id="cb21-378"><a href="#cb21-378"></a></span>
+<span id="cb21-379"><a href="#cb21-379"></a>To round out our analysis, we broadened the lens from individual players to team-level performance by comparing each team’s actual wOBA vs. expected wOBA. This gives a higher-level view of whether entire lineups tend to outperform or underperform relative to what their batted-ball data suggests. Such differences may reflect the cumulative impact of park effects, coaching strategies, or even player profiles tailored to specific environments.</span>
+<span id="cb21-380"><a href="#cb21-380"></a></span>
+<span id="cb21-381"><a href="#cb21-381"></a></span>
+<span id="cb21-384"><a href="#cb21-384"></a><span class="in">```{r}</span></span>
+<span id="cb21-385"><a href="#cb21-385"></a><span class="fu">library</span>(mlbplotR)</span>
+<span id="cb21-386"><a href="#cb21-386"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-387"><a href="#cb21-387"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-388"><a href="#cb21-388"></a><span class="fu">library</span>(mlbplotR)</span>
+<span id="cb21-389"><a href="#cb21-389"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-390"><a href="#cb21-390"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-391"><a href="#cb21-391"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb21-392"><a href="#cb21-392"></a></span>
+<span id="cb21-393"><a href="#cb21-393"></a><span class="co"># Create mapping of team names to abbreviations</span></span>
+<span id="cb21-394"><a href="#cb21-394"></a>team_abbr_mapping <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb21-395"><a href="#cb21-395"></a>  <span class="at">team_name =</span> <span class="fu">c</span>(</span>
+<span id="cb21-396"><a href="#cb21-396"></a>    <span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>,</span>
+<span id="cb21-397"><a href="#cb21-397"></a>    <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>,</span>
+<span id="cb21-398"><a href="#cb21-398"></a>    <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span></span>
+<span id="cb21-399"><a href="#cb21-399"></a>  ),</span>
+<span id="cb21-400"><a href="#cb21-400"></a>  <span class="at">team_abbr =</span> <span class="fu">c</span>(<span class="st">"BAL"</span>, <span class="st">"HOU"</span>, <span class="st">"LAD"</span>, <span class="st">"NYM"</span>, <span class="st">"NYY"</span>, <span class="st">"SEA"</span>, <span class="st">"TOR"</span>, <span class="st">"SDP"</span>)</span>
+<span id="cb21-401"><a href="#cb21-401"></a>)</span>
+<span id="cb21-402"><a href="#cb21-402"></a></span>
+<span id="cb21-403"><a href="#cb21-403"></a><span class="co"># Merge abbreviation into your main data</span></span>
+<span id="cb21-404"><a href="#cb21-404"></a>plot_data <span class="ot">&lt;-</span> player_and_park_stats <span class="sc">%&gt;%</span></span>
+<span id="cb21-405"><a href="#cb21-405"></a>  <span class="fu">inner_join</span>(team_abbr_mapping, <span class="at">by =</span> <span class="st">"team_name"</span>)</span>
+<span id="cb21-406"><a href="#cb21-406"></a></span>
+<span id="cb21-407"><a href="#cb21-407"></a><span class="co"># Main Plot</span></span>
+<span id="cb21-408"><a href="#cb21-408"></a>main_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> plot_data) <span class="sc">+</span></span>
+<span id="cb21-409"><a href="#cb21-409"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"gray40"</span>) <span class="sc">+</span></span>
+<span id="cb21-410"><a href="#cb21-410"></a>  </span>
+<span id="cb21-411"><a href="#cb21-411"></a>  <span class="co"># Use logos with transparency and smaller size</span></span>
+<span id="cb21-412"><a href="#cb21-412"></a>  mlbplotR<span class="sc">::</span><span class="fu">geom_mlb_logos</span>(</span>
+<span id="cb21-413"><a href="#cb21-413"></a>    <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">team_abbr =</span> team_abbr),</span>
+<span id="cb21-414"><a href="#cb21-414"></a>    <span class="at">width =</span> <span class="fl">0.05</span>,</span>
+<span id="cb21-415"><a href="#cb21-415"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb21-416"><a href="#cb21-416"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-417"><a href="#cb21-417"></a>  </span>
+<span id="cb21-418"><a href="#cb21-418"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-419"><a href="#cb21-419"></a>    <span class="at">title =</span> <span class="st">"Actual vs. Expected wOBA by MLB Team"</span>,</span>
+<span id="cb21-420"><a href="#cb21-420"></a>    <span class="at">x =</span> <span class="st">"wOBA"</span>,</span>
+<span id="cb21-421"><a href="#cb21-421"></a>    <span class="at">y =</span> <span class="st">"xwOBA"</span>,</span>
+<span id="cb21-422"><a href="#cb21-422"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span></span>
+<span id="cb21-423"><a href="#cb21-423"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-424"><a href="#cb21-424"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-425"><a href="#cb21-425"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-426"><a href="#cb21-426"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-427"><a href="#cb21-427"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb21-428"><a href="#cb21-428"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="dv">0</span>)</span>
+<span id="cb21-429"><a href="#cb21-429"></a>  )</span>
+<span id="cb21-430"><a href="#cb21-430"></a></span>
+<span id="cb21-431"><a href="#cb21-431"></a><span class="co"># Custom Legend (Manually assigning coordinates for logos and team names)</span></span>
+<span id="cb21-432"><a href="#cb21-432"></a>legend_data <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb21-433"><a href="#cb21-433"></a>  <span class="at">team_name =</span> <span class="fu">c</span>(<span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, </span>
+<span id="cb21-434"><a href="#cb21-434"></a>                <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>),</span>
+<span id="cb21-435"><a href="#cb21-435"></a>  <span class="at">team_abbr =</span> <span class="fu">c</span>(<span class="st">"BAL"</span>, <span class="st">"HOU"</span>, <span class="st">"LAD"</span>, <span class="st">"NYM"</span>, <span class="st">"NYY"</span>, <span class="st">"SEA"</span>, <span class="st">"TOR"</span>, <span class="st">"SDP"</span>),</span>
+<span id="cb21-436"><a href="#cb21-436"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>),  <span class="co"># Assign arbitrary x positions for the logos</span></span>
+<span id="cb21-437"><a href="#cb21-437"></a>  <span class="at">x=</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">8</span>)  <span class="co"># Keep the y constant to line the logos up horizontally</span></span>
+<span id="cb21-438"><a href="#cb21-438"></a>)</span>
+<span id="cb21-439"><a href="#cb21-439"></a></span>
+<span id="cb21-440"><a href="#cb21-440"></a>legend_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(legend_data) <span class="sc">+</span></span>
+<span id="cb21-441"><a href="#cb21-441"></a>  mlbplotR<span class="sc">::</span><span class="fu">geom_mlb_logos</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">team_abbr =</span> team_abbr), <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span>  <span class="co"># increased logo size</span></span>
+<span id="cb21-442"><a href="#cb21-442"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> y, <span class="at">label =</span> team_name), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">family =</span> <span class="st">"sans"</span>) <span class="sc">+</span>  <span class="co"># smaller font</span></span>
+<span id="cb21-443"><a href="#cb21-443"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">9</span>) <span class="sc">+</span>  <span class="co"># Adjust xlim to fit all logos</span></span>
+<span id="cb21-444"><a href="#cb21-444"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb21-445"><a href="#cb21-445"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Team Names"</span>) <span class="sc">+</span></span>
+<span id="cb21-446"><a href="#cb21-446"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-447"><a href="#cb21-447"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">family =</span> <span class="st">"sans"</span>)</span>
+<span id="cb21-448"><a href="#cb21-448"></a>  )</span>
+<span id="cb21-449"><a href="#cb21-449"></a></span>
+<span id="cb21-450"><a href="#cb21-450"></a><span class="co"># Combine Plot + Legend</span></span>
+<span id="cb21-451"><a href="#cb21-451"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(main_plot, legend_plot, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb21-452"><a href="#cb21-452"></a></span>
+<span id="cb21-453"><a href="#cb21-453"></a><span class="in">```</span></span>
+<span id="cb21-454"><a href="#cb21-454"></a></span>
+<span id="cb21-455"><a href="#cb21-455"></a>discuss the woba vs xwoba graph</span>
+<span id="cb21-456"><a href="#cb21-456"></a></span>
+<span id="cb21-457"><a href="#cb21-457"></a>***Highlighting Park Factors with Visual Emphasis***</span>
+<span id="cb21-458"><a href="#cb21-458"></a></span>
+<span id="cb21-459"><a href="#cb21-459"></a>To deepen this comparison, we created a second version of the team plot in which each team’s point is scaled by its park factor. This allows us to visually emphasize how hitter- or pitcher-friendly environments correlate with discrepancies between actual and expected offensive output. Teams in more hitter-friendly parks may appear further above the identity line, suggesting that the stadium may be inflating results beyond what expected metrics alone would predict.</span>
+<span id="cb21-460"><a href="#cb21-460"></a></span>
+<span id="cb21-463"><a href="#cb21-463"></a><span class="in">```{r}</span></span>
+<span id="cb21-464"><a href="#cb21-464"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb21-465"><a href="#cb21-465"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb21-466"><a href="#cb21-466"></a>    <span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, </span>
+<span id="cb21-467"><a href="#cb21-467"></a>    <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>, </span>
+<span id="cb21-468"><a href="#cb21-468"></a>    <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb21-469"><a href="#cb21-469"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">fill =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb21-470"><a href="#cb21-470"></a>  </span>
+<span id="cb21-471"><a href="#cb21-471"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="dv">10</span>) <span class="sc">+</span>  <span class="co"># black outline, filled with team color</span></span>
+<span id="cb21-472"><a href="#cb21-472"></a>  </span>
+<span id="cb21-473"><a href="#cb21-473"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"gray40"</span>) <span class="sc">+</span></span>
+<span id="cb21-474"><a href="#cb21-474"></a>  </span>
+<span id="cb21-475"><a href="#cb21-475"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">8</span>), <span class="at">name =</span> <span class="st">"HR Park Effect"</span>) <span class="sc">+</span></span>
+<span id="cb21-476"><a href="#cb21-476"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>, <span class="at">name =</span> <span class="st">"Team"</span>) <span class="sc">+</span>  <span class="co"># using team color fill</span></span>
+<span id="cb21-477"><a href="#cb21-477"></a>  </span>
+<span id="cb21-478"><a href="#cb21-478"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-479"><a href="#cb21-479"></a>    <span class="at">title =</span> <span class="st">"wOBA vs xwOBA with Park Effects"</span>,</span>
+<span id="cb21-480"><a href="#cb21-480"></a>    <span class="at">x =</span> <span class="st">"wOBA"</span>,</span>
+<span id="cb21-481"><a href="#cb21-481"></a>    <span class="at">y =</span> <span class="st">"xwOBA"</span>,</span>
+<span id="cb21-482"><a href="#cb21-482"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022"</span></span>
+<span id="cb21-483"><a href="#cb21-483"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-484"><a href="#cb21-484"></a>  </span>
+<span id="cb21-485"><a href="#cb21-485"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"sans"</span>) <span class="sc">+</span></span>
+<span id="cb21-486"><a href="#cb21-486"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-487"><a href="#cb21-487"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb21-488"><a href="#cb21-488"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb21-489"><a href="#cb21-489"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-490"><a href="#cb21-490"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb21-491"><a href="#cb21-491"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb21-492"><a href="#cb21-492"></a>  )</span>
+<span id="cb21-493"><a href="#cb21-493"></a></span>
+<span id="cb21-494"><a href="#cb21-494"></a></span>
+<span id="cb21-495"><a href="#cb21-495"></a></span>
+<span id="cb21-496"><a href="#cb21-496"></a><span class="in">```</span></span>
+<span id="cb21-497"><a href="#cb21-497"></a>discuss the distribution of the graph</span>
+<span id="cb21-498"><a href="#cb21-498"></a></span>
+<span id="cb21-501"><a href="#cb21-501"></a><span class="in">```{r}</span></span>
+<span id="cb21-502"><a href="#cb21-502"></a><span class="co">#Home_runs vs park_effects</span></span>
+<span id="cb21-503"><a href="#cb21-503"></a><span class="fu">head</span>(joined_stadium_data)</span>
+<span id="cb21-504"><a href="#cb21-504"></a></span>
+<span id="cb21-505"><a href="#cb21-505"></a>joined_stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb21-506"><a href="#cb21-506"></a>  <span class="fu">group_by</span>(hr_park_effects) <span class="sc">|&gt;</span></span>
+<span id="cb21-507"><a href="#cb21-507"></a>  <span class="fu">head</span>(<span class="dv">20</span>)</span>
+<span id="cb21-508"><a href="#cb21-508"></a></span>
+<span id="cb21-509"><a href="#cb21-509"></a></span>
+<span id="cb21-510"><a href="#cb21-510"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> home_run, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb21-511"><a href="#cb21-511"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#2E86AB"</span>) <span class="sc">+</span></span>
+<span id="cb21-512"><a href="#cb21-512"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-513"><a href="#cb21-513"></a>  <span class="fu">scale_size_continuous</span>(</span>
+<span id="cb21-514"><a href="#cb21-514"></a>    <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>),        <span class="co"># small→large dot sizes</span></span>
+<span id="cb21-515"><a href="#cb21-515"></a>    <span class="at">name  =</span> <span class="st">"HR Park Effect"</span> <span class="co"># legend title</span></span>
+<span id="cb21-516"><a href="#cb21-516"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-517"><a href="#cb21-517"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-518"><a href="#cb21-518"></a>    <span class="at">title   =</span> <span class="st">"Player Home Runs vs. Park Effects"</span>,</span>
+<span id="cb21-519"><a href="#cb21-519"></a>    <span class="at">x       =</span> <span class="st">"Home Run Park Effect"</span>,</span>
+<span id="cb21-520"><a href="#cb21-520"></a>    <span class="at">y       =</span> <span class="st">"Total Home Runs"</span>,</span>
+<span id="cb21-521"><a href="#cb21-521"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant 2022 &amp; ballparks_stadium_data"</span></span>
+<span id="cb21-522"><a href="#cb21-522"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-523"><a href="#cb21-523"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"baseball_font"</span>) <span class="sc">+</span></span>
+<span id="cb21-524"><a href="#cb21-524"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-525"><a href="#cb21-525"></a>    <span class="at">plot.title   =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb21-526"><a href="#cb21-526"></a>    <span class="at">axis.title   =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb21-527"><a href="#cb21-527"></a>    <span class="at">axis.text    =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>),</span>
+<span id="cb21-528"><a href="#cb21-528"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb21-529"><a href="#cb21-529"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span></span>
+<span id="cb21-530"><a href="#cb21-530"></a>  )</span>
+<span id="cb21-531"><a href="#cb21-531"></a></span>
+<span id="cb21-532"><a href="#cb21-532"></a></span>
+<span id="cb21-533"><a href="#cb21-533"></a></span>
+<span id="cb21-534"><a href="#cb21-534"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
