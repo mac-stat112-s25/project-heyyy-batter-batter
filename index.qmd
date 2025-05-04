@@ -19,12 +19,12 @@ library(scales)
 library(patchwork)
 ```
 
-```{r}
+```{r, message = FALSE }
 # get park data
 ballparks_stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
 ```
 
-```{r}
+```{r, message = FALSE}
 # get downloaded hitter stats
 `2022HitterStats` <- read_csv("data/2022HitterStats.csv")
 ```
@@ -40,11 +40,12 @@ Full_22_Hitter_stats <- `2022HitterStats` |>
 
 ```
 
-```{r}
+```{r, message = FALSE}
 # join park stats and hitting stats
 player_and_park_stats <- Full_22_Hitter_stats |>
   left_join(ballparks_stadium_data) 
 ```
+
 ```{r}
 #joined_stadium_data with with Full_22_Hitter_stats
 joined_stadium_data <- ballparks_stadium_data |>
@@ -257,7 +258,7 @@ The first plot explores the relationship between a stadium’s elevation and its
 
 Next, we look at how extra distance — the average length from home plate to the outfield wall — correlates with home run totals. Intuitively, greater distance should suppress home runs, while shorter dimensions should lead to more. This chart reveals whether that trend holds across the league and which parks defy the expected relationship.
 
-```{r}
+```{r, message =FALSE}
 #Extra Distance → Home Runs
 
 joined_stadium_data %>%
@@ -337,7 +338,7 @@ By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality 
 
 In the first plot, each player’s actual vs. expected wOBA is shown, with color indicating the elevation of their home stadium. This lets us examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude.
 
-```{r}
+```{r, message = FALSE}
 ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
   geom_point(alpha = 0.8, size = 3) +  # Adjust size and transparency for better visibility
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +  # Add trend line
@@ -364,7 +365,7 @@ ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
 
 The second visualization repeats the comparison, this time coloring players by their park’s average outfield distance. If players in shorter parks tend to outperform expectations, this could suggest that geometry — not just skill — plays a large role in statistical outcomes.
 
-```{r}
+```{r, message = FALSE}
 ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) +
   geom_point(alpha = 0.9, size = 3) +  # Adjust size and transparency for better visibility
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +  # Add trend line
