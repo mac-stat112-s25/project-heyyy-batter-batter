@@ -1,11 +1,12 @@
 ---
 title: "Report"
-echo: true      # change to true to show the code
+echo: false     # change to true to show the code
 code-fold: false  # change to true to fold the code chunks
 ---
 
-
-Your report will go here.
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
+```
 
 
 ```{r}
@@ -15,28 +16,28 @@ library(baseballr)
 library(showtext)
 library(mlbplotR)
 library(scales)
+library(patchwork)
 ```
 
 ```{r}
 # get park data
 ballparks_stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
-head(ballparks_stadium_data)
 ```
 
 ```{r}
 # get downloaded hitter stats
 `2022HitterStats` <- read_csv("data/2022HitterStats.csv")
-head(`2022HitterStats`)
 ```
+
 ```{r}
 #Join 2022HitterStats to mlb_stats
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name, league_name)
-head(Player_team_info)
+
 
 Full_22_Hitter_stats <- `2022HitterStats` |>
   left_join(Player_team_info, join_by(player_id))
-head(Full_22_Hitter_stats)
+
 ```
 
 ```{r}
@@ -50,22 +51,214 @@ joined_stadium_data <- ballparks_stadium_data |>
   left_join(Full_22_Hitter_stats, join_by(team_name))
 ```
 
-```{r}
-# elevation density plot
-ggplot(ballparks_stadium_data, aes(x = elevation)) +
-  geom_density() +
-  theme_classic() +
-  labs(title = "Distribution of MLB Park Elevations", x = "Elevation (feet)")
-```
 
+Izzy's Intro Parts will go here
+
+
+**How Ballparks Influence Offensive Performance**
+
+Baseball is unique among major sports in that each team's home field can vary significantly in its dimensions and environmental conditions. Unlike the standardized courts and fields used in basketball or football, Major League Baseball stadiums differ widely — from outfield wall height and distance to foul territory and elevation. These physical characteristics, known collectively as park effects, can have a significant impact on offensive performance. Whether it’s a fly ball turning into a home run or a double dying at the warning track, the stadium itself becomes a player in the game. In this article, we explore a few of the most influential park effects — focusing specifically on elevation, extra outfield distance, and home run park factor — to better understand how ballparks shape the game’s offensive metrics.
+
+
+
+**The Role of Elevation**
+
+One of the most important — yet often overlooked — physical features influencing offense is elevation. Ballparks located at higher altitudes, such as Denver’s Coors Field, have thinner air due to lower atmospheric pressure. This reduced air resistance allows baseballs to travel farther, increasing the likelihood of extra-base hits and home runs. As a result, elevation can significantly inflate offensive statistics, making it essential to consider when comparing player performance across different ballparks.
+
+To illustrate this, the figure below shows the distribution of stadium elevations across Major League ballparks, highlighting the stark contrast between high-altitude parks and those at or near sea level.
+
+```{r}
+library(ggplot2)
+library(patchwork)
+
+# Calculate mean elevation
+mean_elev <- mean(ballparks_stadium_data$elevation, na.rm = TRUE)
+
+# Density plot (no caption)
+p1 <- ggplot(joined_stadium_data, aes(x = elevation)) +
+  geom_density(fill = "#4682B4", alpha = 0.7, color = "#333333", linewidth = 0.8) +
+  geom_vline(xintercept = mean_elev, color = "#D62728", linetype = "dashed", linewidth = 1) +
+  annotate("text", x = mean_elev + 100, y = 0.0008, label = "Mean Elevation", 
+           color = "#D62728", hjust = 0, size = 3.5, fontface = "italic", family = "sans") +
+  labs(
+    title = "Distribution of Ball Park Elevation Across MLB Parks",
+    x = NULL,
+    y = "Density"
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.4),
+    axis.title = element_text(size = 10, hjust = 0.1, face = "bold"),
+    axis.text = element_text(color = "#333333"),
+    panel.grid.minor = element_blank()
+  )
+
+# Box plot
+p2 <- ggplot(joined_stadium_data, aes(x = elevation)) +
+  geom_boxplot(fill = "#FFD700", alpha = 0.7, color = "#444444", width = 0.3) +
+  labs(x = "Elevation (feet)", y = NULL) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    axis.title.x = element_text(size = 10, face = "bold"),
+    axis.text = element_text(color = "#333333"),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank()
+  )
+
+# Combine plots with caption
+(p1 / p2) + 
+  plot_layout(heights = c(3, 1)) +
+  plot_annotation(
+    caption = "Source: Baseball Savant",
+    theme = theme(
+      plot.caption = element_text(size = 7, hjust = 0, family = "sans")
+    )
+  )
+
+
+
+```
+Discuss elevation plot distribution
+
+
+
+
+**Extra Distance in the Outfield**
+
+Beyond elevation, the distance from home plate to the outfield walls — or “extra distance” — plays a significant role in determining offensive success. Ballparks with deeper outfields tend to suppress home runs, giving pitchers an edge by demanding greater power to clear the fences. On the other hand, parks with short porches or shallow gaps can inflate home run totals and alter hitting strategies.
+
+The following figure explores the distribution of extra distance across MLB stadiums, helping us visualize how varying field dimensions contribute to the offensive landscape.
+
+
+```{r}
+# Calculate mean extra distance
+mean_extra_distance <- mean(joined_stadium_data$extra_distance, na.rm = TRUE)
+
+# Density plot
+p1 <- ggplot(joined_stadium_data, aes(x = extra_distance)) +
+  geom_density(fill = "#6CA6CD", alpha = 0.7, color = "#2F4F4F", linewidth = 0.8) +
+  geom_vline(aes(xintercept = mean_extra_distance), 
+             color = "#D62728", linetype = "dashed", linewidth = 1) +
+  annotate("text", 
+           x = (mean_extra_distance + 1), 
+           y = 0.08, label = "Mean Distance", 
+           hjust = -0.1, color = "#D62728", size = 3.5, fontface = "italic", family = "sans") +
+  labs(
+    title = "Distribution of Ball Park Extra Distance Across MLB Parks",
+    y = "Density",
+    x = NULL
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    axis.title = element_text(color = "#333333", size = 10, hjust = 0.2, face = "bold"),
+    axis.title.x = element_text(size = 10),
+    axis.text = element_text(color = "#333333"),
+    panel.grid.minor = element_blank()
+  )
+
+# Box plot
+p2 <- ggplot(joined_stadium_data, aes(x = extra_distance)) +
+  geom_boxplot(fill = "#FFD700", alpha = 0.7, color = "#444444", width = 0.3) +
+  labs(x = "Extra Distance (yards)", y = NULL) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    axis.title.x = element_text( size = 10, face = "bold"),  
+    axis.text = element_text(color = "#333333")
+  )
+
+# Combine density plot with caption at the bottom
+(p1 / p2) + 
+  plot_layout(heights = c(3, 1)) +
+  plot_annotation(
+    caption = "Source: Baseball Savant",
+    theme = theme(
+      plot.caption = element_text(size = 7, hjust = 0, family = "sans")
+    )
+  )
+
+
+
+```
+discuss the distance plot
+
+
+
+
+**Understanding Park Factors**
+
+Lastly, park factors — sometimes referred to as park effects — are composite metrics designed to quantify how a stadium impacts offensive production relative to league norms. These values incorporate a range of influences, including stadium dimensions, altitude, and even typical weather conditions. Calculated from historical data on runs, hits, home runs, and other offensive stats, a park factor above 100 signals a hitter-friendly environment, while values below 100 denote a pitcher’s park.
+
+The chart below displays the distribution of park factors across MLB stadiums, offering a clearer picture of how each park may shape in-game performance.
+
+```{r}
+# Calculate the mean park factor
+mean_hr_pf <- mean(joined_stadium_data$hr_park_effects, na.rm = TRUE)
+
+# Density plot
+p1 <- ggplot(joined_stadium_data, aes(x = hr_park_effects)) +
+  geom_density(fill = "#7BAFD4", alpha = 0.7, color = "#2F4F4F", linewidth = 0.8) +
+  geom_vline(xintercept = mean_hr_pf, color = "#D62728", linetype = "dashed", linewidth = 1) +
+  annotate("text",
+           x = mean_hr_pf + 4, 
+           y = 0.75 * max(density(joined_stadium_data$hr_park_effects, na.rm = TRUE)$y),
+           label = "Mean Park Factor", color = "#D62728",
+           hjust = 0, size = 3.5, fontface = "italic", family = "sans") +
+  labs(
+    title = "Distribution of Home Run Park Effects Across MLB Stadiums",
+    x = NULL,
+    y = "Density"
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(color = "#333333"),
+    axis.title = element_text(size = 10, face = "bold"),
+    axis.title.x = element_text(),
+    panel.grid.minor = element_blank()
+  )
+
+# Box plot
+p2 <- ggplot(joined_stadium_data, aes(x = hr_park_effects)) +
+  geom_boxplot(fill = "#FFD700", alpha = 0.7, color = "#444444", width = 0.3) +
+  labs(x = "Park Factor", y = NULL) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    axis.title.x = element_text( size = 10, face = "bold"),
+    axis.text = element_text(color = "#333333"),
+    panel.grid.minor = element_blank()
+  )
+
+# Combine with patchwork and add caption at bottom
+(p1 / p2) +
+  plot_layout(heights = c(3, 1)) +
+  plot_annotation(
+    caption = "Source: Baseball Savant 2022",
+    theme = theme(
+      plot.caption = element_text(size = 7, hjust = 0, family = "sans")
+    )
+  )
+
+```
+discuss park effect distribution
+
+**Linking Physical Features to Offensive Output**
+
+While it’s clear that ballpark characteristics can influence offense, it’s important to examine how specific variables relate directly to offensive metrics — particularly home run totals. By comparing elevation and outfield distance to the number of home runs hit at each stadium, we can gain insight into which physical attributes have the most measurable impact. These visualizations help move beyond assumptions and allow for a more data-driven understanding of park effects.
+
+
+*Elevation vs. Home Runs*
+
+The first plot explores the relationship between a stadium’s elevation and its total number of home runs. Given that thinner air at higher altitudes reduces drag on a baseball, we expect to see more home runs in elevated stadiums. This visualization allows us to test that hypothesis and spot outliers where home run rates may not align with elevation alone.
+
+**add plot here
+
+*Extra Distance vs. Home Runs*
+
+Next, we look at how extra distance — the average length from home plate to the outfield wall — correlates with home run totals. Intuitively, greater distance should suppress home runs, while shorter dimensions should lead to more. This chart reveals whether that trend holds across the league and which parks defy the expected relationship.
 
 ```{r}
 #Extra Distance → Home Runs
-
-
-# Add custom font (e.g., Press Start 2P)
-font_add_google("Press Start 2P", "baseball_font")
-showtext_auto()
 
 joined_stadium_data %>%
   filter(!is.na(extra_distance), !is.na(home_run)) %>%
@@ -76,131 +269,202 @@ joined_stadium_data %>%
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
-    title = "Relationship Between Extra Distance and Home Runs",
+    title = "The Effect Extra Outfield Distance Impacts Home Run Totals Across MLB Stadiums",
     caption = "Source: Baseball Savant 2022",
     x = "Extra Distance (in Yards)",
     y = "Total Number of Home Runs",
     color = "Ballpark"
   ) +
-  theme_minimal(base_size = 10) +
+  theme_minimal(base_family = "sans") +
   theme(
-    legend.position = "none",
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 9, family = "baseball_font"),
-    plot.subtitle = element_text(hjust = 0.5, size = 8, family = "baseball_font"),
-    axis.title = element_text(face = "bold", family = "baseball_font"),
-    axis.text = element_text(size = 10, family = "baseball_font")
+    plot.title = element_text(hjust = 0.1, face = "bold", size = 13),
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 6),
+    legend.title = element_text(size = 9, face = "bold", hjust = 0),
+    legend.text = element_text(size = 6, hjust = 0),
+    plot.caption = element_text(size = 7)
   )
+
 
 
 ```
 
+**discuss the extra distance vs homeruns plot
+
+**From Ballparks to Batters: Evaluating Performance with wOBA**
+After exploring how park features shape overall offensive output, the next logical step is to assess how these environments influence individual player performance. To do this, we turn to wOBA (weighted On-Base Average), a comprehensive offensive metric that assigns value to each outcome (walks, singles, doubles, etc.) rather than treating all times on base equally. Unlike traditional stats, wOBA better captures a player's true offensive contributions.
+
+By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality of contact (exit velocity, launch angle, etc.) — we can evaluate how much a player's environment may have helped or hurt their results. This progression from park-level analysis to player-level metrics allows us to ask: are some players over- or under-performing expectations because of where they play?
+
+*wOBA Discrepancies by Elevation*
+
+In the first plot, each player’s actual vs. expected wOBA is shown, with color indicating the elevation of their home stadium. This lets us examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude.
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
+  geom_point(alpha = 0.8, size = 3) +  # Adjust size and transparency for better visibility
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +  # Add trend line
+  scale_color_gradient(low = "green", high = "red") +  # Color gradient for 'extra_distance'
+  labs(
+    title = "wOBA vs. xwOBA: How Elevation Influences Offensive Metrics",
+    x = "wOBA",
+    y = "xwOBA",
+    caption = "Source: Baseball Savant 2022",
+    color = "Elevation(feet)"  # Label for the color scale
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(hjust = 0.2, size = 14, face = "bold"),
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 7),
+    legend.position = "right",
+    legend.title = element_text(face = "bold", size = 8),
+    legend.key.size = unit(1, "cm")
+  )
+```
+
+*wOBA Discrepancies by Extra Distance*
+
+The second visualization repeats the comparison, this time coloring players by their park’s average outfield distance. If players in shorter parks tend to outperform expectations, this could suggest that geometry — not just skill — plays a large role in statistical outcomes.
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) +
+  geom_point(alpha = 0.9, size = 3) +  # Adjust size and transparency for better visibility
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +  # Add trend line
+  scale_color_gradient(low = "green", high = "red") +  # Color gradient for 'extra_distance'
+  labs(
+    title = "wOBA vs. xwOBA: How Extra Distance Influences Offensive Metrics",
+    x = "wOBA",
+    y = "xwOBA",
+    caption = "Source: Baseball Savant 2022",
+    color = "Extra Distance(yards)"  # Label for the color scale
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(hjust = 0.2, size = 14, face = "bold"),
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 7),
+    legend.position = "right",
+    legend.title = element_text(face = "bold", size = 8),
+    legend.key.size = unit(1, "cm")
+  )
+```
+
+**Team-Level Trends in wOBA Discrepancies**
+
+To round out our analysis, we broadened the lens from individual players to team-level performance by comparing each team’s actual wOBA vs. expected wOBA. This gives a higher-level view of whether entire lineups tend to outperform or underperform relative to what their batted-ball data suggests. Such differences may reflect the cumulative impact of park effects, coaching strategies, or even player profiles tailored to specific environments.
 
 
 ```{r}
-# Vis of woba vs xwoba vs park effect
+library(mlbplotR)
+library(dplyr)
+library(ggplot2)
+library(mlbplotR)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
 
+# Create mapping of team names to abbreviations
+team_abbr_mapping <- tibble::tibble(
+  team_name = c(
+    "Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers",
+    "New York Mets", "New York Yankees", "Seattle Mariners",
+    "Toronto Blue Jays", "San Diego Padres"
+  ),
+  team_abbr = c("BAL", "HOU", "LAD", "NYM", "NYY", "SEA", "TOR", "SDP")
+)
 
-# Load MLB team logos and other info
-teams_colors_logos <- mlbplotR::load_mlb_teams() |> 
-  dplyr::filter(!team_abbr %in% c("AL", "NL", "MLB"))
+# Merge abbreviation into your main data
+plot_data <- player_and_park_stats %>%
+  inner_join(team_abbr_mapping, by = "team_name")
 
-# Merge the logos with your data
-player_and_park_stats_with_logos <- player_and_park_stats |>
-  dplyr::left_join(teams_colors_logos, by = c("team_name" = "team_name"))
-
-# Filter for specific teams (example teams)
-filtered_data <- player_and_park_stats_with_logos |>
-  filter(team_name %in% c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", 
-                          "New York Mets", "New York Yankees", "Seattle Mariners", 
-                          "Toronto Blue Jays", "San Diego Padres"))
-
-# Normalize the 'hr_park_effects' column for logo size scaling (to keep sizes reasonable)
-filtered_data$logo_size <- scales::rescale(filtered_data$hr_park_effects, to = c(0.1, 0.2))  # Adjusted scaling
-
-# Adjust logo size by applying a scaling factor to make all logos smaller overall
-scaling_factor <- 0.3  # New factor for overall smaller logos
-
-# Create the plot with trend line, logos, and size variation
-ggplot(filtered_data, aes(x = woba, y = xwoba)) +
-  mlbplotR::geom_mlb_logos(aes(team_abbr = team_abbr), 
-                           width = scaling_factor * filtered_data$logo_size, 
-                           alpha = 0.8) +  # Adjust logo size by the scaling factor
-  scale_size_continuous(name = "Park Effects Size", range = c(1, 6), guide = guide_legend(title = "Park Effects")) +  # Size legend
+# Main Plot
+main_plot <- ggplot(data = plot_data) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray40") +
+  
+  # Use logos with transparency and smaller size
+  mlbplotR::geom_mlb_logos(
+    aes(x = woba, y = xwoba, team_abbr = team_abbr),
+    width = 0.05,
+    alpha = 0.8
+  ) +
+  
   labs(
     title = "Actual vs. Expected wOBA by MLB Team",
     x = "wOBA",
     y = "xwOBA",
     caption = "Source: Baseball Savant 2022"
   ) +
-  theme_minimal() +
+  theme_minimal(base_family = "sans") +
   theme(
-    plot.title = element_text(hjust = 0.5, size = 10, face = "bold", family = "baseball_font"),
-    axis.title = element_text(face = "bold", family = "baseball_font"),
-    legend.position = "right",  # Place legend on the right
-    legend.title = element_text(face = "bold"),
-    legend.key.size = unit(1, "cm")  # Adjust legend size
-  ) +
-  # Add trend line using geom_abline (with slope = 1 and intercept = 0)
-  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) 
+    plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+    axis.title = element_text(face = "bold", size = 8),
+    plot.caption = element_text(size = 8, hjust = 0)
+  )
 
+# Custom Legend (Manually assigning coordinates for logos and team names)
+legend_data <- tibble::tibble(
+  team_name = c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", 
+                "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres"),
+  team_abbr = c("BAL", "HOU", "LAD", "NYM", "NYY", "SEA", "TOR", "SDP"),
+  y = c(1, 2, 3, 4, 5, 6, 7, 8),  # Assign arbitrary x positions for the logos
+  x= rep(1, 8)  # Keep the y constant to line the logos up horizontally
+)
 
+legend_plot <- ggplot(legend_data) +
+  mlbplotR::geom_mlb_logos(aes(x = x, y = y, team_abbr = team_abbr), width = 0.1) +  # increased logo size
+  geom_text(aes(x = x + 0.5, y = y, label = team_name), hjust = 0, size = 3, family = "sans") +  # smaller font
+  xlim(0, 9) +  # Adjust xlim to fit all logos
+  theme_void() +
+  labs(title = "Team Names") +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 8, family = "sans")
+  )
+
+# Combine Plot + Legend
+gridExtra::grid.arrange(main_plot, legend_plot, ncol = 2, widths = c(3, 1))
 
 ```
+
+discuss the woba vs xwoba graph
+
+***Highlighting Park Factors with Visual Emphasis***
+
+To deepen this comparison, we created a second version of the team plot in which each team’s point is scaled by its park factor. This allows us to visually emphasize how hitter- or pitcher-friendly environments correlate with discrepancies between actual and expected offensive output. Teams in more hitter-friendly parks may appear further above the identity line, suggesting that the stadium may be inflating results beyond what expected metrics alone would predict.
 
 ```{r}
 player_and_park_stats |>
-  filter(team_name %in% c("Baltimore Orioles", "Seattle Mariners", "Los Angeles Dodgers")) |>
-  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
-  geom_point(alpha = 0.8) +  # Adjust alpha for better visibility
-  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) +  # Add trend line (y = x line)
+  filter(team_name %in% c(
+    "Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", 
+    "New York Mets", "New York Yankees", "Seattle Mariners", 
+    "Toronto Blue Jays", "San Diego Padres")) |>
+  ggplot(aes(x = woba, y = xwoba, fill = team_name, size = hr_park_effects)) +
+  
+  geom_point(shape = 21, alpha = 10) +  # black outline, filled with team color
+  
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray40") +
+  
+  scale_size_continuous(range = c(3, 8), name = "HR Park Effect") +
+  scale_fill_brewer(palette = "Set2", name = "Team") +  # using team color fill
+  
   labs(
-    title = "Actual vs Expected wOBA for Selected MLB Teams",
+    title = "wOBA vs xwOBA with Park Effects",
     x = "wOBA",
     y = "xwOBA",
-    caption = "Source: Baseball Savant 2022",
-    color = "Team",
-    size = "Park Factor"
-  
+    caption = "Source: Baseball Savant 2022"
   ) +
-  scale_color_manual(values = c("Baltimore Orioles" = "orange", 
-                                "Seattle Mariners" = "green", 
-                                "Los Angeles Dodgers" = "red")) +  # Set team-specific colors
-  scale_size_continuous(name = "Park Effect Size", range = c(3, 8)) +  # Adjust point sizes based on park effect, with a more readable range
-  theme_minimal() +
+  
+  theme_minimal(base_family = "sans") +
   theme(
-    plot.title = element_text(hjust = 0.5, size = 9, face = "bold", family = "baseball_font"),  # Smaller title size
-    axis.title = element_text(face = "bold", size = 8, "baseball_font"),  # Smaller axis title size
-    legend.position = "right",  # Place legend on the right
-    legend.title = element_text(face = "bold", size = 9),  # Smaller legend title size
-    legend.key.size = unit(1, "cm")  # Adjust legend size
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title = element_text(face = "bold"),
+    legend.position = "right",
+    legend.title = element_text(face = "bold")
   )
 
-player_and_park_stats |>
-  filter(team_name %in% c("Baltimore Orioles", "Seattle Mariners", "Los Angeles Dodgers")) |>
-  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
-  geom_point(alpha = 0.8) +  # Adjust alpha for better visibility
-  geom_abline(slope = 1, intercept = 0, color = "black", linetype = "dashed", size = 1) +  # Add trend line (y = x line)
-  labs(
-    title = "Actual vs Expected wOBA for Selected MLB Teams",
-    x = "wOBA",
-    y = "xwOBA",
-    caption = "Source: Baseball Savant 2022",
-    color = "Team",
-    size = "Park Factor"
-  ) +
-  scale_color_manual(values = c("Baltimore Orioles" = "orange", 
-                                "Seattle Mariners" = "green", 
-                                "Los Angeles Dodgers" = "red")) +  # Set team-specific colors
-  scale_size_continuous(name = "Park Effect Size", range = c(3, 8)) +  # Adjust point sizes based on park effect, with a more readable range
-  theme_minimal() +
-  theme(
-    plot.title = element_text(hjust = 0.5, size = 9, face = "bold", family = "baseball_font"),  # Smaller title size
-    axis.title = element_text(face = "bold", size = 8, family = "baseball_font"),  # Smaller axis title size
-    legend.position = "none",  # Remove all legends
-    legend.title = element_text(face = "bold", size = 9),  # Remove legend title adjustments
-    legend.key.size = unit(1, "cm")  # Remove legend size adjustments
-  )
 
 
 ```
+discuss the distribution of the graph
 

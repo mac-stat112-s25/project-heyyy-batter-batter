@@ -10,8 +10,8 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name", "student 4 first and last name"]
+  title: "Evaluating the Effects of Park Factors on Offensive Performance"
+  author: ["Cristian Cano", "Wandi Dlamini", "Izzy Flood", "Zach Marshak"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
