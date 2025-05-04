@@ -185,7 +185,7 @@ discuss the distance plot
 
 
 
-**Understanding Park Factors**
+**Understanding Park Factor**
 
 Lastly, park factors — sometimes referred to as park effects — are composite metrics designed to quantify how a stadium impacts offensive production relative to league norms. These values incorporate a range of influences, including stadium dimensions, altitude, and even typical weather conditions. Calculated from historical data on runs, hits, home runs, and other offensive stats, a park factor above 100 signals a hitter-friendly environment, while values below 100 denote a pitcher’s park.
 
@@ -291,7 +291,14 @@ joined_stadium_data %>%
 
 **discuss the extra distance vs homeruns plot
 
+**Park Effects v.s Home Runs**
+To deepen our understanding of how stadium environments influence home run production, we examined the relationship between park effect scores and total home runs. Park factor, as a composite metric, captures the overall physical influence of a ballpark — incorporating elements like elevation and extra distance. By visualizing this relationship, we can see how hitter-friendly parks (with higher park factors) contribute to increased home run output, while pitcher-friendly parks (with lower park factors) tend to suppress long balls. This analysis builds on our earlier discussions of elevation and outfield depth, providing a holistic view of how stadium features collectively impact offensive performance.
+
+
+**add plot here
+
 **From Ballparks to Batters: Evaluating Performance with wOBA**
+
 After exploring how park features shape overall offensive output, the next logical step is to assess how these environments influence individual player performance. To do this, we turn to wOBA (weighted On-Base Average), a comprehensive offensive metric that assigns value to each outcome (walks, singles, doubles, etc.) rather than treating all times on base equally. Unlike traditional stats, wOBA better captures a player's true offensive contributions.
 
 By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality of contact (exit velocity, launch angle, etc.) — we can evaluate how much a player's environment may have helped or hurt their results. This progression from park-level analysis to player-level metrics allows us to ask: are some players over- or under-performing expectations because of where they play?
