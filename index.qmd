@@ -270,7 +270,7 @@ joined_stadium_data %>%
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
     title = "The Effect Extra Outfield Distance Impacts Home Run Totals Across MLB Stadiums",
-    caption = "Source: Baseball Savant 2022",
+    caption = "Source: Baseball Savant 2022 & Ballparks Stadium Data",
     x = "Extra Distance (in Yards)",
     y = "Total Number of Home Runs",
     color = "Ballpark"
@@ -295,7 +295,34 @@ joined_stadium_data %>%
 To deepen our understanding of how stadium environments influence home run production, we examined the relationship between park effect scores and total home runs. Park factor, as a composite metric, captures the overall physical influence of a ballpark — incorporating elements like elevation and extra distance. By visualizing this relationship, we can see how hitter-friendly parks (with higher park factors) contribute to increased home run output, while pitcher-friendly parks (with lower park factors) tend to suppress long balls. This analysis builds on our earlier discussions of elevation and outfield depth, providing a holistic view of how stadium features collectively impact offensive performance.
 
 
-**add plot here
+```{r}
+# Plot: Home Runs vs Park Effects
+ggplot(joined_stadium_data, aes(x = hr_park_effects, y = home_run, color = ballpark)) +
+  geom_point(alpha = 0.7) +  
+  scale_size_continuous(
+    range = c(2, 6),        
+    guide = "none"          
+  ) +
+  labs(
+    title   = "Impact of Park Effects on Home Run Totals",
+    x       = "Park Factor",
+    y       = "Total Number of Home Runs",
+    color   = "Ball Park",
+    caption = "Source: Baseball Savant 2022 & Ballparks Stadium Data"
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    legend.title = element_text(face = "bold"),
+    plot.title   = element_text(hjust = 0.5, face = "bold", size = 12),
+    axis.title   = element_text(face = "bold", size = 10),
+    axis.text    = element_text(size = 9),
+    plot.caption = element_text(size = 7),
+    legend.position = "right"
+  )
+
+
+
+```
 
 **From Ballparks to Batters: Evaluating Performance with wOBA**
 
@@ -475,38 +502,4 @@ player_and_park_stats |>
 ```
 discuss the distribution of the graph
 
-```{r}
-#Home_runs vs park_effects
-head(joined_stadium_data)
-
-joined_stadium_data |>
-  group_by(hr_park_effects) |>
-  head(20)
-
-
-ggplot(joined_stadium_data, aes(x = hr_park_effects, y = home_run, size = hr_park_effects)) +
-  geom_point(alpha = 0.7, color = "#2E86AB") +
-  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +
-  scale_size_continuous(
-    range = c(2, 6),        # small→large dot sizes
-    name  = "HR Park Effect" # legend title
-  ) +
-  labs(
-    title   = "Player Home Runs vs. Park Effects",
-    x       = "Home Run Park Effect",
-    y       = "Total Home Runs",
-    caption = "Source: Baseball Savant 2022 & ballparks_stadium_data"
-  ) +
-  theme_minimal(base_family = "baseball_font") +
-  theme(
-    plot.title   = element_text(hjust = 0.5, face = "bold", size = 12),
-    axis.title   = element_text(face = "bold", size = 10),
-    axis.text    = element_text(size = 9),
-    plot.caption = element_text(size = 7),
-    legend.position = "right"
-  )
-
-
-
-```
 
