@@ -184,7 +184,7 @@ p2 <- ggplot(joined_stadium_data, aes(x = extra_distance)) +
 
 
 ```
-discuss the distance plot
+Most stadiums vary by only a few extra or fewer total yards in the outfield, with the average being just below zero. However, there are a few outliers that have significantly larger outfields. Those being the Colorado Rockies' Coors Field, the Arizona Diamondbacks' Chase Field, and the Texas Rangers' Globe Life Field, coming in at 22, 13.2, and 7.2 yards respectively. 
 
 
 
@@ -244,7 +244,7 @@ p2 <- ggplot(joined_stadium_data, aes(x = hr_park_effects)) +
   )
 
 ```
-discuss park effect distribution
+Park factors at stadiums vary in a wide range, ranging from scores around 75 all the way up to 150. Once again, the Rockies' Coors Field sticks out as an outlier, likely due to its extremely large field.
 
 **Linking Physical Features to Offensive Output**
 
