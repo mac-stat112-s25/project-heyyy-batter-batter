@@ -5,16 +5,27 @@ title: "Case Study"
 Our case study is: 
 
 
-## Case Study: FiveThirtyEight:
-### [**Uber Is Taking Millions Of Manhattan Rides Away From Taxis**](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
+### Case Study: FiveThirtyEight:
+## [Uber Is Taking Millions Of Manhattan Rides Away From Taxis](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
 
+*There was not a case study with data visualizations about park effects in baseball, so we looked at a story about NYC taxis. We used the visualizations from this case study as inspiration for our report.
 
 - This report includes many types of visualizations and types of graphs including:
  - Line graphs with multiple observations
- - Maps (spatial maps with faucets)
+ - Maps (spatial maps with facet wraps)
  - Tables
  - Plots with best fits and labeled points
+ - Finally, the report reads like a story with text in between graphs, describing the relationship of taxi rides and time with the introduction of Uber.
  
+ 
+ #**How does the report build the data story in the Case Study Page**
+ 
+ + We took inspiration from the multiple variables visualized in the case study, so we made graphs with multiple variables in our report by changing:
+ - color of dots
+ - fill
+ - size
+ - logos
+ - including different visualizations not included in the case study
 
 
 
