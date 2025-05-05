@@ -53,8 +53,11 @@ joined_stadium_data <- ballparks_stadium_data |>
 ```
 
 
-Izzy's Intro Parts will go here
+**Introduction**
 
+Baseball is a sport with a long, decorated, and confusing history. The sport was invented over 180 years ago, and as a result, it has seen its fair share of controversy and revolution. In 1919, for example, the "Chicago Black Sox" scandal took place. During the 1919 World Series, 8 members of the Chicago White Sox were bribed by the mob to intentionally lose. In 1989, Pete Rose, a legendary player, was banned from the MLB for gambling on the team he was managing, the Cincicanni Reds. In 2019, the Houston Astros were caught stealing signs using an outfield camera at their home stadium, allowing them to see what pitch was coming. This contributed to their 2017 World Series championship. 
+
+In addition to a rich history of controversy, the 21st century has seen the sport flourish through advanced analytics. Popularized through the 2011 film Moneyball, the use of statistical analysis for player evaluation has modernized the sport and completely changed the decision making process for coaches and executives. In the next section, we will talk about one unique element of baseball that, combined with these advanced analytics, will be the basis for our research: park factors.
 
 **How Ballparks Influence Offensive Performance**
 
