@@ -3,6 +3,7 @@ title: "Cristian C"
 format: html
 ---
 
+## Effective Teamwork
 
 In the article, ["True Teamwork in Software Development"](https://medium.com/@martinbaun/true-teamwork-in-software-development-ca2bd3709adc), the authors talk about the following:
 

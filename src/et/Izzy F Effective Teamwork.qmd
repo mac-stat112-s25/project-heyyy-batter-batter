@@ -2,9 +2,11 @@
 title: "Izzy Flood"
 ---
 
-### Summary
+## Effective Teamwork
 
-In this LinkedIn article on teamwork, Doctor David Burkus identifies 6 methods to have a great team.
+
+
+In this article, ["6 Tips For Effective Teamwork"](https://www.linkedin.com/pulse/6-tips-effective-teamwork-dr-david-burkus-iaaqc/), on teamwork, Doctor David Burkus identifies 6 methods to have a great team.
 
 1. Set Clear Goals: Setting goals at the team and individual level allows each person in the group to know what they're working towards.
 
@@ -18,6 +20,3 @@ In this LinkedIn article on teamwork, Doctor David Burkus identifies 6 methods t
 
 6. Celebrate Small Wins: Celebrating small wins for the team builds morale and momentum in achieiving the larger goal.
 
-### Article Link
-
-https://www.linkedin.com/pulse/6-tips-effective-teamwork-dr-david-burkus-iaaqc/
