@@ -507,7 +507,11 @@ player_and_park_stats |>
 
 
 ```
-discuss the distribution of the graph
+This graph evaluates the discrepancy between Expected Weighted On Base Average (xwOBA) and the actual observed Weighted On Base Average (wOBA) for qualified players on 8 different MLB teams. For the most part, the observed cases do not deviate between the expected and observed statistic that we are looking at. We will take a look at some of the statistical outliers. 
+
+Before taking a look, it should be noted that a lower HR Park Effect would be expected to have a negative effect on wOBA compared to xwOBA. In other words, a player that plays for a team with a lower home field park effect would be expected to have a higher xwOBA than wOBA, and therefore it would be expted that this player's point would fall above the dashed line.
+
+In this visualization, it is difficult to identify a concrete trend between our variables. For one, a number of players that play in stadiums with lower park factors fall below our dashed line, indicating that these players are actually outperforming their expected stats. As wOBA increases, this seems to be the case for these individuals even more. Or in other words, players that play for teams whose home field has a smaller HR park factor tend to outperform their expected statistics as their wOBA increases. Nonetheless, most data points do fall right around the xwOBA-wOBA line, meaking it difficult to find any trends.
 
 
 
