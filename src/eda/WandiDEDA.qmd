@@ -1,5 +1,5 @@
 ---
-title: "Wandi Dlamini - Park Factors EDA"
+title: "Wandi D"
 format: html
 ---
 
