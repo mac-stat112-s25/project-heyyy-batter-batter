@@ -52,6 +52,6 @@ team_info <- tibble::tibble(
 # Render table nicely
 kable(team_info, col.names = c("Member Name", "Responsibility"))
 ```
-=======
+
 
 
