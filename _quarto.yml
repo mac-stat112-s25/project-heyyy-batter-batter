@@ -37,6 +37,13 @@ book:
   chapters:
     - index.qmd
     
+    - part: "Effective Teamwork"
+      chapters:
+      - src/et/ZachM.qmd
+      - src/et/WandiD.qmd
+      - src/et/CristianC.qmd
+      - src/et/Izzy F Effective Teamwork.qmd
+    
     - part: "EDA"
       chapters:
       - src/EDA/ZachM_Eda.qmd
@@ -44,12 +51,6 @@ book:
       - src/EDA/CristianC_EDA.qmd
       - src/EDA/IzzyF_EDA.qmd
       
-    - part: "Effective Teamwork"
-      chapters:
-      - src/et/ZachM.qmd
-      - src/et/WandiD.qmd
-      - src/et/CristianC.qmd
-      - src/et/Izzy F Effective Teamwork.qmd
       
   appendices:
   - src/appx/proposal.qmd
