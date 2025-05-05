@@ -38,7 +38,7 @@ On a broader level, understanding Park Factors highlights the importance of cont
 
 ## Responsibility Plan
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 team_info <- tibble::tibble(
   Member_Name = c("Cristian", "Wandi", "Izzy", "Zach"),
   Responsibility = c(
