@@ -9,7 +9,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 library(ggplot2)
 library(tidyverse)
 library(baseballr)
@@ -29,7 +29,7 @@ ballparks_stadium_data <- read_csv("data/ballparks_stadium_data_2022.csv")
 `2022HitterStats` <- read_csv("data/2022HitterStats.csv")
 ```
 
-```{r}
+```{r, message=FALSE}
 #Join 2022HitterStats to mlb_stats
 Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
   select(player_id, team_name, league_name)
@@ -46,15 +46,18 @@ player_and_park_stats <- Full_22_Hitter_stats |>
   left_join(ballparks_stadium_data) 
 ```
 
-```{r}
+```{r, message=FALSE}
 #joined_stadium_data with with Full_22_Hitter_stats
 joined_stadium_data <- ballparks_stadium_data |>
   left_join(Full_22_Hitter_stats, join_by(team_name))
 ```
 
 
-Izzy's Intro Parts will go here
+**Introduction**
 
+Baseball is a sport with a long, decorated, and confusing history. The sport was invented over 180 years ago, and as a result, it has seen its fair share of controversy and revolution. In 1919, for example, the "Chicago Black Sox" scandal took place. During the 1919 World Series, 8 members of the Chicago White Sox were bribed by the mob to intentionally lose. In 1989, Pete Rose, a legendary player, was banned from the MLB for gambling on the team he was managing, the Cincicanni Reds. In 2019, the Houston Astros were caught stealing signs using an outfield camera at their home stadium, allowing them to see what pitch was coming. This contributed to their 2017 World Series championship. 
+
+In addition to a rich history of controversy, the 21st century has seen the sport flourish through advanced analytics. Popularized through the 2011 film Moneyball, the use of statistical analysis for player evaluation has modernized the sport and completely changed the decision making process for coaches and executives. In the next section, we will talk about one unique element of baseball that, combined with these advanced analytics, will be the basis for our research: park factors.
 
 **How Ballparks Influence Offensive Performance**
 
@@ -119,7 +122,7 @@ p2 <- ggplot(joined_stadium_data, aes(x = elevation)) +
 
 
 ```
-Discuss elevation plot distribution
+Most ballparks in the MLB are relatively close to sea level, with the average being around 500 feet. However, there are two outliers those being the Colorado Rockies' Coors Field and the Arizona Diamondbacks' Chase field at 1,110 and 5,277 feet respectively.
 
 
 
@@ -534,7 +537,11 @@ player_and_park_stats |>
 
 
 ```
-discuss the distribution of the graph
+This graph evaluates the discrepancy between Expected Weighted On Base Average (xwOBA) and the actual observed Weighted On Base Average (wOBA) for qualified players on 8 different MLB teams. For the most part, the observed cases do not deviate between the expected and observed statistic that we are looking at. We will take a look at some of the statistical outliers. 
+
+Before taking a look, it should be noted that a lower HR Park Effect would be expected to have a negative effect on wOBA compared to xwOBA. In other words, a player that plays for a team with a lower home field park effect would be expected to have a higher xwOBA than wOBA, and therefore it would be expted that this player's point would fall above the dashed line.
+
+In this visualization, it is difficult to identify a concrete trend between our variables. For one, a number of players that play in stadiums with lower park factors fall below our dashed line, indicating that these players are actually outperforming their expected stats. As wOBA increases, this seems to be the case for these individuals even more. Or in other words, players that play for teams whose home field has a smaller HR park factor tend to outperform their expected statistics as their wOBA increases. Nonetheless, most data points do fall right around the xwOBA-wOBA line, meaking it difficult to find any trends.
 
 
 
