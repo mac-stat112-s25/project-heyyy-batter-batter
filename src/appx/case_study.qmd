@@ -18,7 +18,7 @@ Our case study is:
  - Finally, the report reads like a story with text in between graphs, describing the relationship of taxi rides and time with the introduction of Uber.
  
  
- # **How does the report build the data story in the Case Study Page**
+  **How does the report build the data story in the Case Study Page**
  
  + We took inspiration from the multiple variables visualized in the case study, so we made graphs with multiple variables in our report by changing:
  - Color of points
