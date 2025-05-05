@@ -9,5 +9,5 @@ The UC Berkeley People & Culture website offers a range of HR-related services m
 
 ##Link
 
-https://hr.berkeley.edu/hr-network/central-guide-managing-hr/managing-hr/interaction/team-building/steps
+[website link](https://hr.berkeley.edu/hr-network/central-guide-managing-hr/managing-hr/interaction/team-building/steps)
 
