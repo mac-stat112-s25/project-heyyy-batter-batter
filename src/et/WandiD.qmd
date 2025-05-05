@@ -1,5 +1,5 @@
 ---
-title: "Wandi Dlamini Effective Teamwork"
+title: "Wandi Dlamini"
 output: html_document
 ---
 
