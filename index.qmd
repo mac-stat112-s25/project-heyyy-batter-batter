@@ -53,21 +53,43 @@ joined_stadium_data <- ballparks_stadium_data |>
 ```
 
 
-**Introduction**
+Baseball is a sport with a long, decorated, and often controversial history. Invented over 180 years ago, it has witnessed scandal and revolution alike. In 1919, the infamous “Chicago Black Sox” scandal saw eight members of the Chicago White Sox bribed by the mob to intentionally lose the World Series. In 1989, Pete Rose—one of the game’s greatest hitters—was banned from the MLB for betting on games while managing the Cincinnati Reds. More recently, in 2019, the Houston Astros were found guilty of stealing signs using an outfield camera, a scheme that played a key role in their 2017 World Series win.
 
-Baseball is a sport with a long, decorated, and confusing history. The sport was invented over 180 years ago, and as a result, it has seen its fair share of controversy and revolution. In 1919, for example, the "Chicago Black Sox" scandal took place. During the 1919 World Series, 8 members of the Chicago White Sox were bribed by the mob to intentionally lose. In 1989, Pete Rose, a legendary player, was banned from the MLB for gambling on the team he was managing, the Cincicanni Reds. In 2019, the Houston Astros were caught stealing signs using an outfield camera at their home stadium, allowing them to see what pitch was coming. This contributed to their 2017 World Series championship. 
-
-In addition to a rich history of controversy, the 21st century has seen the sport flourish through advanced analytics. Popularized through the 2011 film Moneyball, the use of statistical analysis for player evaluation has modernized the sport and completely changed the decision making process for coaches and executives. In the next section, we will talk about one unique element of baseball that, combined with these advanced analytics, will be the basis for our research: park factors.
-
-**How Ballparks Influence Offensive Performance**
-
-Baseball is unique among major sports in that each team's home field can vary significantly in its dimensions and environmental conditions. Unlike the standardized courts and fields used in basketball or football, Major League Baseball stadiums differ widely — from outfield wall height and distance to foul territory and elevation. These physical characteristics, known collectively as park effects, can have a significant impact on offensive performance. Whether it’s a fly ball turning into a home run or a double dying at the warning track, the stadium itself becomes a player in the game. In this article, we explore a few of the most influential park effects — focusing specifically on elevation, extra outfield distance, and home run park factor — to better understand how ballparks shape the game’s offensive metrics.
+| <img src="images/chicagosox.jpg" width="200"/> | <img src="images/peterosecin.webp" width="200"/> | <img src="images/houstonastros.jpg" width="200"/> |
+|:---------------------------------------------:|:-----------------------------------------------:|:-------------------------------------------------:|
+| *Chicago White Sox Scandal (1919)*            | *Pete Rose and the Cincinnati Reds (1989)*      | *Houston Astros Sign-Stealing Scandal (2019)*     |
 
 
 
-**The Role of Elevation**
+<br><br>While baseball’s past is marked by these controversial episodes, the sport has also evolved dramatically—particularly in the 21st century—thanks to a growing reliance on advanced analytics. Popularized by the 2011 film [Moneyball]("https://www.youtube.com/watch?v=0h19anH4MdE"), statistical analysis has revolutionized the way coaches and executives evaluate players and make strategic decisions. This shift toward data-driven thinking has not only reshaped front office priorities but also deepened our understanding of the game's hidden variables. One such variable—often overlooked but increasingly important—is the concept of park factors. In the next section, we explore how the unique characteristics of each stadium interact with modern analytics to shape player performance and game outcomes.
+
+<br><br>**1.  How Do Ballparks Influence Offensive Performance?**
+
+Baseball is unique among major sports in that each team’s home field can vary significantly in its dimensions and environmental conditions. Unlike the standardized courts in basketball or the fixed-size fields in football, Major League Baseball stadiums are anything but uniform. While typical field dimensions are roughly 400 feet to center field and 330 feet down the foul lines, many ballparks deviate — sometimes dramatically.
+
+Take Fenway Park, for instance: one of the oldest and most iconic stadiums in the league. Its left field foul line is just 310 feet from home plate, but what it lacks in distance it makes up for with the towering 37-foot “Green Monster” wall — a feature that turns routine fly balls into doubles and frustrates hard-hit line drives. Meanwhile, the oddly-shaped right field curves out to just 302 feet, making it the shortest in Major League Baseball. These quirks create a unique offensive environment.
+
+Or consider the now-demolished Polo Grounds, where center field stretched a staggering 483 feet from home plate — far deeper than any modern stadium — while the foul poles hugged the lines at only 258 feet. These contrasting examples (shown below) highlight how dramatically ballparks can differ.
+
+
+| ![Caption 1](images/park3.png) | ![Caption 2](images/park2.png) | ![Caption 3](images/park1.png) |
+|:-------------------------------:|:-------------------------------:|:-------------------------------:|
+| *Typical Dimensions of a Field: Center Field (~400 feet), Corners (~330 feet) — a baseline comparison for most modern stadiums.*                     | *Polo Grounds: Known for its extreme dimensions — just 258 feet down the lines but a staggering 483 feet to center — making it one of the most unusually shaped stadiums in MLB history.*                    | *Fenway Park: Famous for its asymmetry, with a short 310-foot left field and the iconic 37-foot-high “Green Monster,” along with a shallow 302-foot right field — all of which create unique gameplay challenges and advantages.*                      |
+
+
+<br><br>These physical characteristics — including outfield distance, wall height, foul territory, and elevation — are collectively known as park effects, and they play a significant role in shaping offensive performance. Whether it’s a long fly ball that clears the fence in one stadium but dies at the warning track in another, the ballpark itself becomes an active participant in the game.
+
+In the following sections, we explore several of the most influential park effects — focusing specifically on elevation, extra outfield distance, and home run park factor — to better understand how ballparks shape the game’s offensive metrics.
+
+
+<br><br>***1.1.  The Role of Elevation***
 
 One of the most important — yet often overlooked — physical features influencing offense is elevation. Ballparks located at higher altitudes, such as Denver’s Coors Field, have thinner air due to lower atmospheric pressure. This reduced air resistance allows baseballs to travel farther, increasing the likelihood of extra-base hits and home runs. As a result, elevation can significantly inflate offensive statistics, making it essential to consider when comparing player performance across different ballparks.
+
+| ![Caption 1](images/elevation.png) |
+|:-------------------------------:
+| *Elevation Affects Offensive Outcomes*|
+
 
 To illustrate this, the figure below shows the distribution of stadium elevations across Major League ballparks, highlighting the stark contrast between high-altitude parks and those at or near sea level.
 
@@ -122,14 +144,17 @@ p2 <- ggplot(joined_stadium_data, aes(x = elevation)) +
 
 
 ```
-Most ballparks in the MLB are relatively close to sea level, with the average being around 500 feet. However, there are two outliers those being the Colorado Rockies' Coors Field and the Arizona Diamondbacks' Chase field at 1,110 and 5,277 feet respectively.
+<br><br>While most MLB stadiums are near sea level, averaging around 500 feet, Chase Field (1,110 ft) and especially Coors Field (5,277 ft) sit at noticeably higher elevations. Only Coors Field, however, stands out as a statistical outlier.
 
 
 
-
-**Extra Distance in the Outfield**
+<br><br>***1.2.  Extra Distance in the Outfield***
 
 Beyond elevation, the distance from home plate to the outfield walls — or “extra distance” — plays a significant role in determining offensive success. Ballparks with deeper outfields tend to suppress home runs, giving pitchers an edge by demanding greater power to clear the fences. On the other hand, parks with short porches or shallow gaps can inflate home run totals and alter hitting strategies.
+
+| <img src="images/extradistance.webp" width="200"/> |
+|:-------------------------------:
+| *Extra Distance Affects Offensive Outcomes*|
 
 The following figure explores the distribution of extra distance across MLB stadiums, helping us visualize how varying field dimensions contribute to the offensive landscape.
 
@@ -184,14 +209,14 @@ p2 <- ggplot(joined_stadium_data, aes(x = extra_distance)) +
 
 
 ```
-Most stadiums vary by only a few extra or fewer total yards in the outfield, with the average being just below zero. However, there are a few outliers that have significantly larger outfields. Those being the Colorado Rockies' Coors Field, the Arizona Diamondbacks' Chase Field, and the Texas Rangers' Globe Life Field, coming in at 22, 13.2, and 7.2 yards respectively. 
+<br><br>Most stadiums vary by only a few yards in total outfield distance, with the league average hovering just below zero. However, a few parks stand out with significantly larger outfields. These include the Colorado Rockies’ Coors Field (+22 yards), the Arizona Diamondbacks’ Chase Field (+13.2 yards), and the Texas Rangers’ Globe Life Field (+7.2 yards), all of which offer considerably more space for outfielders to cover. 
 
 
 
 
-**Understanding Park Factor**
+<br><br>***1.3.  Understanding Park Factor***
 
-Lastly, park factors — sometimes referred to as park effects — are composite metrics designed to quantify how a stadium impacts offensive production relative to league norms. These values incorporate a range of influences, including stadium dimensions, altitude, and even typical weather conditions. Calculated from historical data on runs, hits, home runs, and other offensive stats, a park factor above 100 signals a hitter-friendly environment, while values below 100 denote a pitcher’s park.
+Lastly, park factors — also known as park effects — serve as a composite metric that aggregates the various physical characteristics we've explored, such as elevation and outfield size, into a single value. These factors also account for other stadium-specific influences like weather and altitude. Calculated using historical data on runs, hits, and home runs, park factors quantify how much a ballpark amplifies or suppresses offensive performance relative to the league average. A value above 100 suggests a hitter-friendly environment, while a value below 100 indicates a pitcher-friendly park.
 
 The chart below displays the distribution of park factors across MLB stadiums, offering a clearer picture of how each park may shape in-game performance.
 
@@ -244,14 +269,19 @@ p2 <- ggplot(joined_stadium_data, aes(x = hr_park_effects)) +
   )
 
 ```
-Park factors at stadiums vary in a wide range, ranging from scores around 75 all the way up to 150. Once again, the Rockies' Coors Field sticks out as an outlier, likely due to its extremely large field.
+<br><br>Park factors at stadiums vary widely, with values ranging from around 75 to as high as 150. Once again, the Rockies’ Coors Field stands out as an extreme outlier — a trend consistent with its high elevation discussed earlier. These physical characteristics likely contribute to its significantly hitter-friendly environment, highlighting how individual factors like altitude and field size combine to influence overall park factor.
 
-**Linking Physical Features to Offensive Output**
+
+<br><br>**2.  Linking Physical Features to Offensive Output**
 
 While it’s clear that ballpark characteristics can influence offense, it’s important to examine how specific variables relate directly to offensive metrics — particularly home run totals. By comparing elevation and outfield distance to the number of home runs hit at each stadium, we can gain insight into which physical attributes have the most measurable impact. These visualizations help move beyond assumptions and allow for a more data-driven understanding of park effects.
 
+| <img src="images/park.png" width="200"/> |
+|:-------------------------------:
+| *How do Park Factors Account for Discrepancies between Predicted and Actual Offensive Statistics in Major League Baseball?*|
 
-*Elevation vs. Home Runs*
+
+<br><br>***2.1.  Elevation vs. Home Runs***
 
 The first plot explores the relationship between a stadium’s elevation and its total number of home runs. Given that thinner air at higher altitudes reduces drag on a baseball, we expect to see more home runs in elevated stadiums. This visualization allows us to test that hypothesis and spot outliers where home run rates may not align with elevation alone.
 
@@ -267,7 +297,7 @@ joined_stadium_data %>%
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
-    title = "The Effect Elevation Has on Home Run Totals Across MLB Stadiums",
+    title = "The Effect of Elevation on Home Run Totals Across MLB Stadiums",
     caption = "Source: Baseball R 2022 & Ballparks Stadium Data 2022",
     x = "Elevation (in feet)",
     y = "Total Number of Home Runs",
@@ -286,10 +316,11 @@ joined_stadium_data %>%
 
 
 ```
+While higher elevation typically favors increased home run rates, the number of home runs across most MLB stadiums does not exhibit a clear trend in relation to elevation. Despite Coors Field’s high elevation being an outlier with notably higher home run rates, other stadiums show a relatively consistent number of home runs regardless of their elevation.
 
-*Extra Distance vs. Home Runs*
+<br><br>***2.2. Extra Distance vs. Home Runs***
 
-Next, we look at how extra distance — the average length from home plate to the outfield wall — correlates with home run totals. Intuitively, greater distance should suppress home runs, while shorter dimensions should lead to more. This chart reveals whether that trend holds across the league and which parks defy the expected relationship.
+Next, we examine the relationship between extra distance — the average length from home plate to the outfield wall — and home run totals. Intuitively, greater outfield distance should reduce the likelihood of home runs, while shorter distances typically encourage more. In this context, points below zero indicate stadiums with shorter outfields that might favor home runs, while points above zero suggest larger outfields where hitting home runs is more challenging. This chart highlights whether that trend holds true across MLB parks and identifies any stadiums that defy this expected pattern.
 
 ```{r, message =FALSE}
 #Extra Distance → Home Runs
@@ -303,7 +334,7 @@ joined_stadium_data %>%
   geom_point(alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
   labs(
-    title = "The Effect Extra Outfield Distance Has on Home Run Totals Across MLB Stadiums",
+    title = "The Effect of Extra Outfield Distance on Home Run Totals Across MLB Stadiums",
     caption = "Source: Baseball R 2022 & Ballparks Stadium Data 2022",
     x = "Extra Distance (in Yards)",
     y = "Total Number of Home Runs",
@@ -323,10 +354,15 @@ joined_stadium_data %>%
 
 ```
 
-**discuss the extra distance vs homeruns plot
+<br><br>As expected, shorter outfields tend to see more home runs. However, this pattern could be influenced by the fact that most MLB parks have relatively shorter outfields. While we observe more home runs in parks with shorter outfields, this doesn't necessarily mean that extra distance alone drives the home run totals. Additionally, the effect of other factors, like elevation (which only significantly impacts parks like the Colorado Rockies' Coors Field), may be contributing to the observed trends.
 
-**Park Effects v.s Home Runs**
-To deepen our understanding of how stadium environments influence home run production, we examined the relationship between park effect scores and total home runs. Park factor, as a composite metric, captures the overall physical influence of a ballpark — incorporating elements like elevation and extra distance. By visualizing this relationship, we can see how hitter-friendly parks (with higher park factors) contribute to increased home run output, while pitcher-friendly parks (with lower park factors) tend to suppress long balls. This analysis builds on our earlier discussions of elevation and outfield depth, providing a holistic view of how stadium features collectively impact offensive performance.
+<br><br>***2.3. Park Effects v.s Home Runs***
+
+Upon examining the relationship between elevation and home run totals, we found a similar pattern to our analysis of outfield distance. Coors Field, with its notably high elevation, stood out, but most MLB ballparks are located at low elevations, and home run totals across these parks were relatively consistent. This suggests that elevation alone doesn't strongly influence the number of home runs hit in each stadium. Similarly, while the extra distance to the outfield wall in certain parks like Coors Field may initially suggest a suppression of home runs, we observed that the majority of MLB ballparks have relatively shorter outfields. In fact, although we did see slightly more home runs in parks with shorter outfields, the relationship was not strong enough to indicate a clear trend. This could be due to the fact that most MLB parks have shorter outfields in general, so the effect of extra distance becomes less pronounced when looking at the league as a whole.
+
+Both of these analyses — elevation and extra outfield distance — suggest that individual factors like elevation and outfield length may not have as strong an impact on home run totals as we might expect. These results raise the question of whether other environmental influences, such as weather conditions, park-specific dimensions, and overall stadium design, may be interacting in ways we haven’t fully captured yet. To explore this further, we turn to park effect scores, a composite metric that aggregates various stadium characteristics, including elevation and outfield distance. By considering multiple factors together, park effect scores provide a more holistic view of how stadium environments influence home run production across the league.
+
+A park effect score above 100 indicates a hitter-friendly environment, where home runs and runs are more likely to occur due to favorable conditions for batters. On the other hand, a park effect score below 100 signals a pitcher-friendly environment, where home runs and runs tend to be suppressed, making it more challenging for hitters to generate offensive output. By considering multiple factors together, park effect scores provide a more holistic view of how stadium environments influence home run production and offensive performance across the league.
 
 
 ```{r}
@@ -358,18 +394,22 @@ ggplot(joined_stadium_data, aes(x = hr_park_effects, y = home_run, color = ballp
 
 ```
 
-Scatterplot of player total home runs versus HR Park Effect for the 2022 MLB season. Each point represents one player’s home run total (y-axis) plotted against their home ballpark’s HR Park Effect (x-axis), with point size scaled to the magnitude of that effect. The HR Park Effect is a standardized measure of how a stadium’s dimensions, altitude, and other characteristics influence home run production relative to league average (values > 100 indicate a hitter-friendly park that boosts home runs; values < 1 indicate a pitcher-friendly park that suppresses them). The dashed line shows the overall linear trend, highlighting the relationship between park environment and observed home run counts. You can see there are alot of outliers, showing that many times Home Runs are more determined by averaged individual player performance for that season. (subject to change)
+<br><br> In examining the relationship between park effect scores (PE scores) and the total number of home runs hit in various ballparks, we observe an intriguing trend. Most ballparks with PE scores lower than 100, which indicate pitcher-friendly environments, tend to have more instances of home runs in comparison to ballparks with higher park effect scores. Specifically, the data reveals that ballparks with PE scores under 100 generally average around 5 to 6 home runs. This suggests that these stadiums, despite being pitcher-friendly, still facilitate some home run production.
+
+However, there is a surprising outlier: a ballpark with a PE score of 150, which, contrary to expectations, only recorded one home run. Given that a higher PE score typically reflects a hitter-friendly environment, where home runs should theoretically be more frequent, this singular home run is quite unexpected and raises questions about the specific factors at play in this particular ballpark. One would anticipate a relatively higher number of home runs from such a hitter-friendly environment, but the data does not reflect this trend.
+
+The overall trend is also shaped by the fact that most MLB ballparks fall into the lower PE score category, indicating that most stadiums are more conducive to pitching than to hitting. This widespread occurrence of lower PE scores in the dataset makes it challenging to discern clear trends, as the majority of ballparks share similar characteristics.
 
 
-**From Ballparks to Batters: Evaluating Performance with wOBA**
+<br><br>**3.  From Ballparks to Batters: Evaluating Performance with wOBA**
 
 After exploring how park features shape overall offensive output, the next logical step is to assess how these environments influence individual player performance. To do this, we turn to wOBA (weighted On-Base Average), a comprehensive offensive metric that assigns value to each outcome (walks, singles, doubles, etc.) rather than treating all times on base equally. Unlike traditional stats, wOBA better captures a player's true offensive contributions.
 
 By comparing actual wOBA to expected wOBA (xwOBA) — which is based on quality of contact (exit velocity, launch angle, etc.) — we can evaluate how much a player's environment may have helped or hurt their results. This progression from park-level analysis to player-level metrics allows us to ask: are some players over- or under-performing expectations because of where they play?
 
-*wOBA Discrepancies by Elevation*
+<br><br>***3.1. wOBA Discrepancies by Elevation***
 
-In the first plot, each player’s actual vs. expected wOBA is shown, with color indicating the elevation of their home stadium. This lets us examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude.
+In the first plot, each player’s actual vs. expected wOBA is shown, with color indicating the elevation of their home stadium. This allows us to examine whether high-elevation parks systematically inflate actual performance compared to expected metrics, potentially due to the reduced air resistance at altitude. Points above the line indicate players who are underperforming relative to their expected wOBA, while points below the line represent those who are overperforming. By analyzing the distribution of these points across different elevations, we can explore whether high-elevation parks have a noticeable impact on wOBA outcomes.
 
 ```{r, message = FALSE}
 ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
@@ -394,9 +434,15 @@ ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
   )
 ```
 
-*wOBA Discrepancies by Extra Distance*
+While there is a general mix of points above and below the line — suggesting that wOBA discrepancies exist — the relationship with elevation is not strong. Coors Field, the only high-elevation park in this analysis, shows a near-even split with three players overperforming and two underperforming, indicating that elevation alone does not consistently explain wOBA deviations. This is especially notable given that all other parks in the dataset are at much lower elevations, reinforcing that a single high-elevation stadium isn’t enough to drive a strong overall trend.
 
-The second visualization repeats the comparison, this time coloring players by their park’s average outfield distance. If players in shorter parks tend to outperform expectations, this could suggest that geometry — not just skill — plays a large role in statistical outcomes.
+
+
+
+<br><br>***3.2. wOBA Discrepancies by Extra Distance***
+
+The second visualization repeats the comparison, now coloring players by the average outfield distance of their home park. If players from parks with shorter outfields tend to outperform expectations, this could indicate that ballpark geometry, rather than just player skill, plays a significant role in shaping statistical outcomes. We would expect that in parks with shorter outfields, players might hit more home runs due to the reduced distance, leading to overperformance in their actual wOBA relative to expected wOBA. Conversely, players in parks with longer outfields might underperform, as more batted balls would likely be caught before clearing the fence. However, the actual results could reveal more subtle interactions between park dimensions and offensive performance, shedding light on how ballpark features affect player statistics.
+
 
 ```{r, message = FALSE}
 ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) +
@@ -420,10 +466,13 @@ ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) 
     legend.key.size = unit(1, "cm")
   )
 ```
+Interestingly, our second wOBA comparison plot reveals a counterintuitive trend: players from ballparks with longer outfield distances tend to overperform relative to their expected wOBA. This is unexpected, as deeper outfields are typically thought to suppress offensive production by requiring more power to reach the fences. However, several factors could help explain this pattern. Larger outfields create more space for hits to land, potentially increasing the number of doubles and triples as balls drop in or roll to the wall. Additionally, lower wall heights or unique park geometries might offset the longer distances. It's also possible that players in these environments adjust their hitting strategies, favoring line drives and contact over power, leading to better-than-expected results. This observation challenges traditional assumptions and suggests that ballpark dimensions can interact with player behavior in complex ways.
 
-**Team-Level Trends in wOBA Discrepancies**
 
-To round out our analysis, we broadened the lens from individual players to team-level performance by comparing each team’s actual wOBA vs. expected wOBA. This gives a higher-level view of whether entire lineups tend to outperform or underperform relative to what their batted-ball data suggests. Such differences may reflect the cumulative impact of park effects, coaching strategies, or even player profiles tailored to specific environments.
+
+<br><br>***3.3. Team-Level Trends in wOBA Discrepancies***
+
+To round out our analysis, we expanded our focus from individual player performance to team-level metrics by comparing each team’s actual wOBA versus their expected wOBA. This broader perspective allows us to assess whether entire teams tend to outperform or underperform based on their batted-ball data. To identify which teams we should focus on, we ran tests behind closed doors to pinpoint those with the most significant physical influence from their ballparks. The results highlighted specific teams, which we then plotted to visualize how their actual performance deviated from expectations. Any discrepancies observed at the team level may indicate the cumulative impact of park effects, coaching strategies, or player profiles that are specifically suited to the unique characteristics of their home stadiums. These factors together can shape a team's overall offensive output, showcasing how park dimensions and other physical attributes influence team-level performance
 
 
 ```{r}
@@ -487,7 +536,7 @@ legend_plot <- ggplot(legend_data) +
   geom_text(aes(x = x + 0.5, y = y, label = team_name), hjust = 0, size = 3, family = "sans") +  # smaller font
   xlim(0, 9) +  # Adjust xlim to fit all logos
   theme_void() +
-  labs(title = "Team Names") +
+  labs(title = "Team") +
   theme(
     plot.title = element_text(hjust = 0.5, face = "bold", size = 8, family = "sans")
   )
@@ -497,11 +546,15 @@ gridExtra::grid.arrange(main_plot, legend_plot, ncol = 2, widths = c(3, 1))
 
 ```
 
-discuss the woba vs xwoba graph
+<br><br>In the resulting plot, we observe clear deviations from the identity line, highlighting that several teams either overperform or underperform relative to their expected wOBA. By labeling each point with the team name, we can begin to identify broader team-level trends. Notably, teams such as the San Diego Padres, Houston Astros, and New York Mets appear to be overperforming, with actual wOBA values exceeding what would be predicted by their underlying metrics. Conversely, teams like the Seattle Mariners show signs of slight underperformance, suggesting they may not be capitalizing fully on their expected offensive output. These discrepancies invite deeper exploration into coaching strategies, player development, and potential park effects that may contribute to the observed differences.
 
-***Highlighting Park Factors with Visual Emphasis***
 
-To deepen this comparison, we created a second version of the team plot in which each team’s point is scaled by its park factor. This allows us to visually emphasize how hitter- or pitcher-friendly environments correlate with discrepancies between actual and expected offensive output. Teams in more hitter-friendly parks may appear further above the identity line, suggesting that the stadium may be inflating results beyond what expected metrics alone would predict.
+
+
+
+<br><br>**4.  Highlighting Park Factors with Visual Emphasis**
+
+To deepen this comparison, we created a second version of the team plot in which each team’s point is scaled by its park factor. This allows us to visually emphasize how hitter- or pitcher-friendly environments correlate with discrepancies between actual and expected offensive output. Teams in more hitter-friendly parks may appear further below the identity line, suggesting that the stadium may be inflating results beyond what expected metrics alone would predict.
 
 ```{r}
 player_and_park_stats |>
@@ -537,11 +590,34 @@ player_and_park_stats |>
 
 
 ```
-This graph evaluates the discrepancy between Expected Weighted On Base Average (xwOBA) and the actual observed Weighted On Base Average (wOBA) for qualified players on 8 different MLB teams. For the most part, the observed cases do not deviate between the expected and observed statistic that we are looking at. We will take a look at some of the statistical outliers. 
+<br><br>For the most part, player performance aligns closely with expectations, as many points lie near the identity line. However, there are several notable outliers worth examining.
 
-Before taking a look, it should be noted that a lower HR Park Effect would be expected to have a negative effect on wOBA compared to xwOBA. In other words, a player that plays for a team with a lower home field park effect would be expected to have a higher xwOBA than wOBA, and therefore it would be expted that this player's point would fall above the dashed line.
+Before interpreting the deviations, it’s important to recall that a lower Home Run Park Effect score generally corresponds to a less hitter-friendly ballpark. Therefore, players who regularly play in such stadiums might be expected to have a higher xwOBA than wOBA, meaning they are underperforming relative to the quality of their contact and plate discipline. In such cases, we would expect their data points to appear above the dashed line.
 
-In this visualization, it is difficult to identify a concrete trend between our variables. For one, a number of players that play in stadiums with lower park factors fall below our dashed line, indicating that these players are actually outperforming their expected stats. As wOBA increases, this seems to be the case for these individuals even more. Or in other words, players that play for teams whose home field has a smaller HR park factor tend to outperform their expected statistics as their wOBA increases. Nonetheless, most data points do fall right around the xwOBA-wOBA line, meaking it difficult to find any trends.
+Interestingly, this is not always the case in our visualization. In fact, a number of players from low park factor stadiums fall below the dashed line, suggesting that they are actually outperforming their expected metrics. This effect appears more pronounced as wOBA increases, indicating that players with higher offensive output tend to exceed expectations, even in less favorable hitting environments. While these findings complicate the assumption that park factors directly suppress wOBA, the majority of data points still cluster around the identity line, making broad trends difficult to confirm without further statistical testing.
+
+
+**Takeaways**
+
+Our analysis reveals that while physical ballpark characteristics — such as elevation, outfield distance, and home run park factor — do influence offensive performance, their effects are not always straightforward or predictable. For instance, although higher elevation and larger outfield dimensions are typically associated with increased offensive output, we observed that some players in low-elevation or compact parks still overperform relative to expectations. Similarly, we expected lower Home Run Park Effect (HRPE) scores to correspond with lower wOBA values, but found several players in these parks exceeding their expected performance metrics.
+
+These findings suggest that while park effects play a meaningful role, they interact with a range of other variables — such as individual player skill, team strategy, and even random variation — to shape final outcomes. As such, ballpark characteristics are just one piece of a complex performance puzzle. Future analysis could benefit from integrating more granular batted ball data, weather patterns, or pitcher matchups to further isolate the true impact of park effects on offensive metrics.
+
+**Limitations**
+
+While our analysis provides insight into how specific ballpark characteristics affect offensive performance, several limitations should be noted:
+
+-  ***Single-Year Dataset:*** All data analyzed are from the 2022 MLB season. This narrow timeframe limits the generalizability of our findings, as ballpark effects and player performance may vary significantly across seasons due to roster changes, injuries, and weather conditions.
+
+-  ***Limited Sample Size:*** The analysis includes a subset of players and teams, which may not capture the full range of performance variation or the diversity of ballpark conditions across the league.
+
+-  ***Simplified Metrics:*** We relied heavily on summary statistics like wOBA and xwOBA. While useful, they do not account for all aspects of offensive contribution, such as baserunning, situational hitting, or player tendencies.
+
+-  ***Static Park Factors:*** Park effect metrics such as elevation, wall height, and outfield distance were treated as fixed, though in practice their impact may vary based on weather, time of day, and other transient conditions.
+
+-  ***No Pitching or Defensive Context:*** Our analysis does not account for opposing pitcher quality, defensive efficiency, or other team-level factors that influence outcomes independent of ballpark conditions.
+
+Despite these limitations, the trends observed suggest that park characteristics play a measurable role in shaping offensive statistics, pointing to opportunities for further research using longitudinal and multi-variable models.
 
 
 

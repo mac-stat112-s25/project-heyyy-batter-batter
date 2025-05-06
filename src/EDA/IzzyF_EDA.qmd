@@ -2,6 +2,9 @@
 title: "Izzy F"
 ---
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
+```
 
 ```{r}
 library(baseballr)
@@ -96,9 +99,3 @@ ggplot(Full_22_Hitter_stats, aes(x = xslgdiff, color = team_name)) +
   facet_wrap(~team_name)
 
 ```
-```{r}
-
-
-
-```
-

@@ -8,25 +8,59 @@ Our case study is:
 # Case Study: FiveThirtyEight:
 ## [Uber Is Taking Millions Of Manhattan Rides Away From Taxis](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
 
-*There was not a case study with data visualizations about park effects in baseball, so we looked at a story about NYC taxis. We used the visualizations from this case study as inspiration for our report.*
+*Although there were no professional case studies focused on baseball park effects, we selected this FiveThirtyEight report about NYC taxis and Uber as a model for effective data storytelling. This article stood out for its strong narrative structure, seamless integration of visualizations, and accessible communication of complex trends. It demonstrated how to use data visualizations not just to present information but to develop and advance a compelling story.*
 
-### This report includes many types of visualizations and types of graphs including:
- - Line graphs with multiple observations
- - Maps (spatial maps with facet wraps)
- - Tables
- - Plots with best fits and labeled points
- - Finally, the report reads like a story with text in between graphs, describing the relationship of taxi rides and time with the introduction of Uber.
+The report unfolds through a structured narrative arc:
+
+-  **Introduction of the Policy Problem:** It opens with public concern around Uber’s expansion and potential traffic congestion.
+
+-  **Context and Hypothesis:** It presents the central question — are Uber pickups adding congestion or simply replacing taxis?
+
+-  **Data Disclosure and Methodology:** Explains the data source (NYC TLC) and how comparisons were made between 2014 and 2015.
+
+-  **Exploratory Visualizations:** Uses maps and tables to show net pickup changes by borough and neighborhood.
+
+-  **Narrative-Driven Insights:** Each visualization is accompanied by text that interprets the findings and returns to the central question.
+
+-  **Limitations and Considerations:** It concludes by noting missing variables like drop-off data and contributions from other services, reinforcing transparency.
+
+
+This report includes many types of visualizations and types of graphs including:
+
+-  Line graphs with multiple observations
+
+-  Maps (spatial maps with facet wraps)
+
+-  Tables
+
+-  Plots with best fits and labeled points
+
+-  Finally, the report reads like a story with text in between graphs, describing the relationship of taxi rides and time with the introduction of Uber.
  
  **How does the report build the data story in the Case Study Page**
- 
- + We took inspiration from the multiple variables visualized in the case study, so we made graphs with multiple variables in our report by changing:
- - Color of points
- - Fill
- - size
- - Logos
- - Including different visualizations not included in the case study:
-  - Boxplots
-  - Density
+
+We applied many of the same storytelling and visualization principles to our analysis of Home Run Park Effects in Major League Baseball:
+
+-  Narrative structure
+
+-  Layered Visuals: We varied our visualizations to show multi-dimensional relationships:
+
+-  Color-coded scatterplots (e.g., wOBA vs xwOBA with Home Run Park Effects)
+
+-  Boxplots showing home run distributions by stadium
+
+-  Density plots to visualize variation in stats
+
+-  Facet-wrapped maps to convey geographic patterns
+
+-  Customization: We expanded beyond the case study by incorporating:
+
+-  MLB team logos for identification
+
+-  Custom themes and annotations
+
+-  Visual encodings (fill, size, color) to compare metrics across multiple dimensions
+
 
 
 

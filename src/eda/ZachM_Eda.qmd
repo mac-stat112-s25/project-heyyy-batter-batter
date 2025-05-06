@@ -3,6 +3,10 @@ title: "Zach M"
 format: html
 ---
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 ```{r}
 #load packages
 library(tidyverse)
