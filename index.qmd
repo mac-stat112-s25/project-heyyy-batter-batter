@@ -57,7 +57,7 @@ Baseball is a sport with a long, decorated, and often controversial history. Inv
 
 | <img src="images/chicagosox.jpg" width="200"/> | <img src="images/peterosecin.webp" width="200"/> | <img src="images/houstonastros.jpg" width="200"/> |
 |:---------------------------------------------:|:-----------------------------------------------:|:-------------------------------------------------:|
-| *Chicago White Sox Scandal (1919)*            | *Pete Rose and the Cincinnati Reds (1989)*      | *Houston Astros Sign-Stealing Scandal (2019)*     |
+| *Chicago White Sox Scandal (1919)*            | *Pete Rose and the Cincinnati Reds Scandal (1989)*      | *Houston Astros Sign-Stealing Scandal (2019)*     |
 
 
 
