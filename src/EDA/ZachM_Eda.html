@@ -171,7 +171,7 @@ cookieconsent.run({
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/et/ZachM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M Effective</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -282,13 +282,10 @@ cookieconsent.run({
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(baseballr)</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggridges' was built under R version 4.4.2</code></pre>
-</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># get park data</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>ballparks_stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># get park data</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>ballparks_stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 30 Columns: 14
 ── Column specification ────────────────────────────────────────────────────────
@@ -299,7 +296,7 @@ dbl (11): left_field, center_field, right_field, min_wall_height, max_wall_h...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">head</span>(ballparks_stadium_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(ballparks_stadium_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 14
   abrev_team_name team_name         ballpark left_field center_field right_field
@@ -316,22 +313,22 @@ dbl (11): left_field, center_field, right_field, min_wall_height, max_wall_h...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(ballparks_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> center_field, <span class="at">y =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(ballparks_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> center_field, <span class="at">y =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># get downloaded hitter stats</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># get downloaded hitter stats</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 130 Columns: 28
 ── Column specification ────────────────────────────────────────────────────────
@@ -342,7 +339,7 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 28
   `last_name, first_name` player_id  year    pa   hit single double triple
@@ -361,16 +358,16 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># get player team info</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># get player team info</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># join hitter stats with players team</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># join hitter stats with players team</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 30
   `last_name, first_name` player_id  year    pa   hit single double triple
@@ -390,60 +387,18 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#Density graph of On base % by different teams</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
-<span id="cb16-7"><a href="#cb16-7"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#Density graph of On base % by different teams</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3): Ignoring
 unknown parameters: `size`</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Picking joint bandwidth of 0.0124</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#same graph as above with effective viz applied</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> <span class="fu">reorder</span>(team_name, on_base_percent), <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb19-6"><a href="#cb19-6"></a>    <span class="at">scale =</span> <span class="fl">2.5</span>, </span>
-<span id="cb19-7"><a href="#cb19-7"></a>    <span class="at">alpha =</span> <span class="fl">0.9</span>, </span>
-<span id="cb19-8"><a href="#cb19-8"></a>    <span class="at">size =</span> <span class="fl">0.3</span>, </span>
-<span id="cb19-9"><a href="#cb19-9"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">begin =</span> <span class="fl">0.1</span>, <span class="at">end =</span> <span class="fl">0.9</span>) <span class="sc">+</span>  <span class="co"># broader color range</span></span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-13"><a href="#cb19-13"></a>    <span class="at">x =</span> <span class="st">"On-Base Percentage"</span>,</span>
-<span id="cb19-14"><a href="#cb19-14"></a>    <span class="at">y =</span> <span class="st">"Team Name"</span>,</span>
-<span id="cb19-15"><a href="#cb19-15"></a>    <span class="at">title =</span> <span class="st">"Distribution of On-Base Percentage by Team (2022 Season)"</span>,</span>
-<span id="cb19-16"><a href="#cb19-16"></a>    <span class="at">subtitle =</span> <span class="st">"Ridgeline plot showing variability across teams"</span>,</span>
-<span id="cb19-17"><a href="#cb19-17"></a>    <span class="at">caption =</span> <span class="st">"Source: 2022 MLB Hitter Stats"</span></span>
-<span id="cb19-18"><a href="#cb19-18"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-19"><a href="#cb19-19"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb19-20"><a href="#cb19-20"></a>  <span class="fu">theme</span>(</span>
-<span id="cb19-21"><a href="#cb19-21"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb19-22"><a href="#cb19-22"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb19-23"><a href="#cb19-23"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
-<span id="cb19-24"><a href="#cb19-24"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">8</span>)),</span>
-<span id="cb19-25"><a href="#cb19-25"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">8</span>)),</span>
-<span id="cb19-26"><a href="#cb19-26"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)  <span class="co"># make team names smaller to avoid overlapping</span></span>
-<span id="cb19-27"><a href="#cb19-27"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_density_ridges(scale = 2.5, alpha = 0.9, size = 0.3, color =
-"white"): Ignoring unknown parameters: `size`</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Picking joint bandwidth of 0.0124</code></pre>
@@ -456,26 +411,58 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># join park stats and hitting stats</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>player_and_park_stats <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">left_join</span>(ballparks_stadium_data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#same graph as above with effective viz applied</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> <span class="fu">reorder</span>(team_name, on_base_percent), <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb18-6"><a href="#cb18-6"></a>    <span class="at">scale =</span> <span class="fl">2.5</span>, </span>
+<span id="cb18-7"><a href="#cb18-7"></a>    <span class="at">alpha =</span> <span class="fl">0.9</span>, </span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="at">size =</span> <span class="fl">0.3</span>, </span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">begin =</span> <span class="fl">0.1</span>, <span class="at">end =</span> <span class="fl">0.9</span>) <span class="sc">+</span>  <span class="co"># broader color range</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-13"><a href="#cb18-13"></a>    <span class="at">x =</span> <span class="st">"On-Base Percentage"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    <span class="at">y =</span> <span class="st">"Team Name"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15"></a>    <span class="at">title =</span> <span class="st">"Distribution of On-Base Percentage by Team (2022 Season)"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16"></a>    <span class="at">subtitle =</span> <span class="st">"Ridgeline plot showing variability across teams"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17"></a>    <span class="at">caption =</span> <span class="st">"Source: 2022 MLB Hitter Stats"</span></span>
+<span id="cb18-18"><a href="#cb18-18"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>  <span class="fu">theme</span>(</span>
+<span id="cb18-21"><a href="#cb18-21"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb18-23"><a href="#cb18-23"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
+<span id="cb18-24"><a href="#cb18-24"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">8</span>)),</span>
+<span id="cb18-25"><a href="#cb18-25"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">8</span>)),</span>
+<span id="cb18-26"><a href="#cb18-26"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)  <span class="co"># make team names smaller to avoid overlapping</span></span>
+<span id="cb18-27"><a href="#cb18-27"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(team_name)`</code></pre>
+<pre><code>Warning in geom_density_ridges(scale = 2.5, alpha = 0.9, size = 0.3, color =
+"white"): Ignoring unknown parameters: `size`</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 0.0124</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>  <span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>      <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> extra_distance)) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># join park stats and hitting stats</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>player_and_park_stats <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">left_join</span>(ballparks_stadium_data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(team_name)`</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>  <span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>      <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
@@ -484,8 +471,8 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> avg_temp)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> extra_distance)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
@@ -494,12 +481,22 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">#find which teams may have players more likely to over preform WOBA</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> avg_temp)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#find which teams may have players more likely to over preform WOBA</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 26 × 2
 # Groups:   team_name [26]
@@ -519,12 +516,12 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">#find which team's players are likely to underpreform</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#find which team's players are likely to underpreform</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 26 × 2
 # Groups:   team_name [26]
@@ -544,22 +541,10 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span> ( <span class="st">"Cleveland Guardians"</span>, <span class="st">"Houston Astros   "</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"New York Mets"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Atlanta Braves"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span> ( <span class="st">"Cleveland Guardians"</span>, <span class="st">"Houston Astros   "</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"New York Mets"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
@@ -568,11 +553,10 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Vis of teams with over six batters on the dataset</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Atlanta Braves"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
@@ -581,11 +565,24 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Find what teams have enough players to be statistically significant</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">arrange</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Vis of teams with over six batters on the dataset</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Find what teams have enough players to be statistically significant</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">arrange</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 2
 # Groups:   team_name [30]
@@ -605,10 +602,10 @@ unknown parameters: `size`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>league_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>league_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -628,15 +625,15 @@ colour.
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">group_by</span>(league_name) <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(hr_park_effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">group_by</span>(league_name) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(hr_park_effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   league_name `mean(hr_park_effects)`
@@ -646,31 +643,31 @@ colour.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># difference in expected vs actual slugging compared to park effects</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> xslgdiff)) <span class="sc">+</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># difference in expected vs actual weighted on base avreage compared to park effects</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> wobadiff)) <span class="sc">+</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># difference in expected vs actual slugging compared to park effects</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> xslgdiff)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># difference in expected vs actual weighted on base avreage compared to park effects</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> wobadiff)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ZachM_Eda_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1310,195 +1307,199 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="co">---</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="an">title:</span><span class="co"> "Zach M"</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="co">---</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a></span>
-<span id="cb45-8"><a href="#cb45-8"></a><span class="in">```{r}</span></span>
-<span id="cb45-9"><a href="#cb45-9"></a><span class="co">#load packages</span></span>
-<span id="cb45-10"><a href="#cb45-10"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb45-11"><a href="#cb45-11"></a><span class="fu">library</span>(baseballr)</span>
-<span id="cb45-12"><a href="#cb45-12"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb45-13"><a href="#cb45-13"></a><span class="in">```</span></span>
-<span id="cb45-14"><a href="#cb45-14"></a></span>
-<span id="cb45-15"><a href="#cb45-15"></a></span>
-<span id="cb45-16"><a href="#cb45-16"></a></span>
-<span id="cb45-19"><a href="#cb45-19"></a><span class="in">```{r}</span></span>
-<span id="cb45-20"><a href="#cb45-20"></a><span class="co"># get park data</span></span>
-<span id="cb45-21"><a href="#cb45-21"></a>ballparks_stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
-<span id="cb45-22"><a href="#cb45-22"></a><span class="fu">head</span>(ballparks_stadium_data)</span>
-<span id="cb45-23"><a href="#cb45-23"></a><span class="in">```</span></span>
-<span id="cb45-24"><a href="#cb45-24"></a></span>
-<span id="cb45-27"><a href="#cb45-27"></a><span class="in">```{r}</span></span>
-<span id="cb45-28"><a href="#cb45-28"></a><span class="fu">ggplot</span>(ballparks_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> center_field, <span class="at">y =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb45-29"><a href="#cb45-29"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb45-30"><a href="#cb45-30"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
-<span id="cb45-31"><a href="#cb45-31"></a><span class="in">```</span></span>
-<span id="cb45-32"><a href="#cb45-32"></a></span>
-<span id="cb45-35"><a href="#cb45-35"></a><span class="in">```{r}</span></span>
-<span id="cb45-36"><a href="#cb45-36"></a><span class="co"># get downloaded hitter stats</span></span>
-<span id="cb45-37"><a href="#cb45-37"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
-<span id="cb45-38"><a href="#cb45-38"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>)</span>
-<span id="cb45-39"><a href="#cb45-39"></a><span class="in">```</span></span>
-<span id="cb45-40"><a href="#cb45-40"></a></span>
-<span id="cb45-41"><a href="#cb45-41"></a></span>
-<span id="cb45-44"><a href="#cb45-44"></a><span class="in">```{r}</span></span>
-<span id="cb45-45"><a href="#cb45-45"></a><span class="co"># get player team info</span></span>
-<span id="cb45-46"><a href="#cb45-46"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-47"><a href="#cb45-47"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span>
-<span id="cb45-48"><a href="#cb45-48"></a><span class="in">```</span></span>
-<span id="cb45-49"><a href="#cb45-49"></a></span>
-<span id="cb45-50"><a href="#cb45-50"></a></span>
-<span id="cb45-53"><a href="#cb45-53"></a><span class="in">```{r}</span></span>
-<span id="cb45-54"><a href="#cb45-54"></a><span class="co"># join hitter stats with players team</span></span>
-<span id="cb45-55"><a href="#cb45-55"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb45-56"><a href="#cb45-56"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
-<span id="cb45-57"><a href="#cb45-57"></a></span>
-<span id="cb45-58"><a href="#cb45-58"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
-<span id="cb45-59"><a href="#cb45-59"></a><span class="in">```</span></span>
-<span id="cb45-60"><a href="#cb45-60"></a></span>
-<span id="cb45-63"><a href="#cb45-63"></a><span class="in">```{r}</span></span>
-<span id="cb45-64"><a href="#cb45-64"></a><span class="co"># Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)</span></span>
-<span id="cb45-65"><a href="#cb45-65"></a></span>
-<span id="cb45-66"><a href="#cb45-66"></a><span class="co">#Density graph of On base % by different teams</span></span>
-<span id="cb45-67"><a href="#cb45-67"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb45-68"><a href="#cb45-68"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb45-69"><a href="#cb45-69"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
-<span id="cb45-70"><a href="#cb45-70"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
-<span id="cb45-71"><a href="#cb45-71"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
-<span id="cb45-72"><a href="#cb45-72"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb45-73"><a href="#cb45-73"></a><span class="in">```</span></span>
-<span id="cb45-74"><a href="#cb45-74"></a></span>
-<span id="cb45-77"><a href="#cb45-77"></a><span class="in">```{r}</span></span>
-<span id="cb45-78"><a href="#cb45-78"></a><span class="co">#same graph as above with effective viz applied</span></span>
-<span id="cb45-79"><a href="#cb45-79"></a><span class="co">#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"</span></span>
-<span id="cb45-80"><a href="#cb45-80"></a></span>
-<span id="cb45-81"><a href="#cb45-81"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> <span class="fu">reorder</span>(team_name, on_base_percent), <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb45-82"><a href="#cb45-82"></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb45-83"><a href="#cb45-83"></a>    <span class="at">scale =</span> <span class="fl">2.5</span>, </span>
-<span id="cb45-84"><a href="#cb45-84"></a>    <span class="at">alpha =</span> <span class="fl">0.9</span>, </span>
-<span id="cb45-85"><a href="#cb45-85"></a>    <span class="at">size =</span> <span class="fl">0.3</span>, </span>
-<span id="cb45-86"><a href="#cb45-86"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
-<span id="cb45-87"><a href="#cb45-87"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-88"><a href="#cb45-88"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">begin =</span> <span class="fl">0.1</span>, <span class="at">end =</span> <span class="fl">0.9</span>) <span class="sc">+</span>  <span class="co"># broader color range</span></span>
-<span id="cb45-89"><a href="#cb45-89"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-90"><a href="#cb45-90"></a>    <span class="at">x =</span> <span class="st">"On-Base Percentage"</span>,</span>
-<span id="cb45-91"><a href="#cb45-91"></a>    <span class="at">y =</span> <span class="st">"Team Name"</span>,</span>
-<span id="cb45-92"><a href="#cb45-92"></a>    <span class="at">title =</span> <span class="st">"Distribution of On-Base Percentage by Team (2022 Season)"</span>,</span>
-<span id="cb45-93"><a href="#cb45-93"></a>    <span class="at">subtitle =</span> <span class="st">"Ridgeline plot showing variability across teams"</span>,</span>
-<span id="cb45-94"><a href="#cb45-94"></a>    <span class="at">caption =</span> <span class="st">"Source: 2022 MLB Hitter Stats"</span></span>
-<span id="cb45-95"><a href="#cb45-95"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-96"><a href="#cb45-96"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb45-97"><a href="#cb45-97"></a>  <span class="fu">theme</span>(</span>
-<span id="cb45-98"><a href="#cb45-98"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb45-99"><a href="#cb45-99"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb45-100"><a href="#cb45-100"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
-<span id="cb45-101"><a href="#cb45-101"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">8</span>)),</span>
-<span id="cb45-102"><a href="#cb45-102"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">8</span>)),</span>
-<span id="cb45-103"><a href="#cb45-103"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)  <span class="co"># make team names smaller to avoid overlapping</span></span>
-<span id="cb45-104"><a href="#cb45-104"></a>  )</span>
-<span id="cb45-105"><a href="#cb45-105"></a><span class="in">```</span></span>
-<span id="cb45-106"><a href="#cb45-106"></a></span>
-<span id="cb45-107"><a href="#cb45-107"></a></span>
-<span id="cb45-110"><a href="#cb45-110"></a><span class="in">```{r}</span></span>
-<span id="cb45-111"><a href="#cb45-111"></a><span class="co"># join park stats and hitting stats</span></span>
-<span id="cb45-112"><a href="#cb45-112"></a>player_and_park_stats <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-113"><a href="#cb45-113"></a>  <span class="fu">left_join</span>(ballparks_stadium_data) </span>
-<span id="cb45-114"><a href="#cb45-114"></a><span class="in">```</span></span>
-<span id="cb45-115"><a href="#cb45-115"></a></span>
-<span id="cb45-118"><a href="#cb45-118"></a><span class="in">```{r}</span></span>
-<span id="cb45-119"><a href="#cb45-119"></a>  <span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb45-120"><a href="#cb45-120"></a>      <span class="fu">geom_point</span>()</span>
-<span id="cb45-121"><a href="#cb45-121"></a><span class="in">```</span></span>
-<span id="cb45-122"><a href="#cb45-122"></a></span>
-<span id="cb45-125"><a href="#cb45-125"></a><span class="in">```{r}</span></span>
-<span id="cb45-126"><a href="#cb45-126"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> extra_distance)) <span class="sc">+</span></span>
-<span id="cb45-127"><a href="#cb45-127"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb45-128"><a href="#cb45-128"></a><span class="in">```</span></span>
-<span id="cb45-129"><a href="#cb45-129"></a></span>
-<span id="cb45-130"><a href="#cb45-130"></a></span>
-<span id="cb45-133"><a href="#cb45-133"></a><span class="in">```{r}</span></span>
-<span id="cb45-134"><a href="#cb45-134"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> avg_temp)) <span class="sc">+</span></span>
-<span id="cb45-135"><a href="#cb45-135"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb45-136"><a href="#cb45-136"></a><span class="in">```</span></span>
-<span id="cb45-137"><a href="#cb45-137"></a></span>
-<span id="cb45-138"><a href="#cb45-138"></a></span>
-<span id="cb45-139"><a href="#cb45-139"></a></span>
-<span id="cb45-142"><a href="#cb45-142"></a><span class="in">```{r}</span></span>
-<span id="cb45-143"><a href="#cb45-143"></a><span class="co">#find which teams may have players more likely to over preform WOBA</span></span>
-<span id="cb45-144"><a href="#cb45-144"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-145"><a href="#cb45-145"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-146"><a href="#cb45-146"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb45-147"><a href="#cb45-147"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb45-148"><a href="#cb45-148"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb45-149"><a href="#cb45-149"></a><span class="in">```</span></span>
-<span id="cb45-150"><a href="#cb45-150"></a></span>
-<span id="cb45-153"><a href="#cb45-153"></a><span class="in">```{r}</span></span>
-<span id="cb45-154"><a href="#cb45-154"></a><span class="co">#find which team's players are likely to underpreform</span></span>
-<span id="cb45-155"><a href="#cb45-155"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-156"><a href="#cb45-156"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-157"><a href="#cb45-157"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb45-158"><a href="#cb45-158"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb45-159"><a href="#cb45-159"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb45-160"><a href="#cb45-160"></a><span class="in">```</span></span>
-<span id="cb45-161"><a href="#cb45-161"></a></span>
-<span id="cb45-164"><a href="#cb45-164"></a><span class="in">```{r}</span></span>
-<span id="cb45-165"><a href="#cb45-165"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-166"><a href="#cb45-166"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span> ( <span class="st">"Cleveland Guardians"</span>, <span class="st">"Houston Astros   "</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"New York Mets"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb45-167"><a href="#cb45-167"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb45-168"><a href="#cb45-168"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb45-169"><a href="#cb45-169"></a><span class="in">```</span></span>
-<span id="cb45-170"><a href="#cb45-170"></a></span>
-<span id="cb45-173"><a href="#cb45-173"></a><span class="in">```{r}</span></span>
-<span id="cb45-174"><a href="#cb45-174"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-175"><a href="#cb45-175"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Atlanta Braves"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb45-176"><a href="#cb45-176"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb45-177"><a href="#cb45-177"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb45-178"><a href="#cb45-178"></a><span class="in">```</span></span>
-<span id="cb45-179"><a href="#cb45-179"></a></span>
-<span id="cb45-182"><a href="#cb45-182"></a><span class="in">```{r}</span></span>
-<span id="cb45-183"><a href="#cb45-183"></a><span class="co"># Vis of teams with over six batters on the dataset</span></span>
-<span id="cb45-184"><a href="#cb45-184"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-185"><a href="#cb45-185"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb45-186"><a href="#cb45-186"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb45-187"><a href="#cb45-187"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb45-188"><a href="#cb45-188"></a><span class="in">```</span></span>
-<span id="cb45-189"><a href="#cb45-189"></a></span>
-<span id="cb45-192"><a href="#cb45-192"></a><span class="in">```{r}</span></span>
-<span id="cb45-193"><a href="#cb45-193"></a><span class="co"># Find what teams have enough players to be statistically significant</span></span>
-<span id="cb45-194"><a href="#cb45-194"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-195"><a href="#cb45-195"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb45-196"><a href="#cb45-196"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb45-197"><a href="#cb45-197"></a>  <span class="fu">arrange</span>(n)</span>
-<span id="cb45-198"><a href="#cb45-198"></a><span class="in">```</span></span>
-<span id="cb45-199"><a href="#cb45-199"></a></span>
-<span id="cb45-202"><a href="#cb45-202"></a><span class="in">```{r}</span></span>
-<span id="cb45-203"><a href="#cb45-203"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> hr_park_effects)) <span class="sc">+</span></span>
-<span id="cb45-204"><a href="#cb45-204"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb45-205"><a href="#cb45-205"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb45-206"><a href="#cb45-206"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>league_name)</span>
-<span id="cb45-207"><a href="#cb45-207"></a><span class="in">```</span></span>
-<span id="cb45-208"><a href="#cb45-208"></a></span>
-<span id="cb45-211"><a href="#cb45-211"></a><span class="in">```{r}</span></span>
-<span id="cb45-212"><a href="#cb45-212"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
-<span id="cb45-213"><a href="#cb45-213"></a>  <span class="fu">group_by</span>(league_name) <span class="sc">|&gt;</span></span>
-<span id="cb45-214"><a href="#cb45-214"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(hr_park_effects))</span>
-<span id="cb45-215"><a href="#cb45-215"></a><span class="in">```</span></span>
-<span id="cb45-216"><a href="#cb45-216"></a></span>
-<span id="cb45-219"><a href="#cb45-219"></a><span class="in">```{r}</span></span>
-<span id="cb45-220"><a href="#cb45-220"></a><span class="co"># difference in expected vs actual slugging compared to park effects</span></span>
-<span id="cb45-221"><a href="#cb45-221"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> xslgdiff)) <span class="sc">+</span></span>
-<span id="cb45-222"><a href="#cb45-222"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb45-223"><a href="#cb45-223"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb45-224"><a href="#cb45-224"></a><span class="in">```</span></span>
-<span id="cb45-225"><a href="#cb45-225"></a></span>
-<span id="cb45-228"><a href="#cb45-228"></a><span class="in">```{r}</span></span>
-<span id="cb45-229"><a href="#cb45-229"></a><span class="co"># difference in expected vs actual weighted on base avreage compared to park effects</span></span>
-<span id="cb45-230"><a href="#cb45-230"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> wobadiff)) <span class="sc">+</span></span>
-<span id="cb45-231"><a href="#cb45-231"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb45-232"><a href="#cb45-232"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb45-233"><a href="#cb45-233"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb44" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1"></a><span class="co">---</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="an">title:</span><span class="co"> "Zach M"</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="co">---</span></span>
+<span id="cb44-5"><a href="#cb44-5"></a></span>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a><span class="in">knitr::opts_chunk$set(message = FALSE, warning = FALSE)</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="in">```</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-12"><a href="#cb44-12"></a><span class="in">```{r}</span></span>
+<span id="cb44-13"><a href="#cb44-13"></a><span class="co">#load packages</span></span>
+<span id="cb44-14"><a href="#cb44-14"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-15"><a href="#cb44-15"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb44-16"><a href="#cb44-16"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb44-17"><a href="#cb44-17"></a><span class="in">```</span></span>
+<span id="cb44-18"><a href="#cb44-18"></a></span>
+<span id="cb44-19"><a href="#cb44-19"></a></span>
+<span id="cb44-20"><a href="#cb44-20"></a></span>
+<span id="cb44-23"><a href="#cb44-23"></a><span class="in">```{r}</span></span>
+<span id="cb44-24"><a href="#cb44-24"></a><span class="co"># get park data</span></span>
+<span id="cb44-25"><a href="#cb44-25"></a>ballparks_stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
+<span id="cb44-26"><a href="#cb44-26"></a><span class="fu">head</span>(ballparks_stadium_data)</span>
+<span id="cb44-27"><a href="#cb44-27"></a><span class="in">```</span></span>
+<span id="cb44-28"><a href="#cb44-28"></a></span>
+<span id="cb44-31"><a href="#cb44-31"></a><span class="in">```{r}</span></span>
+<span id="cb44-32"><a href="#cb44-32"></a><span class="fu">ggplot</span>(ballparks_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> center_field, <span class="at">y =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb44-33"><a href="#cb44-33"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb44-34"><a href="#cb44-34"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb44-35"><a href="#cb44-35"></a><span class="in">```</span></span>
+<span id="cb44-36"><a href="#cb44-36"></a></span>
+<span id="cb44-39"><a href="#cb44-39"></a><span class="in">```{r}</span></span>
+<span id="cb44-40"><a href="#cb44-40"></a><span class="co"># get downloaded hitter stats</span></span>
+<span id="cb44-41"><a href="#cb44-41"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
+<span id="cb44-42"><a href="#cb44-42"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>)</span>
+<span id="cb44-43"><a href="#cb44-43"></a><span class="in">```</span></span>
+<span id="cb44-44"><a href="#cb44-44"></a></span>
+<span id="cb44-45"><a href="#cb44-45"></a></span>
+<span id="cb44-48"><a href="#cb44-48"></a><span class="in">```{r}</span></span>
+<span id="cb44-49"><a href="#cb44-49"></a><span class="co"># get player team info</span></span>
+<span id="cb44-50"><a href="#cb44-50"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-51"><a href="#cb44-51"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span>
+<span id="cb44-52"><a href="#cb44-52"></a><span class="in">```</span></span>
+<span id="cb44-53"><a href="#cb44-53"></a></span>
+<span id="cb44-54"><a href="#cb44-54"></a></span>
+<span id="cb44-57"><a href="#cb44-57"></a><span class="in">```{r}</span></span>
+<span id="cb44-58"><a href="#cb44-58"></a><span class="co"># join hitter stats with players team</span></span>
+<span id="cb44-59"><a href="#cb44-59"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb44-60"><a href="#cb44-60"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb44-61"><a href="#cb44-61"></a></span>
+<span id="cb44-62"><a href="#cb44-62"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
+<span id="cb44-63"><a href="#cb44-63"></a><span class="in">```</span></span>
+<span id="cb44-64"><a href="#cb44-64"></a></span>
+<span id="cb44-67"><a href="#cb44-67"></a><span class="in">```{r}</span></span>
+<span id="cb44-68"><a href="#cb44-68"></a><span class="co"># Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)</span></span>
+<span id="cb44-69"><a href="#cb44-69"></a></span>
+<span id="cb44-70"><a href="#cb44-70"></a><span class="co">#Density graph of On base % by different teams</span></span>
+<span id="cb44-71"><a href="#cb44-71"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb44-72"><a href="#cb44-72"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb44-73"><a href="#cb44-73"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
+<span id="cb44-74"><a href="#cb44-74"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
+<span id="cb44-75"><a href="#cb44-75"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
+<span id="cb44-76"><a href="#cb44-76"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb44-77"><a href="#cb44-77"></a><span class="in">```</span></span>
+<span id="cb44-78"><a href="#cb44-78"></a></span>
+<span id="cb44-81"><a href="#cb44-81"></a><span class="in">```{r}</span></span>
+<span id="cb44-82"><a href="#cb44-82"></a><span class="co">#same graph as above with effective viz applied</span></span>
+<span id="cb44-83"><a href="#cb44-83"></a><span class="co">#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"</span></span>
+<span id="cb44-84"><a href="#cb44-84"></a></span>
+<span id="cb44-85"><a href="#cb44-85"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> <span class="fu">reorder</span>(team_name, on_base_percent), <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb44-86"><a href="#cb44-86"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb44-87"><a href="#cb44-87"></a>    <span class="at">scale =</span> <span class="fl">2.5</span>, </span>
+<span id="cb44-88"><a href="#cb44-88"></a>    <span class="at">alpha =</span> <span class="fl">0.9</span>, </span>
+<span id="cb44-89"><a href="#cb44-89"></a>    <span class="at">size =</span> <span class="fl">0.3</span>, </span>
+<span id="cb44-90"><a href="#cb44-90"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb44-91"><a href="#cb44-91"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-92"><a href="#cb44-92"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">begin =</span> <span class="fl">0.1</span>, <span class="at">end =</span> <span class="fl">0.9</span>) <span class="sc">+</span>  <span class="co"># broader color range</span></span>
+<span id="cb44-93"><a href="#cb44-93"></a>  <span class="fu">labs</span>(</span>
+<span id="cb44-94"><a href="#cb44-94"></a>    <span class="at">x =</span> <span class="st">"On-Base Percentage"</span>,</span>
+<span id="cb44-95"><a href="#cb44-95"></a>    <span class="at">y =</span> <span class="st">"Team Name"</span>,</span>
+<span id="cb44-96"><a href="#cb44-96"></a>    <span class="at">title =</span> <span class="st">"Distribution of On-Base Percentage by Team (2022 Season)"</span>,</span>
+<span id="cb44-97"><a href="#cb44-97"></a>    <span class="at">subtitle =</span> <span class="st">"Ridgeline plot showing variability across teams"</span>,</span>
+<span id="cb44-98"><a href="#cb44-98"></a>    <span class="at">caption =</span> <span class="st">"Source: 2022 MLB Hitter Stats"</span></span>
+<span id="cb44-99"><a href="#cb44-99"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-100"><a href="#cb44-100"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb44-101"><a href="#cb44-101"></a>  <span class="fu">theme</span>(</span>
+<span id="cb44-102"><a href="#cb44-102"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb44-103"><a href="#cb44-103"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb44-104"><a href="#cb44-104"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
+<span id="cb44-105"><a href="#cb44-105"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">8</span>)),</span>
+<span id="cb44-106"><a href="#cb44-106"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">8</span>)),</span>
+<span id="cb44-107"><a href="#cb44-107"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)  <span class="co"># make team names smaller to avoid overlapping</span></span>
+<span id="cb44-108"><a href="#cb44-108"></a>  )</span>
+<span id="cb44-109"><a href="#cb44-109"></a><span class="in">```</span></span>
+<span id="cb44-110"><a href="#cb44-110"></a></span>
+<span id="cb44-111"><a href="#cb44-111"></a></span>
+<span id="cb44-114"><a href="#cb44-114"></a><span class="in">```{r}</span></span>
+<span id="cb44-115"><a href="#cb44-115"></a><span class="co"># join park stats and hitting stats</span></span>
+<span id="cb44-116"><a href="#cb44-116"></a>player_and_park_stats <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-117"><a href="#cb44-117"></a>  <span class="fu">left_join</span>(ballparks_stadium_data) </span>
+<span id="cb44-118"><a href="#cb44-118"></a><span class="in">```</span></span>
+<span id="cb44-119"><a href="#cb44-119"></a></span>
+<span id="cb44-122"><a href="#cb44-122"></a><span class="in">```{r}</span></span>
+<span id="cb44-123"><a href="#cb44-123"></a>  <span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb44-124"><a href="#cb44-124"></a>      <span class="fu">geom_point</span>()</span>
+<span id="cb44-125"><a href="#cb44-125"></a><span class="in">```</span></span>
+<span id="cb44-126"><a href="#cb44-126"></a></span>
+<span id="cb44-129"><a href="#cb44-129"></a><span class="in">```{r}</span></span>
+<span id="cb44-130"><a href="#cb44-130"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> extra_distance)) <span class="sc">+</span></span>
+<span id="cb44-131"><a href="#cb44-131"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb44-132"><a href="#cb44-132"></a><span class="in">```</span></span>
+<span id="cb44-133"><a href="#cb44-133"></a></span>
+<span id="cb44-134"><a href="#cb44-134"></a></span>
+<span id="cb44-137"><a href="#cb44-137"></a><span class="in">```{r}</span></span>
+<span id="cb44-138"><a href="#cb44-138"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> avg_temp)) <span class="sc">+</span></span>
+<span id="cb44-139"><a href="#cb44-139"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb44-140"><a href="#cb44-140"></a><span class="in">```</span></span>
+<span id="cb44-141"><a href="#cb44-141"></a></span>
+<span id="cb44-142"><a href="#cb44-142"></a></span>
+<span id="cb44-143"><a href="#cb44-143"></a></span>
+<span id="cb44-146"><a href="#cb44-146"></a><span class="in">```{r}</span></span>
+<span id="cb44-147"><a href="#cb44-147"></a><span class="co">#find which teams may have players more likely to over preform WOBA</span></span>
+<span id="cb44-148"><a href="#cb44-148"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-149"><a href="#cb44-149"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-150"><a href="#cb44-150"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb44-151"><a href="#cb44-151"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb44-152"><a href="#cb44-152"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb44-153"><a href="#cb44-153"></a><span class="in">```</span></span>
+<span id="cb44-154"><a href="#cb44-154"></a></span>
+<span id="cb44-157"><a href="#cb44-157"></a><span class="in">```{r}</span></span>
+<span id="cb44-158"><a href="#cb44-158"></a><span class="co">#find which team's players are likely to underpreform</span></span>
+<span id="cb44-159"><a href="#cb44-159"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-160"><a href="#cb44-160"></a>  <span class="fu">filter</span>(wobadiff <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-161"><a href="#cb44-161"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb44-162"><a href="#cb44-162"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb44-163"><a href="#cb44-163"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb44-164"><a href="#cb44-164"></a><span class="in">```</span></span>
+<span id="cb44-165"><a href="#cb44-165"></a></span>
+<span id="cb44-168"><a href="#cb44-168"></a><span class="in">```{r}</span></span>
+<span id="cb44-169"><a href="#cb44-169"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-170"><a href="#cb44-170"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span> ( <span class="st">"Cleveland Guardians"</span>, <span class="st">"Houston Astros   "</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"New York Mets"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-171"><a href="#cb44-171"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb44-172"><a href="#cb44-172"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb44-173"><a href="#cb44-173"></a><span class="in">```</span></span>
+<span id="cb44-174"><a href="#cb44-174"></a></span>
+<span id="cb44-177"><a href="#cb44-177"></a><span class="in">```{r}</span></span>
+<span id="cb44-178"><a href="#cb44-178"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-179"><a href="#cb44-179"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Atlanta Braves"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-180"><a href="#cb44-180"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb44-181"><a href="#cb44-181"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb44-182"><a href="#cb44-182"></a><span class="in">```</span></span>
+<span id="cb44-183"><a href="#cb44-183"></a></span>
+<span id="cb44-186"><a href="#cb44-186"></a><span class="in">```{r}</span></span>
+<span id="cb44-187"><a href="#cb44-187"></a><span class="co"># Vis of teams with over six batters on the dataset</span></span>
+<span id="cb44-188"><a href="#cb44-188"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-189"><a href="#cb44-189"></a>  <span class="fu">filter</span>(team_name <span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Baltimore Orioles"</span>, <span class="st">"Houston Astros"</span>, <span class="st">"Los Angeles Dodgers"</span>, <span class="st">"New York Mets"</span>, <span class="st">"New York Yankees"</span>, <span class="st">"Seattle Mariners"</span>, <span class="st">"Toronto Blue Jays"</span>, <span class="st">"San Diego Padres"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-190"><a href="#cb44-190"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> team_name, <span class="at">size =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb44-191"><a href="#cb44-191"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb44-192"><a href="#cb44-192"></a><span class="in">```</span></span>
+<span id="cb44-193"><a href="#cb44-193"></a></span>
+<span id="cb44-196"><a href="#cb44-196"></a><span class="in">```{r}</span></span>
+<span id="cb44-197"><a href="#cb44-197"></a><span class="co"># Find what teams have enough players to be statistically significant</span></span>
+<span id="cb44-198"><a href="#cb44-198"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-199"><a href="#cb44-199"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb44-200"><a href="#cb44-200"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb44-201"><a href="#cb44-201"></a>  <span class="fu">arrange</span>(n)</span>
+<span id="cb44-202"><a href="#cb44-202"></a><span class="in">```</span></span>
+<span id="cb44-203"><a href="#cb44-203"></a></span>
+<span id="cb44-206"><a href="#cb44-206"></a><span class="in">```{r}</span></span>
+<span id="cb44-207"><a href="#cb44-207"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> woba, <span class="at">y =</span> xwoba, <span class="at">color =</span> hr_park_effects)) <span class="sc">+</span></span>
+<span id="cb44-208"><a href="#cb44-208"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb44-209"><a href="#cb44-209"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb44-210"><a href="#cb44-210"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>league_name)</span>
+<span id="cb44-211"><a href="#cb44-211"></a><span class="in">```</span></span>
+<span id="cb44-212"><a href="#cb44-212"></a></span>
+<span id="cb44-215"><a href="#cb44-215"></a><span class="in">```{r}</span></span>
+<span id="cb44-216"><a href="#cb44-216"></a>player_and_park_stats <span class="sc">|&gt;</span></span>
+<span id="cb44-217"><a href="#cb44-217"></a>  <span class="fu">group_by</span>(league_name) <span class="sc">|&gt;</span></span>
+<span id="cb44-218"><a href="#cb44-218"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(hr_park_effects))</span>
+<span id="cb44-219"><a href="#cb44-219"></a><span class="in">```</span></span>
+<span id="cb44-220"><a href="#cb44-220"></a></span>
+<span id="cb44-223"><a href="#cb44-223"></a><span class="in">```{r}</span></span>
+<span id="cb44-224"><a href="#cb44-224"></a><span class="co"># difference in expected vs actual slugging compared to park effects</span></span>
+<span id="cb44-225"><a href="#cb44-225"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> xslgdiff)) <span class="sc">+</span></span>
+<span id="cb44-226"><a href="#cb44-226"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb44-227"><a href="#cb44-227"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb44-228"><a href="#cb44-228"></a><span class="in">```</span></span>
+<span id="cb44-229"><a href="#cb44-229"></a></span>
+<span id="cb44-232"><a href="#cb44-232"></a><span class="in">```{r}</span></span>
+<span id="cb44-233"><a href="#cb44-233"></a><span class="co"># difference in expected vs actual weighted on base avreage compared to park effects</span></span>
+<span id="cb44-234"><a href="#cb44-234"></a><span class="fu">ggplot</span>(player_and_park_stats, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> wobadiff)) <span class="sc">+</span></span>
+<span id="cb44-235"><a href="#cb44-235"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb44-236"><a href="#cb44-236"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb44-237"><a href="#cb44-237"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

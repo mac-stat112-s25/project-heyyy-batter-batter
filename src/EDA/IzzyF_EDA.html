@@ -171,7 +171,7 @@ cookieconsent.run({
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/et/ZachM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M Effective</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -278,59 +278,14 @@ cookieconsent.run({
 
 
 </header><div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(baseballr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'baseballr' was built under R version 4.4.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'stringr' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'forcats' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>Park_data_23 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2023</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">summary</span>(Park_data_23) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Park_data_23 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2023</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">summary</span>(Park_data_23) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     season      home_team           basic_5yr          3yr        
  Min.   :2023   Length:30          Min.   : 94.0   Min.   : 93.00  
@@ -361,12 +316,12 @@ cookieconsent.run({
  3rd Qu.:101.00   3rd Qu.:101   3rd Qu.:103.0   3rd Qu.:101.75  
  Max.   :104.00   Max.   :109   Max.   :110.0   Max.   :106.00  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">head</span>(Park_data_23) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(Park_data_23) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Park Factors data from FanGraphs.com ───────────────────── baseballr 1.6.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Data updated: 2025-05-04 13:16:41 CDT</code></pre>
+<pre><code>ℹ Data updated: 2025-05-06 16:06:26 CDT</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 16
@@ -382,61 +337,61 @@ cookieconsent.run({
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> single, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> double, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> triple, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> hr, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> IFFB, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> single, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> double, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> triple, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> hr, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">fg_batter_leaders</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> IFFB, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">fg_batter_leaders</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── MLB Player Batting Leaders data from FanGraphs.com ─────── baseballr 1.6.0 ──</code></pre>
+<pre><code>── MLB Team Batting data from FanGraphs.com ───────────────── baseballr 1.6.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Data updated: 2025-05-04 13:16:48 CDT</code></pre>
+<pre><code>ℹ Data updated: 2025-05-06 16:06:29 CDT</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,457 × 349
@@ -460,20 +415,20 @@ cookieconsent.run({
 #   FB &lt;int&gt;, LD &lt;int&gt;, IFFB &lt;int&gt;, Pitches &lt;int&gt;, Balls &lt;int&gt;, Strikes &lt;int&gt;,
 #   IFH &lt;int&gt;, BU &lt;int&gt;, BUH &lt;int&gt;, BB_pct &lt;dbl&gt;, K_pct &lt;dbl&gt;, BB_K &lt;dbl&gt;, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>team_pitch_data_2023 <span class="ot">&lt;-</span> <span class="fu">fg_team_pitcher</span>(<span class="at">startseason =</span> <span class="st">"2023"</span>, <span class="at">endseason =</span> <span class="st">"2023"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>team_pitch_data_2023 <span class="ot">&lt;-</span> <span class="fu">fg_team_pitcher</span>(<span class="at">startseason =</span> <span class="st">"2023"</span>, <span class="at">endseason =</span> <span class="st">"2023"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">ggplot</span>(team_pitch_data_2023, <span class="fu">aes</span>(<span class="at">x =</span> xFIP, <span class="at">y =</span> WPA)) <span class="sc">+</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>         <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(team_pitch_data_2023, <span class="fu">aes</span>(<span class="at">x =</span> xFIP, <span class="at">y =</span> WPA)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>         <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 30 Columns: 14
 ── Column specification ────────────────────────────────────────────────────────
@@ -484,8 +439,8 @@ dbl (11): left_field, center_field, right_field, min_wall_height, max_wall_h...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 14
   abrev_team_name team_name         ballpark left_field center_field right_field
@@ -500,34 +455,34 @@ dbl (11): left_field, center_field, right_field, min_wall_height, max_wall_h...
 #   hr_park_effects &lt;dbl&gt;, extra_distance &lt;dbl&gt;, avg_temp &lt;dbl&gt;,
 #   elevation &lt;dbl&gt;, roof &lt;dbl&gt;, daytime &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ballpark), <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a>  <span class="fu">labs</span>(</span>
-<span id="cb38-6"><a href="#cb38-6"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
-<span id="cb38-7"><a href="#cb38-7"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
-<span id="cb38-8"><a href="#cb38-8"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
-<span id="cb38-9"><a href="#cb38-9"></a>  ) <span class="sc">+</span></span>
-<span id="cb38-10"><a href="#cb38-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ballpark), <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 130 Columns: 28
 ── Column specification ────────────────────────────────────────────────────────
@@ -538,7 +493,7 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 28
   `last_name, first_name` player_id  year    pa   hit single double triple
@@ -555,12 +510,12 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 #   wobacon &lt;dbl&gt;, xwobacon &lt;dbl&gt;, bacon &lt;dbl&gt;, xbacon &lt;dbl&gt;, xbadiff &lt;dbl&gt;,
 #   xslgdiff &lt;dbl&gt;, wobadiff &lt;dbl&gt;, hard_hit_percent &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">select</span>(player_id, team_name)</span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="fu">head</span>(Player_team_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">select</span>(player_id, team_name)</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">head</span>(Player_team_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── MLB Stats data from MLB.com ────────────────────────────── baseballr 1.6.0 ──
-ℹ Data updated: 2025-05-04 13:16:52 CDT</code></pre>
+ℹ Data updated: 2025-05-06 16:06:33 CDT</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -573,9 +528,9 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 5    592450 New York Yankees   
 6    593428 Boston Red Sox     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
-<span id="cb46-3"><a href="#cb46-3"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 29
   `last_name, first_name` player_id  year    pa   hit single double triple
@@ -594,12 +549,12 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslgdiff, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>team_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslgdiff, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>team_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="IzzyF_EDA_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1239,103 +1194,104 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb49" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb49-1"><a href="#cb49-1"></a><span class="co">---</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a><span class="an">title:</span><span class="co"> "Izzy F"</span></span>
-<span id="cb49-3"><a href="#cb49-3"></a><span class="co">---</span></span>
-<span id="cb49-4"><a href="#cb49-4"></a></span>
-<span id="cb49-5"><a href="#cb49-5"></a></span>
-<span id="cb49-8"><a href="#cb49-8"></a><span class="in">```{r}</span></span>
-<span id="cb49-9"><a href="#cb49-9"></a><span class="fu">library</span>(baseballr)</span>
-<span id="cb49-10"><a href="#cb49-10"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-11"><a href="#cb49-11"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb49-12"><a href="#cb49-12"></a><span class="in">```</span></span>
-<span id="cb49-13"><a href="#cb49-13"></a></span>
-<span id="cb49-14"><a href="#cb49-14"></a></span>
-<span id="cb49-17"><a href="#cb49-17"></a><span class="in">```{r}</span></span>
-<span id="cb49-18"><a href="#cb49-18"></a>Park_data_23 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2023</span>)</span>
-<span id="cb49-19"><a href="#cb49-19"></a></span>
-<span id="cb49-20"><a href="#cb49-20"></a><span class="fu">summary</span>(Park_data_23) </span>
-<span id="cb49-21"><a href="#cb49-21"></a></span>
-<span id="cb49-22"><a href="#cb49-22"></a><span class="fu">head</span>(Park_data_23) </span>
-<span id="cb49-23"><a href="#cb49-23"></a><span class="in">```</span></span>
-<span id="cb49-26"><a href="#cb49-26"></a><span class="in">```{r}</span></span>
-<span id="cb49-27"><a href="#cb49-27"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> single, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb49-28"><a href="#cb49-28"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-29"><a href="#cb49-29"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
-<span id="cb49-30"><a href="#cb49-30"></a></span>
-<span id="cb49-31"><a href="#cb49-31"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> double, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb49-32"><a href="#cb49-32"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-33"><a href="#cb49-33"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
-<span id="cb49-34"><a href="#cb49-34"></a></span>
-<span id="cb49-35"><a href="#cb49-35"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> triple, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb49-36"><a href="#cb49-36"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-37"><a href="#cb49-37"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
-<span id="cb49-38"><a href="#cb49-38"></a></span>
-<span id="cb49-39"><a href="#cb49-39"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> hr, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb49-40"><a href="#cb49-40"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-41"><a href="#cb49-41"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
-<span id="cb49-42"><a href="#cb49-42"></a></span>
-<span id="cb49-43"><a href="#cb49-43"></a><span class="in">```</span></span>
-<span id="cb49-46"><a href="#cb49-46"></a><span class="in">```{r}</span></span>
-<span id="cb49-47"><a href="#cb49-47"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> IFFB, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
-<span id="cb49-48"><a href="#cb49-48"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-49"><a href="#cb49-49"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
-<span id="cb49-50"><a href="#cb49-50"></a></span>
-<span id="cb49-51"><a href="#cb49-51"></a><span class="in">```</span></span>
-<span id="cb49-54"><a href="#cb49-54"></a><span class="in">```{r}</span></span>
-<span id="cb49-55"><a href="#cb49-55"></a><span class="fu">fg_batter_leaders</span>()</span>
-<span id="cb49-56"><a href="#cb49-56"></a></span>
-<span id="cb49-57"><a href="#cb49-57"></a>team_pitch_data_2023 <span class="ot">&lt;-</span> <span class="fu">fg_team_pitcher</span>(<span class="at">startseason =</span> <span class="st">"2023"</span>, <span class="at">endseason =</span> <span class="st">"2023"</span>)</span>
-<span id="cb49-58"><a href="#cb49-58"></a></span>
-<span id="cb49-59"><a href="#cb49-59"></a><span class="in">```</span></span>
-<span id="cb49-62"><a href="#cb49-62"></a><span class="in">```{r}</span></span>
-<span id="cb49-63"><a href="#cb49-63"></a><span class="fu">ggplot</span>(team_pitch_data_2023, <span class="fu">aes</span>(<span class="at">x =</span> xFIP, <span class="at">y =</span> WPA)) <span class="sc">+</span></span>
-<span id="cb49-64"><a href="#cb49-64"></a>         <span class="fu">geom_point</span>()</span>
-<span id="cb49-65"><a href="#cb49-65"></a><span class="in">```</span></span>
-<span id="cb49-68"><a href="#cb49-68"></a><span class="in">```{r}</span></span>
-<span id="cb49-69"><a href="#cb49-69"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
-<span id="cb49-70"><a href="#cb49-70"></a></span>
-<span id="cb49-71"><a href="#cb49-71"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb49-72"><a href="#cb49-72"></a>  <span class="fu">head</span>()</span>
-<span id="cb49-73"><a href="#cb49-73"></a></span>
-<span id="cb49-74"><a href="#cb49-74"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb49-75"><a href="#cb49-75"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb49-76"><a href="#cb49-76"></a>  <span class="fu">geom_col</span>()</span>
-<span id="cb49-77"><a href="#cb49-77"></a></span>
-<span id="cb49-78"><a href="#cb49-78"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb49-79"><a href="#cb49-79"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb49-80"><a href="#cb49-80"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb49-81"><a href="#cb49-81"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ballpark), <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb49-82"><a href="#cb49-82"></a>  <span class="fu">labs</span>(</span>
-<span id="cb49-83"><a href="#cb49-83"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
-<span id="cb49-84"><a href="#cb49-84"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
-<span id="cb49-85"><a href="#cb49-85"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
-<span id="cb49-86"><a href="#cb49-86"></a>  ) <span class="sc">+</span></span>
-<span id="cb49-87"><a href="#cb49-87"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb49-88"><a href="#cb49-88"></a><span class="in">```</span></span>
-<span id="cb49-91"><a href="#cb49-91"></a><span class="in">```{r}</span></span>
-<span id="cb49-92"><a href="#cb49-92"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
-<span id="cb49-93"><a href="#cb49-93"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span>
-<span id="cb49-94"><a href="#cb49-94"></a></span>
-<span id="cb49-95"><a href="#cb49-95"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
-<span id="cb49-96"><a href="#cb49-96"></a>  <span class="fu">select</span>(player_id, team_name)</span>
-<span id="cb49-97"><a href="#cb49-97"></a><span class="fu">head</span>(Player_team_info)</span>
-<span id="cb49-98"><a href="#cb49-98"></a></span>
-<span id="cb49-99"><a href="#cb49-99"></a></span>
-<span id="cb49-100"><a href="#cb49-100"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb49-101"><a href="#cb49-101"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
-<span id="cb49-102"><a href="#cb49-102"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
-<span id="cb49-103"><a href="#cb49-103"></a></span>
-<span id="cb49-104"><a href="#cb49-104"></a></span>
-<span id="cb49-105"><a href="#cb49-105"></a><span class="in">```</span></span>
-<span id="cb49-108"><a href="#cb49-108"></a><span class="in">```{r}</span></span>
-<span id="cb49-109"><a href="#cb49-109"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslgdiff, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb49-110"><a href="#cb49-110"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb49-111"><a href="#cb49-111"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>team_name)</span>
-<span id="cb49-112"><a href="#cb49-112"></a></span>
-<span id="cb49-113"><a href="#cb49-113"></a><span class="in">```</span></span>
-<span id="cb49-116"><a href="#cb49-116"></a><span class="in">```{r}</span></span>
-<span id="cb49-117"><a href="#cb49-117"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb35" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">---</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="an">title:</span><span class="co"> "Izzy F"</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co">---</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="in">knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="in">```</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="in">```{r}</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb35-14"><a href="#cb35-14"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="in">```</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a></span>
+<span id="cb35-17"><a href="#cb35-17"></a></span>
+<span id="cb35-20"><a href="#cb35-20"></a><span class="in">```{r}</span></span>
+<span id="cb35-21"><a href="#cb35-21"></a>Park_data_23 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2023</span>)</span>
+<span id="cb35-22"><a href="#cb35-22"></a></span>
+<span id="cb35-23"><a href="#cb35-23"></a><span class="fu">summary</span>(Park_data_23) </span>
+<span id="cb35-24"><a href="#cb35-24"></a></span>
+<span id="cb35-25"><a href="#cb35-25"></a><span class="fu">head</span>(Park_data_23) </span>
+<span id="cb35-26"><a href="#cb35-26"></a><span class="in">```</span></span>
+<span id="cb35-29"><a href="#cb35-29"></a><span class="in">```{r}</span></span>
+<span id="cb35-30"><a href="#cb35-30"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> single, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb35-31"><a href="#cb35-31"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-32"><a href="#cb35-32"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
+<span id="cb35-33"><a href="#cb35-33"></a></span>
+<span id="cb35-34"><a href="#cb35-34"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> double, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb35-35"><a href="#cb35-35"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-36"><a href="#cb35-36"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
+<span id="cb35-37"><a href="#cb35-37"></a></span>
+<span id="cb35-38"><a href="#cb35-38"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> triple, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb35-39"><a href="#cb35-39"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-40"><a href="#cb35-40"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
+<span id="cb35-41"><a href="#cb35-41"></a></span>
+<span id="cb35-42"><a href="#cb35-42"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> hr, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb35-43"><a href="#cb35-43"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-44"><a href="#cb35-44"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
+<span id="cb35-45"><a href="#cb35-45"></a></span>
+<span id="cb35-46"><a href="#cb35-46"></a><span class="in">```</span></span>
+<span id="cb35-49"><a href="#cb35-49"></a><span class="in">```{r}</span></span>
+<span id="cb35-50"><a href="#cb35-50"></a><span class="fu">ggplot</span>(Park_data_23, <span class="fu">aes</span>(<span class="at">x =</span> IFFB, <span class="at">y =</span> basic_5yr)) <span class="sc">+</span></span>
+<span id="cb35-51"><a href="#cb35-51"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-52"><a href="#cb35-52"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> home_team), <span class="at">angle =</span> <span class="dv">360</span>, <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="fl">0.7</span>)</span>
+<span id="cb35-53"><a href="#cb35-53"></a></span>
+<span id="cb35-54"><a href="#cb35-54"></a><span class="in">```</span></span>
+<span id="cb35-57"><a href="#cb35-57"></a><span class="in">```{r}</span></span>
+<span id="cb35-58"><a href="#cb35-58"></a><span class="fu">fg_batter_leaders</span>()</span>
+<span id="cb35-59"><a href="#cb35-59"></a></span>
+<span id="cb35-60"><a href="#cb35-60"></a>team_pitch_data_2023 <span class="ot">&lt;-</span> <span class="fu">fg_team_pitcher</span>(<span class="at">startseason =</span> <span class="st">"2023"</span>, <span class="at">endseason =</span> <span class="st">"2023"</span>)</span>
+<span id="cb35-61"><a href="#cb35-61"></a></span>
+<span id="cb35-62"><a href="#cb35-62"></a><span class="in">```</span></span>
+<span id="cb35-65"><a href="#cb35-65"></a><span class="in">```{r}</span></span>
+<span id="cb35-66"><a href="#cb35-66"></a><span class="fu">ggplot</span>(team_pitch_data_2023, <span class="fu">aes</span>(<span class="at">x =</span> xFIP, <span class="at">y =</span> WPA)) <span class="sc">+</span></span>
+<span id="cb35-67"><a href="#cb35-67"></a>         <span class="fu">geom_point</span>()</span>
+<span id="cb35-68"><a href="#cb35-68"></a><span class="in">```</span></span>
+<span id="cb35-71"><a href="#cb35-71"></a><span class="in">```{r}</span></span>
+<span id="cb35-72"><a href="#cb35-72"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
+<span id="cb35-73"><a href="#cb35-73"></a></span>
+<span id="cb35-74"><a href="#cb35-74"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb35-75"><a href="#cb35-75"></a>  <span class="fu">head</span>()</span>
+<span id="cb35-76"><a href="#cb35-76"></a></span>
+<span id="cb35-77"><a href="#cb35-77"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb35-78"><a href="#cb35-78"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb35-79"><a href="#cb35-79"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb35-80"><a href="#cb35-80"></a></span>
+<span id="cb35-81"><a href="#cb35-81"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb35-82"><a href="#cb35-82"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb35-83"><a href="#cb35-83"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb35-84"><a href="#cb35-84"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ballpark), <span class="at">nudge_y =</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb35-85"><a href="#cb35-85"></a>  <span class="fu">labs</span>(</span>
+<span id="cb35-86"><a href="#cb35-86"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
+<span id="cb35-87"><a href="#cb35-87"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
+<span id="cb35-88"><a href="#cb35-88"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
+<span id="cb35-89"><a href="#cb35-89"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-90"><a href="#cb35-90"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb35-91"><a href="#cb35-91"></a><span class="in">```</span></span>
+<span id="cb35-94"><a href="#cb35-94"></a><span class="in">```{r}</span></span>
+<span id="cb35-95"><a href="#cb35-95"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
+<span id="cb35-96"><a href="#cb35-96"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span>
+<span id="cb35-97"><a href="#cb35-97"></a></span>
+<span id="cb35-98"><a href="#cb35-98"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-99"><a href="#cb35-99"></a>  <span class="fu">select</span>(player_id, team_name)</span>
+<span id="cb35-100"><a href="#cb35-100"></a><span class="fu">head</span>(Player_team_info)</span>
+<span id="cb35-101"><a href="#cb35-101"></a></span>
+<span id="cb35-102"><a href="#cb35-102"></a></span>
+<span id="cb35-103"><a href="#cb35-103"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb35-104"><a href="#cb35-104"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb35-105"><a href="#cb35-105"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
+<span id="cb35-106"><a href="#cb35-106"></a></span>
+<span id="cb35-107"><a href="#cb35-107"></a></span>
+<span id="cb35-108"><a href="#cb35-108"></a><span class="in">```</span></span>
+<span id="cb35-111"><a href="#cb35-111"></a><span class="in">```{r}</span></span>
+<span id="cb35-112"><a href="#cb35-112"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslgdiff, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb35-113"><a href="#cb35-113"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb35-114"><a href="#cb35-114"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>team_name)</span>
+<span id="cb35-115"><a href="#cb35-115"></a></span>
+<span id="cb35-116"><a href="#cb35-116"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

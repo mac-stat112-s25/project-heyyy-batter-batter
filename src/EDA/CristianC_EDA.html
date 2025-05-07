@@ -171,7 +171,7 @@ cookieconsent.run({
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/et/ZachM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M Effective</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zach M</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -285,16 +285,15 @@ cookieconsent.run({
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#warning: false</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
 <span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>parkfactor22 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2022</span>)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>parkfactor22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10"></a>parkfactor22 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2022</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>parkfactor22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Park Factors data from FanGraphs.com ───────────────────── baseballr 1.6.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Data updated: 2025-05-05 13:02:14 CDT</code></pre>
+<pre><code>ℹ Data updated: 2025-05-06 21:23:00 CDT</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 16
@@ -443,7 +442,7 @@ dbl (27): player_id, year, pa, hit, single, double, triple, home_run, battin...
 <pre><code>── MLB Stats data from MLB.com ────────────────────────────── baseballr 1.6.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Data updated: 2025-05-05 13:02:16 CDT</code></pre>
+<pre><code>ℹ Data updated: 2025-05-06 21:23:01 CDT</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
@@ -1335,215 +1334,213 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb42-3"><a href="#cb42-3"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb42-4"><a href="#cb42-4"></a><span class="co">---</span></span>
 <span id="cb42-5"><a href="#cb42-5"></a></span>
-<span id="cb42-6"><a href="#cb42-6"></a><span class="in">```{r, include = FALSE}</span></span>
-<span id="cb42-7"><a href="#cb42-7"></a><span class="in">knitr::opts_chunk$set(message = FALSE, echo = FALSE) </span></span>
+<span id="cb42-6"><a href="#cb42-6"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb42-7"><a href="#cb42-7"></a><span class="in">knitr::opts_chunk$set(message = FALSE, warning = FALSE)</span></span>
 <span id="cb42-8"><a href="#cb42-8"></a><span class="in">```</span></span>
 <span id="cb42-9"><a href="#cb42-9"></a></span>
-<span id="cb42-10"><a href="#cb42-10"></a></span>
-<span id="cb42-13"><a href="#cb42-13"></a><span class="in">```{r}</span></span>
-<span id="cb42-14"><a href="#cb42-14"></a><span class="co">#load packages</span></span>
-<span id="cb42-15"><a href="#cb42-15"></a><span class="fu">library</span>(baseballr)</span>
-<span id="cb42-16"><a href="#cb42-16"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb42-17"><a href="#cb42-17"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb42-18"><a href="#cb42-18"></a><span class="fu">library</span>(readr)</span>
-<span id="cb42-19"><a href="#cb42-19"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb42-20"><a href="#cb42-20"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb42-21"><a href="#cb42-21"></a><span class="co">#warning: false</span></span>
-<span id="cb42-22"><a href="#cb42-22"></a></span>
-<span id="cb42-23"><a href="#cb42-23"></a></span>
-<span id="cb42-24"><a href="#cb42-24"></a>parkfactor22 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2022</span>)</span>
-<span id="cb42-25"><a href="#cb42-25"></a>parkfactor22</span>
+<span id="cb42-12"><a href="#cb42-12"></a><span class="in">```{r}</span></span>
+<span id="cb42-13"><a href="#cb42-13"></a><span class="co">#load packages</span></span>
+<span id="cb42-14"><a href="#cb42-14"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb42-15"><a href="#cb42-15"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb42-16"><a href="#cb42-16"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb42-17"><a href="#cb42-17"></a><span class="fu">library</span>(readr)</span>
+<span id="cb42-18"><a href="#cb42-18"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb42-19"><a href="#cb42-19"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb42-20"><a href="#cb42-20"></a></span>
+<span id="cb42-21"><a href="#cb42-21"></a></span>
+<span id="cb42-22"><a href="#cb42-22"></a>parkfactor22 <span class="ot">&lt;-</span> <span class="fu">fg_park</span>(<span class="dv">2022</span>)</span>
+<span id="cb42-23"><a href="#cb42-23"></a>parkfactor22</span>
+<span id="cb42-24"><a href="#cb42-24"></a></span>
+<span id="cb42-25"><a href="#cb42-25"></a><span class="in">```</span></span>
 <span id="cb42-26"><a href="#cb42-26"></a></span>
-<span id="cb42-27"><a href="#cb42-27"></a><span class="in">```</span></span>
-<span id="cb42-28"><a href="#cb42-28"></a></span>
-<span id="cb42-31"><a href="#cb42-31"></a><span class="in">```{r}</span></span>
-<span id="cb42-32"><a href="#cb42-32"></a><span class="co">#Stadium data</span></span>
-<span id="cb42-33"><a href="#cb42-33"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
+<span id="cb42-29"><a href="#cb42-29"></a><span class="in">```{r}</span></span>
+<span id="cb42-30"><a href="#cb42-30"></a><span class="co">#Stadium data</span></span>
+<span id="cb42-31"><a href="#cb42-31"></a>stadium_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/ballparks_stadium_data_2022.csv"</span>)</span>
+<span id="cb42-32"><a href="#cb42-32"></a></span>
+<span id="cb42-33"><a href="#cb42-33"></a><span class="in">```</span></span>
 <span id="cb42-34"><a href="#cb42-34"></a></span>
-<span id="cb42-35"><a href="#cb42-35"></a><span class="in">```</span></span>
-<span id="cb42-36"><a href="#cb42-36"></a></span>
-<span id="cb42-37"><a href="#cb42-37"></a></span>
-<span id="cb42-40"><a href="#cb42-40"></a><span class="in">```{r}</span></span>
-<span id="cb42-41"><a href="#cb42-41"></a><span class="co"># view basics of data</span></span>
-<span id="cb42-42"><a href="#cb42-42"></a><span class="fu">summary</span>(stadium_data) <span class="co">#get summary of values of each variable</span></span>
-<span id="cb42-43"><a href="#cb42-43"></a><span class="fu">head</span>(stadium_data) <span class="co">#view what the data looks like</span></span>
-<span id="cb42-44"><a href="#cb42-44"></a></span>
-<span id="cb42-45"><a href="#cb42-45"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-46"><a href="#cb42-46"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb42-47"><a href="#cb42-47"></a>  <span class="fu">geom_col</span>()</span>
-<span id="cb42-48"><a href="#cb42-48"></a></span>
-<span id="cb42-49"><a href="#cb42-49"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-50"><a href="#cb42-50"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb42-51"><a href="#cb42-51"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb42-52"><a href="#cb42-52"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-53"><a href="#cb42-53"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
-<span id="cb42-54"><a href="#cb42-54"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
-<span id="cb42-55"><a href="#cb42-55"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
-<span id="cb42-56"><a href="#cb42-56"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-57"><a href="#cb42-57"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb42-35"><a href="#cb42-35"></a></span>
+<span id="cb42-38"><a href="#cb42-38"></a><span class="in">```{r}</span></span>
+<span id="cb42-39"><a href="#cb42-39"></a><span class="co"># view basics of data</span></span>
+<span id="cb42-40"><a href="#cb42-40"></a><span class="fu">summary</span>(stadium_data) <span class="co">#get summary of values of each variable</span></span>
+<span id="cb42-41"><a href="#cb42-41"></a><span class="fu">head</span>(stadium_data) <span class="co">#view what the data looks like</span></span>
+<span id="cb42-42"><a href="#cb42-42"></a></span>
+<span id="cb42-43"><a href="#cb42-43"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-44"><a href="#cb42-44"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr_park_effects,  <span class="at">x =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb42-45"><a href="#cb42-45"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb42-46"><a href="#cb42-46"></a></span>
+<span id="cb42-47"><a href="#cb42-47"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-48"><a href="#cb42-48"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> hr_park_effects, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb42-49"><a href="#cb42-49"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb42-50"><a href="#cb42-50"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-51"><a href="#cb42-51"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs HR Park Effects by Ballpark"</span>,</span>
+<span id="cb42-52"><a href="#cb42-52"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
+<span id="cb42-53"><a href="#cb42-53"></a>    <span class="at">y =</span> <span class="st">"HR Park Effects (100 = league avg)"</span></span>
+<span id="cb42-54"><a href="#cb42-54"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-55"><a href="#cb42-55"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb42-56"><a href="#cb42-56"></a></span>
+<span id="cb42-57"><a href="#cb42-57"></a><span class="in">```</span></span>
 <span id="cb42-58"><a href="#cb42-58"></a></span>
-<span id="cb42-59"><a href="#cb42-59"></a><span class="in">```</span></span>
+<span id="cb42-59"><a href="#cb42-59"></a>##These is the codebook for stadium_data</span>
 <span id="cb42-60"><a href="#cb42-60"></a></span>
-<span id="cb42-61"><a href="#cb42-61"></a>##These is the codebook for stadium_data</span>
-<span id="cb42-62"><a href="#cb42-62"></a></span>
-<span id="cb42-63"><a href="#cb42-63"></a>team_name</span>
-<span id="cb42-64"><a href="#cb42-64"></a>ball_park</span>
-<span id="cb42-65"><a href="#cb42-65"></a>left_field - Distance from the home plate to 'the nearest fence or obstruction' in left field, measured in yards.</span>
-<span id="cb42-66"><a href="#cb42-66"></a>center_field - Distance from the home plate to 'the nearest fence or obstruction' in center field, measured in yards.</span>
-<span id="cb42-67"><a href="#cb42-67"></a>right_field - Distance from the home plate to 'the nearest fence or obstruction' in right field, measured in yards.</span>
-<span id="cb42-68"><a href="#cb42-68"></a>min_wall_height - Minimum wall height, measured in yards.</span>
-<span id="cb42-69"><a href="#cb42-69"></a>max_wall_height - Maximum wall height, measured in yards.</span>
-<span id="cb42-70"><a href="#cb42-70"></a>hr_park_effects - Total "park effects" on home run rate, with 100 being a baseline average.</span>
-<span id="cb42-71"><a href="#cb42-71"></a>extra_distance - Total extra distance that a particular ballpark adds to hits.</span>
-<span id="cb42-72"><a href="#cb42-72"></a>avg_temp - Average temperature at each ballpark, measured in Fahrenheit.</span>
-<span id="cb42-73"><a href="#cb42-73"></a>elevation - Elevation height above sea level, measured in feet.</span>
-<span id="cb42-74"><a href="#cb42-74"></a>roof - Percentage of all games that are played with roof cover on.</span>
-<span id="cb42-75"><a href="#cb42-75"></a>daytime - Percentage of all games that are played during the day.</span>
-<span id="cb42-76"><a href="#cb42-76"></a></span>
-<span id="cb42-77"><a href="#cb42-77"></a></span>
-<span id="cb42-78"><a href="#cb42-78"></a>**##However we later join in into joined_stadium_data with the 2022 hitter stats**</span>
-<span id="cb42-79"><a href="#cb42-79"></a>The code to do this are below</span>
-<span id="cb42-80"><a href="#cb42-80"></a></span>
-<span id="cb42-81"><a href="#cb42-81"></a></span>
-<span id="cb42-84"><a href="#cb42-84"></a><span class="in">```{r}</span></span>
-<span id="cb42-85"><a href="#cb42-85"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
-<span id="cb42-86"><a href="#cb42-86"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span>
+<span id="cb42-61"><a href="#cb42-61"></a>team_name</span>
+<span id="cb42-62"><a href="#cb42-62"></a>ball_park</span>
+<span id="cb42-63"><a href="#cb42-63"></a>left_field - Distance from the home plate to 'the nearest fence or obstruction' in left field, measured in yards.</span>
+<span id="cb42-64"><a href="#cb42-64"></a>center_field - Distance from the home plate to 'the nearest fence or obstruction' in center field, measured in yards.</span>
+<span id="cb42-65"><a href="#cb42-65"></a>right_field - Distance from the home plate to 'the nearest fence or obstruction' in right field, measured in yards.</span>
+<span id="cb42-66"><a href="#cb42-66"></a>min_wall_height - Minimum wall height, measured in yards.</span>
+<span id="cb42-67"><a href="#cb42-67"></a>max_wall_height - Maximum wall height, measured in yards.</span>
+<span id="cb42-68"><a href="#cb42-68"></a>hr_park_effects - Total "park effects" on home run rate, with 100 being a baseline average.</span>
+<span id="cb42-69"><a href="#cb42-69"></a>extra_distance - Total extra distance that a particular ballpark adds to hits.</span>
+<span id="cb42-70"><a href="#cb42-70"></a>avg_temp - Average temperature at each ballpark, measured in Fahrenheit.</span>
+<span id="cb42-71"><a href="#cb42-71"></a>elevation - Elevation height above sea level, measured in feet.</span>
+<span id="cb42-72"><a href="#cb42-72"></a>roof - Percentage of all games that are played with roof cover on.</span>
+<span id="cb42-73"><a href="#cb42-73"></a>daytime - Percentage of all games that are played during the day.</span>
+<span id="cb42-74"><a href="#cb42-74"></a></span>
+<span id="cb42-75"><a href="#cb42-75"></a></span>
+<span id="cb42-76"><a href="#cb42-76"></a>**##However we later join in into joined_stadium_data with the 2022 hitter stats**</span>
+<span id="cb42-77"><a href="#cb42-77"></a>The code to do this are below</span>
+<span id="cb42-78"><a href="#cb42-78"></a></span>
+<span id="cb42-79"><a href="#cb42-79"></a></span>
+<span id="cb42-82"><a href="#cb42-82"></a><span class="in">```{r}</span></span>
+<span id="cb42-83"><a href="#cb42-83"></a><span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/2022HitterStats.csv"</span>)</span>
+<span id="cb42-84"><a href="#cb42-84"></a><span class="fu">head</span>(<span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span>) </span>
+<span id="cb42-85"><a href="#cb42-85"></a></span>
+<span id="cb42-86"><a href="#cb42-86"></a><span class="in">```</span></span>
 <span id="cb42-87"><a href="#cb42-87"></a></span>
-<span id="cb42-88"><a href="#cb42-88"></a><span class="in">```</span></span>
-<span id="cb42-89"><a href="#cb42-89"></a></span>
-<span id="cb42-92"><a href="#cb42-92"></a><span class="in">```{r}</span></span>
-<span id="cb42-93"><a href="#cb42-93"></a><span class="co">#player_id info</span></span>
-<span id="cb42-94"><a href="#cb42-94"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
-<span id="cb42-95"><a href="#cb42-95"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span>
-<span id="cb42-96"><a href="#cb42-96"></a><span class="fu">head</span>(Player_team_info)</span>
-<span id="cb42-97"><a href="#cb42-97"></a></span>
-<span id="cb42-98"><a href="#cb42-98"></a><span class="co">#Joined data set player_id with rest of player stats</span></span>
-<span id="cb42-99"><a href="#cb42-99"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb42-100"><a href="#cb42-100"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
-<span id="cb42-101"><a href="#cb42-101"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
+<span id="cb42-90"><a href="#cb42-90"></a><span class="in">```{r}</span></span>
+<span id="cb42-91"><a href="#cb42-91"></a><span class="co">#player_id info</span></span>
+<span id="cb42-92"><a href="#cb42-92"></a>Player_team_info <span class="ot">&lt;-</span> <span class="fu">mlb_stats</span>(<span class="at">stat_type =</span> <span class="st">'season'</span>, <span class="at">stat_group =</span> <span class="st">'hitting'</span>, <span class="at">season =</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-93"><a href="#cb42-93"></a>  <span class="fu">select</span>(player_id, team_name, league_name)</span>
+<span id="cb42-94"><a href="#cb42-94"></a><span class="fu">head</span>(Player_team_info)</span>
+<span id="cb42-95"><a href="#cb42-95"></a></span>
+<span id="cb42-96"><a href="#cb42-96"></a><span class="co">#Joined data set player_id with rest of player stats</span></span>
+<span id="cb42-97"><a href="#cb42-97"></a>Full_22_Hitter_stats <span class="ot">&lt;-</span> <span class="st">`</span><span class="at">2022HitterStats</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb42-98"><a href="#cb42-98"></a>  <span class="fu">left_join</span>(Player_team_info, <span class="fu">join_by</span>(player_id))</span>
+<span id="cb42-99"><a href="#cb42-99"></a><span class="fu">head</span>(Full_22_Hitter_stats)</span>
+<span id="cb42-100"><a href="#cb42-100"></a></span>
+<span id="cb42-101"><a href="#cb42-101"></a><span class="in">```</span></span>
 <span id="cb42-102"><a href="#cb42-102"></a></span>
-<span id="cb42-103"><a href="#cb42-103"></a><span class="in">```</span></span>
-<span id="cb42-104"><a href="#cb42-104"></a></span>
-<span id="cb42-105"><a href="#cb42-105"></a></span>
-<span id="cb42-108"><a href="#cb42-108"></a><span class="in">```{r}</span></span>
-<span id="cb42-109"><a href="#cb42-109"></a><span class="co">#expected vs observed slg by hitter (colored by Park)</span></span>
-<span id="cb42-110"><a href="#cb42-110"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb42-111"><a href="#cb42-111"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb42-112"><a href="#cb42-112"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb42-113"><a href="#cb42-113"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Expected SLG"</span>, <span class="at">y =</span> <span class="st">"Observed SLG"</span>,</span>
-<span id="cb42-114"><a href="#cb42-114"></a>       <span class="at">title =</span> <span class="st">"Observed vs. Expected SLG by Hitter (colored by Park)"</span>) <span class="sc">+</span></span>
-<span id="cb42-115"><a href="#cb42-115"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb42-116"><a href="#cb42-116"></a></span>
-<span id="cb42-117"><a href="#cb42-117"></a></span>
-<span id="cb42-118"><a href="#cb42-118"></a><span class="in">```</span></span>
-<span id="cb42-121"><a href="#cb42-121"></a><span class="in">```{r}</span></span>
-<span id="cb42-122"><a href="#cb42-122"></a><span class="co">#Density graph of On base % by different teams</span></span>
-<span id="cb42-123"><a href="#cb42-123"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb42-124"><a href="#cb42-124"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb42-125"><a href="#cb42-125"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
-<span id="cb42-126"><a href="#cb42-126"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
-<span id="cb42-127"><a href="#cb42-127"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
-<span id="cb42-128"><a href="#cb42-128"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb42-103"><a href="#cb42-103"></a></span>
+<span id="cb42-106"><a href="#cb42-106"></a><span class="in">```{r}</span></span>
+<span id="cb42-107"><a href="#cb42-107"></a><span class="co">#expected vs observed slg by hitter (colored by Park)</span></span>
+<span id="cb42-108"><a href="#cb42-108"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb42-109"><a href="#cb42-109"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb42-110"><a href="#cb42-110"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb42-111"><a href="#cb42-111"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Expected SLG"</span>, <span class="at">y =</span> <span class="st">"Observed SLG"</span>,</span>
+<span id="cb42-112"><a href="#cb42-112"></a>       <span class="at">title =</span> <span class="st">"Observed vs. Expected SLG by Hitter (colored by Park)"</span>) <span class="sc">+</span></span>
+<span id="cb42-113"><a href="#cb42-113"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb42-114"><a href="#cb42-114"></a></span>
+<span id="cb42-115"><a href="#cb42-115"></a></span>
+<span id="cb42-116"><a href="#cb42-116"></a><span class="in">```</span></span>
+<span id="cb42-119"><a href="#cb42-119"></a><span class="in">```{r}</span></span>
+<span id="cb42-120"><a href="#cb42-120"></a><span class="co">#Density graph of On base % by different teams</span></span>
+<span id="cb42-121"><a href="#cb42-121"></a><span class="fu">ggplot</span>(Full_22_Hitter_stats, <span class="fu">aes</span>(<span class="at">x =</span> on_base_percent, <span class="at">y =</span> team_name, <span class="at">fill =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb42-122"><a href="#cb42-122"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb42-123"><a href="#cb42-123"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"On Base %"</span>,</span>
+<span id="cb42-124"><a href="#cb42-124"></a>       <span class="at">y =</span> <span class="st">"Team"</span>,</span>
+<span id="cb42-125"><a href="#cb42-125"></a>       <span class="at">title =</span> <span class="st">"Distribution of OBP by Home Park (Ridgeline)"</span>) <span class="sc">+</span></span>
+<span id="cb42-126"><a href="#cb42-126"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb42-127"><a href="#cb42-127"></a></span>
+<span id="cb42-128"><a href="#cb42-128"></a><span class="in">```</span></span>
 <span id="cb42-129"><a href="#cb42-129"></a></span>
-<span id="cb42-130"><a href="#cb42-130"></a><span class="in">```</span></span>
-<span id="cb42-131"><a href="#cb42-131"></a></span>
-<span id="cb42-134"><a href="#cb42-134"></a><span class="in">```{r}</span></span>
-<span id="cb42-135"><a href="#cb42-135"></a><span class="co">#new dataset National_League_West_22 includes only Western teams</span></span>
-<span id="cb42-136"><a href="#cb42-136"></a>National_League_West_22 <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
-<span id="cb42-137"><a href="#cb42-137"></a>  <span class="fu">filter</span>(team_name <span class="sc">==</span> <span class="st">"San Diego Padres"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Los Angeles Dodgers"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"San Francisco Giants"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Arizona Diamondbacks"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Colorado Rockies"</span>)</span>
-<span id="cb42-138"><a href="#cb42-138"></a></span>
-<span id="cb42-139"><a href="#cb42-139"></a><span class="fu">ggplot</span>(National_League_West_22, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb42-140"><a href="#cb42-140"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb42-141"><a href="#cb42-141"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb42-142"><a href="#cb42-142"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Expected SLG"</span>, <span class="at">y =</span> <span class="st">"Observed SLG"</span>, <span class="at">color =</span> <span class="st">"Team Name"</span>,</span>
-<span id="cb42-143"><a href="#cb42-143"></a>       <span class="at">title =</span> <span class="st">"Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams"</span>) <span class="sc">+</span></span>
-<span id="cb42-144"><a href="#cb42-144"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb42-132"><a href="#cb42-132"></a><span class="in">```{r}</span></span>
+<span id="cb42-133"><a href="#cb42-133"></a><span class="co">#new dataset National_League_West_22 includes only Western teams</span></span>
+<span id="cb42-134"><a href="#cb42-134"></a>National_League_West_22 <span class="ot">&lt;-</span> Full_22_Hitter_stats <span class="sc">|&gt;</span></span>
+<span id="cb42-135"><a href="#cb42-135"></a>  <span class="fu">filter</span>(team_name <span class="sc">==</span> <span class="st">"San Diego Padres"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Los Angeles Dodgers"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"San Francisco Giants"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Arizona Diamondbacks"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Colorado Rockies"</span>)</span>
+<span id="cb42-136"><a href="#cb42-136"></a></span>
+<span id="cb42-137"><a href="#cb42-137"></a><span class="fu">ggplot</span>(National_League_West_22, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb42-138"><a href="#cb42-138"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb42-139"><a href="#cb42-139"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb42-140"><a href="#cb42-140"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Expected SLG"</span>, <span class="at">y =</span> <span class="st">"Observed SLG"</span>, <span class="at">color =</span> <span class="st">"Team Name"</span>,</span>
+<span id="cb42-141"><a href="#cb42-141"></a>       <span class="at">title =</span> <span class="st">"Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams"</span>) <span class="sc">+</span></span>
+<span id="cb42-142"><a href="#cb42-142"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb42-143"><a href="#cb42-143"></a></span>
+<span id="cb42-144"><a href="#cb42-144"></a><span class="in">```</span></span>
 <span id="cb42-145"><a href="#cb42-145"></a></span>
-<span id="cb42-146"><a href="#cb42-146"></a><span class="in">```</span></span>
+<span id="cb42-146"><a href="#cb42-146"></a></span>
 <span id="cb42-147"><a href="#cb42-147"></a></span>
-<span id="cb42-148"><a href="#cb42-148"></a></span>
-<span id="cb42-149"><a href="#cb42-149"></a></span>
-<span id="cb42-152"><a href="#cb42-152"></a><span class="in">```{r}</span></span>
-<span id="cb42-153"><a href="#cb42-153"></a><span class="co">#Elevation column graph in different stadiums</span></span>
-<span id="cb42-154"><a href="#cb42-154"></a>stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-155"><a href="#cb42-155"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ballpark, <span class="at">y =</span> elevation, <span class="at">fill =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb42-156"><a href="#cb42-156"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb42-150"><a href="#cb42-150"></a><span class="in">```{r}</span></span>
+<span id="cb42-151"><a href="#cb42-151"></a><span class="co">#Elevation column graph in different stadiums</span></span>
+<span id="cb42-152"><a href="#cb42-152"></a>stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-153"><a href="#cb42-153"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ballpark, <span class="at">y =</span> elevation, <span class="at">fill =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb42-154"><a href="#cb42-154"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb42-155"><a href="#cb42-155"></a></span>
+<span id="cb42-156"><a href="#cb42-156"></a><span class="in">```</span></span>
 <span id="cb42-157"><a href="#cb42-157"></a></span>
-<span id="cb42-158"><a href="#cb42-158"></a><span class="in">```</span></span>
-<span id="cb42-159"><a href="#cb42-159"></a></span>
-<span id="cb42-162"><a href="#cb42-162"></a><span class="in">```{r}</span></span>
-<span id="cb42-163"><a href="#cb42-163"></a><span class="co">#Joining stadium data</span></span>
-<span id="cb42-164"><a href="#cb42-164"></a>joined_stadium_data <span class="ot">&lt;-</span> stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-165"><a href="#cb42-165"></a>  <span class="fu">left_join</span>(Full_22_Hitter_stats, <span class="fu">join_by</span>(team_name))</span>
-<span id="cb42-166"><a href="#cb42-166"></a><span class="fu">head</span>(joined_stadium_data, <span class="dv">20</span>)</span>
-<span id="cb42-167"><a href="#cb42-167"></a></span>
-<span id="cb42-168"><a href="#cb42-168"></a>joined_stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-169"><a href="#cb42-169"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
-<span id="cb42-170"><a href="#cb42-170"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(home_run))</span>
-<span id="cb42-171"><a href="#cb42-171"></a></span>
-<span id="cb42-172"><a href="#cb42-172"></a>joined_stadium_data <span class="sc">|&gt;</span></span>
-<span id="cb42-173"><a href="#cb42-173"></a>  <span class="fu">filter</span>(team_name <span class="sc">==</span> <span class="st">"San Diego Padres"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Los Angeles Dodgers"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"San Francisco Giants"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Arizona Diamondbacks"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Colorado Rockies"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb42-174"><a href="#cb42-174"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
-<span id="cb42-175"><a href="#cb42-175"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb42-176"><a href="#cb42-176"></a></span>
-<span id="cb42-177"><a href="#cb42-177"></a><span class="co">#Filter for teams with greater than certain ammount of observations</span></span>
-<span id="cb42-178"><a href="#cb42-178"></a><span class="co"># joined_stadium_data |&gt;</span></span>
-<span id="cb42-179"><a href="#cb42-179"></a><span class="co">#   count(team_name) |&gt;</span></span>
-<span id="cb42-180"><a href="#cb42-180"></a><span class="co">#   filter(n &gt; 4)</span></span>
-<span id="cb42-181"><a href="#cb42-181"></a></span>
-<span id="cb42-182"><a href="#cb42-182"></a></span>
-<span id="cb42-183"><a href="#cb42-183"></a><span class="in">```</span></span>
-<span id="cb42-186"><a href="#cb42-186"></a><span class="in">```{r}</span></span>
-<span id="cb42-187"><a href="#cb42-187"></a><span class="co">#Some preliminary graphs</span></span>
-<span id="cb42-188"><a href="#cb42-188"></a></span>
-<span id="cb42-189"><a href="#cb42-189"></a><span class="co"># 1) Actual vs Expected Batting Average</span></span>
-<span id="cb42-190"><a href="#cb42-190"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> xba, <span class="at">y =</span> batting_avg, <span class="at">color =</span> league_name)) <span class="sc">+</span></span>
-<span id="cb42-191"><a href="#cb42-191"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb42-192"><a href="#cb42-192"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb42-193"><a href="#cb42-193"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-194"><a href="#cb42-194"></a>    <span class="at">title =</span> <span class="st">"Actual vs. Expected Batting Average"</span>,</span>
-<span id="cb42-195"><a href="#cb42-195"></a>    <span class="at">x =</span> <span class="st">"Expected BA (xba)"</span>,</span>
-<span id="cb42-196"><a href="#cb42-196"></a>    <span class="at">y =</span> <span class="st">"Observed BA (batting_avg)"</span></span>
-<span id="cb42-197"><a href="#cb42-197"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-198"><a href="#cb42-198"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb42-199"><a href="#cb42-199"></a></span>
-<span id="cb42-200"><a href="#cb42-200"></a><span class="co"># 2) Actual vs Expected Slugging</span></span>
-<span id="cb42-201"><a href="#cb42-201"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> league_name)) <span class="sc">+</span></span>
-<span id="cb42-202"><a href="#cb42-202"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb42-203"><a href="#cb42-203"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb42-204"><a href="#cb42-204"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-205"><a href="#cb42-205"></a>    <span class="at">title =</span> <span class="st">"Actual vs. Expected Slugging %"</span>,</span>
-<span id="cb42-206"><a href="#cb42-206"></a>    <span class="at">x =</span> <span class="st">"Expected SLG (xslg)"</span>,</span>
-<span id="cb42-207"><a href="#cb42-207"></a>    <span class="at">y =</span> <span class="st">"Observed SLG (slg_percent)"</span></span>
-<span id="cb42-208"><a href="#cb42-208"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-209"><a href="#cb42-209"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb42-210"><a href="#cb42-210"></a></span>
-<span id="cb42-211"><a href="#cb42-211"></a><span class="co"># 3) Park Effects vs. Hard-Hit % </span></span>
-<span id="cb42-212"><a href="#cb42-212"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> hard_hit_percent, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb42-213"><a href="#cb42-213"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb42-214"><a href="#cb42-214"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb42-215"><a href="#cb42-215"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-216"><a href="#cb42-216"></a>    <span class="at">title =</span> <span class="st">"HR Park Effects vs. Hard-Hit %"</span>,</span>
-<span id="cb42-217"><a href="#cb42-217"></a>    <span class="at">x =</span> <span class="st">"HR Park Effects (100 = avg)"</span>,</span>
-<span id="cb42-218"><a href="#cb42-218"></a>    <span class="at">y =</span> <span class="st">"Hard-Hit %"</span></span>
-<span id="cb42-219"><a href="#cb42-219"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-220"><a href="#cb42-220"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb42-221"><a href="#cb42-221"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb42-222"><a href="#cb42-222"></a></span>
-<span id="cb42-223"><a href="#cb42-223"></a><span class="co"># 4) Extra Distance vs Home Runs</span></span>
-<span id="cb42-224"><a href="#cb42-224"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> home_run, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
-<span id="cb42-225"><a href="#cb42-225"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb42-226"><a href="#cb42-226"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb42-227"><a href="#cb42-227"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-228"><a href="#cb42-228"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs. Home Runs"</span>,</span>
-<span id="cb42-229"><a href="#cb42-229"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
-<span id="cb42-230"><a href="#cb42-230"></a>    <span class="at">y =</span> <span class="st">"Home Runs"</span></span>
-<span id="cb42-231"><a href="#cb42-231"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-232"><a href="#cb42-232"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb42-233"><a href="#cb42-233"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb42-234"><a href="#cb42-234"></a></span>
-<span id="cb42-235"><a href="#cb42-235"></a></span>
-<span id="cb42-236"><a href="#cb42-236"></a><span class="in">```</span></span>
+<span id="cb42-160"><a href="#cb42-160"></a><span class="in">```{r}</span></span>
+<span id="cb42-161"><a href="#cb42-161"></a><span class="co">#Joining stadium data</span></span>
+<span id="cb42-162"><a href="#cb42-162"></a>joined_stadium_data <span class="ot">&lt;-</span> stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-163"><a href="#cb42-163"></a>  <span class="fu">left_join</span>(Full_22_Hitter_stats, <span class="fu">join_by</span>(team_name))</span>
+<span id="cb42-164"><a href="#cb42-164"></a><span class="fu">head</span>(joined_stadium_data, <span class="dv">20</span>)</span>
+<span id="cb42-165"><a href="#cb42-165"></a></span>
+<span id="cb42-166"><a href="#cb42-166"></a>joined_stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-167"><a href="#cb42-167"></a>  <span class="fu">group_by</span>(team_name) <span class="sc">|&gt;</span></span>
+<span id="cb42-168"><a href="#cb42-168"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(home_run))</span>
+<span id="cb42-169"><a href="#cb42-169"></a></span>
+<span id="cb42-170"><a href="#cb42-170"></a>joined_stadium_data <span class="sc">|&gt;</span></span>
+<span id="cb42-171"><a href="#cb42-171"></a>  <span class="fu">filter</span>(team_name <span class="sc">==</span> <span class="st">"San Diego Padres"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Los Angeles Dodgers"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"San Francisco Giants"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Arizona Diamondbacks"</span> <span class="sc">|</span> team_name <span class="sc">==</span> <span class="st">"Colorado Rockies"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-172"><a href="#cb42-172"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> team_name)) <span class="sc">+</span></span>
+<span id="cb42-173"><a href="#cb42-173"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb42-174"><a href="#cb42-174"></a></span>
+<span id="cb42-175"><a href="#cb42-175"></a><span class="co">#Filter for teams with greater than certain ammount of observations</span></span>
+<span id="cb42-176"><a href="#cb42-176"></a><span class="co"># joined_stadium_data |&gt;</span></span>
+<span id="cb42-177"><a href="#cb42-177"></a><span class="co">#   count(team_name) |&gt;</span></span>
+<span id="cb42-178"><a href="#cb42-178"></a><span class="co">#   filter(n &gt; 4)</span></span>
+<span id="cb42-179"><a href="#cb42-179"></a></span>
+<span id="cb42-180"><a href="#cb42-180"></a></span>
+<span id="cb42-181"><a href="#cb42-181"></a><span class="in">```</span></span>
+<span id="cb42-184"><a href="#cb42-184"></a><span class="in">```{r}</span></span>
+<span id="cb42-185"><a href="#cb42-185"></a><span class="co">#Some preliminary graphs</span></span>
+<span id="cb42-186"><a href="#cb42-186"></a></span>
+<span id="cb42-187"><a href="#cb42-187"></a><span class="co"># 1) Actual vs Expected Batting Average</span></span>
+<span id="cb42-188"><a href="#cb42-188"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> xba, <span class="at">y =</span> batting_avg, <span class="at">color =</span> league_name)) <span class="sc">+</span></span>
+<span id="cb42-189"><a href="#cb42-189"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb42-190"><a href="#cb42-190"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb42-191"><a href="#cb42-191"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-192"><a href="#cb42-192"></a>    <span class="at">title =</span> <span class="st">"Actual vs. Expected Batting Average"</span>,</span>
+<span id="cb42-193"><a href="#cb42-193"></a>    <span class="at">x =</span> <span class="st">"Expected BA (xba)"</span>,</span>
+<span id="cb42-194"><a href="#cb42-194"></a>    <span class="at">y =</span> <span class="st">"Observed BA (batting_avg)"</span></span>
+<span id="cb42-195"><a href="#cb42-195"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-196"><a href="#cb42-196"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb42-197"><a href="#cb42-197"></a></span>
+<span id="cb42-198"><a href="#cb42-198"></a><span class="co"># 2) Actual vs Expected Slugging</span></span>
+<span id="cb42-199"><a href="#cb42-199"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> xslg, <span class="at">y =</span> slg_percent, <span class="at">color =</span> league_name)) <span class="sc">+</span></span>
+<span id="cb42-200"><a href="#cb42-200"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb42-201"><a href="#cb42-201"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb42-202"><a href="#cb42-202"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-203"><a href="#cb42-203"></a>    <span class="at">title =</span> <span class="st">"Actual vs. Expected Slugging %"</span>,</span>
+<span id="cb42-204"><a href="#cb42-204"></a>    <span class="at">x =</span> <span class="st">"Expected SLG (xslg)"</span>,</span>
+<span id="cb42-205"><a href="#cb42-205"></a>    <span class="at">y =</span> <span class="st">"Observed SLG (slg_percent)"</span></span>
+<span id="cb42-206"><a href="#cb42-206"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-207"><a href="#cb42-207"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb42-208"><a href="#cb42-208"></a></span>
+<span id="cb42-209"><a href="#cb42-209"></a><span class="co"># 3) Park Effects vs. Hard-Hit % </span></span>
+<span id="cb42-210"><a href="#cb42-210"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> hr_park_effects, <span class="at">y =</span> hard_hit_percent, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb42-211"><a href="#cb42-211"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb42-212"><a href="#cb42-212"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb42-213"><a href="#cb42-213"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-214"><a href="#cb42-214"></a>    <span class="at">title =</span> <span class="st">"HR Park Effects vs. Hard-Hit %"</span>,</span>
+<span id="cb42-215"><a href="#cb42-215"></a>    <span class="at">x =</span> <span class="st">"HR Park Effects (100 = avg)"</span>,</span>
+<span id="cb42-216"><a href="#cb42-216"></a>    <span class="at">y =</span> <span class="st">"Hard-Hit %"</span></span>
+<span id="cb42-217"><a href="#cb42-217"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-218"><a href="#cb42-218"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb42-219"><a href="#cb42-219"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb42-220"><a href="#cb42-220"></a></span>
+<span id="cb42-221"><a href="#cb42-221"></a><span class="co"># 4) Extra Distance vs Home Runs</span></span>
+<span id="cb42-222"><a href="#cb42-222"></a><span class="fu">ggplot</span>(joined_stadium_data, <span class="fu">aes</span>(<span class="at">x =</span> extra_distance, <span class="at">y =</span> home_run, <span class="at">color =</span> ballpark)) <span class="sc">+</span></span>
+<span id="cb42-223"><a href="#cb42-223"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb42-224"><a href="#cb42-224"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb42-225"><a href="#cb42-225"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-226"><a href="#cb42-226"></a>    <span class="at">title =</span> <span class="st">"Extra Distance vs. Home Runs"</span>,</span>
+<span id="cb42-227"><a href="#cb42-227"></a>    <span class="at">x =</span> <span class="st">"Extra Distance (yards)"</span>,</span>
+<span id="cb42-228"><a href="#cb42-228"></a>    <span class="at">y =</span> <span class="st">"Home Runs"</span></span>
+<span id="cb42-229"><a href="#cb42-229"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-230"><a href="#cb42-230"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb42-231"><a href="#cb42-231"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb42-232"><a href="#cb42-232"></a></span>
+<span id="cb42-233"><a href="#cb42-233"></a></span>
+<span id="cb42-234"><a href="#cb42-234"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
