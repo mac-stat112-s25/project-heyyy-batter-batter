@@ -619,7 +619,7 @@ While our analysis provides insight into how specific ballpark characteristics a
 
 Despite these limitations, the trends observed suggest that park characteristics play a measurable role in shaping offensive statistics, pointing to opportunities for further research using longitudinal and multi-variable models.
 
-
+["link to presentation and slides"](https://drive.google.com/drive/folders/1vUvX3P241jP0kiU4YI5fv0G8y3W7-lDk?usp=drive_link)
 
 **Sources**
 
