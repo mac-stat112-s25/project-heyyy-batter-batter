@@ -61,7 +61,7 @@ Baseball is a sport with a long, decorated, and often controversial history. Inv
 
 
 
-<br><br>While baseball’s past is marked by these controversial episodes, the sport has also evolved dramatically—particularly in the 21st century—thanks to a growing reliance on advanced analytics. Popularized by the 2011 film [Moneyball]("https://www.youtube.com/watch?v=0h19anH4MdE"), statistical analysis has revolutionized the way coaches and executives evaluate players and make strategic decisions. This shift toward data-driven thinking has not only reshaped front office priorities but also deepened our understanding of the game's hidden variables. One such variable—often overlooked but increasingly important—is the concept of park factors. In the next section, we explore how the unique characteristics of each stadium interact with modern analytics to shape player performance and game outcomes.
+<br><br>While baseball’s past is marked by these controversial episodes, the sport has also evolved dramatically—particularly in the 21st century—thanks to a growing reliance on advanced analytics. Popularized by the 2011 film [Moneyball](https://www.youtube.com/watch?v=0h19anH4MdE), statistical analysis has revolutionized the way coaches and executives evaluate players and make strategic decisions. This shift toward data-driven thinking has not only reshaped front office priorities but also deepened our understanding of the game's hidden variables. One such variable—often overlooked but increasingly important—is the concept of park factors. In the next section, we explore how the unique characteristics of each stadium interact with modern analytics to shape player performance and game outcomes.
 
 <br><br>**1.  How Do Ballparks Influence Offensive Performance?**
 
@@ -620,6 +620,14 @@ While our analysis provides insight into how specific ballpark characteristics a
 Despite these limitations, the trends observed suggest that park characteristics play a measurable role in shaping offensive statistics, pointing to opportunities for further research using longitudinal and multi-variable models.
 
 
+
+**Sources**
+
+-  [BallPark Stadium Data 2022](https://www.kaggle.com/datasets/paulrjohnson/mlb-ballparks/data)
+-  [Baseball Savant 2022](https://baseballsavant.mlb.com/leaderboard/pitch-movement?year=2025&team=&min=q&pitch_type=CU&hand=&x=diff_x_hidden&z=diff_z_hidden&sort=diff_x&sortDir=desc)
+-  BaseballR Package
+
+[**Video and Slides Drive**](https://drive.google.com/drive/u/1/folders/1vUvX3P241jP0kiU4YI5fv0G8y3W7-lDk)
 
 
 
