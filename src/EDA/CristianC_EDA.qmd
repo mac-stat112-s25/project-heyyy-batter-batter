@@ -1,0 +1,212 @@
+---
+title: "Cristian C"
+format: html
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+```{r}
+#load packages
+library(baseballr)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(ggridges)
+
+
+parkfactor22 <- fg_park(2022)
+parkfactor22
+
+```
+
+```{r}
+#Stadium data
+stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+
+```
+
+
+```{r}
+# view basics of data
+summary(stadium_data) #get summary of values of each variable
+head(stadium_data) #view what the data looks like
+
+stadium_data |>
+  ggplot(aes(y = hr_park_effects,  x = team_name, fill = team_name)) +
+  geom_col()
+
+stadium_data |>
+  ggplot(aes(x = extra_distance, y = hr_park_effects, color = ballpark)) +
+  geom_point(size = 3, alpha = 0.8) +
+  labs(
+    title = "Extra Distance vs HR Park Effects by Ballpark",
+    x = "Extra Distance (yards)",
+    y = "HR Park Effects (100 = league avg)"
+  ) +
+  theme_minimal()
+
+```
+
+##These is the codebook for stadium_data
+
+team_name
+ball_park
+left_field - Distance from the home plate to 'the nearest fence or obstruction' in left field, measured in yards.
+center_field - Distance from the home plate to 'the nearest fence or obstruction' in center field, measured in yards.
+right_field - Distance from the home plate to 'the nearest fence or obstruction' in right field, measured in yards.
+min_wall_height - Minimum wall height, measured in yards.
+max_wall_height - Maximum wall height, measured in yards.
+hr_park_effects - Total "park effects" on home run rate, with 100 being a baseline average.
+extra_distance - Total extra distance that a particular ballpark adds to hits.
+avg_temp - Average temperature at each ballpark, measured in Fahrenheit.
+elevation - Elevation height above sea level, measured in feet.
+roof - Percentage of all games that are played with roof cover on.
+daytime - Percentage of all games that are played during the day.
+
+
+**##However we later join in into joined_stadium_data with the 2022 hitter stats**
+The code to do this are below
+
+
+```{r}
+`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+head(`2022HitterStats`) 
+
+```
+
+```{r}
+#player_id info
+Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
+  select(player_id, team_name, league_name)
+head(Player_team_info)
+
+#Joined data set player_id with rest of player stats
+Full_22_Hitter_stats <- `2022HitterStats` |>
+  left_join(Player_team_info, join_by(player_id))
+head(Full_22_Hitter_stats)
+
+```
+
+
+```{r}
+#expected vs observed slg by hitter (colored by Park)
+ggplot(Full_22_Hitter_stats, aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point(alpha = 0.6) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  labs(x = "Expected SLG", y = "Observed SLG",
+       title = "Observed vs. Expected SLG by Hitter (colored by Park)") +
+  theme_classic()
+
+
+```
+```{r}
+#Density graph of On base % by different teams
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
+  geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
+  labs(x = "On Base %",
+       y = "Team",
+       title = "Distribution of OBP by Home Park (Ridgeline)") +
+  theme(legend.position = "none")
+
+```
+
+```{r}
+#new dataset National_League_West_22 includes only Western teams
+National_League_West_22 <- Full_22_Hitter_stats |>
+  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies")
+
+ggplot(National_League_West_22, aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point()  +
+    geom_smooth(method = lm, se = FALSE) +
+  labs(x = "Expected SLG", y = "Observed SLG", color = "Team Name",
+       title = "Observed vs. Expected SLG by Hitter (colored by Park) in National League West teams") +
+  theme_classic()
+
+```
+
+
+
+```{r}
+#Elevation column graph in different stadiums
+stadium_data |>
+  ggplot(aes(x = ballpark, y = elevation, fill = ballpark)) +
+  geom_col()
+
+```
+
+```{r}
+#Joining stadium data
+joined_stadium_data <- stadium_data |>
+  left_join(Full_22_Hitter_stats, join_by(team_name))
+head(joined_stadium_data, 20)
+
+joined_stadium_data |>
+  group_by(team_name) |>
+  summarise(mean(home_run))
+
+joined_stadium_data |>
+  filter(team_name == "San Diego Padres" | team_name == "Los Angeles Dodgers" | team_name == "San Francisco Giants" | team_name == "Arizona Diamondbacks" | team_name == "Colorado Rockies") |>
+  ggplot(aes(x = xslg, y = slg_percent, color = team_name)) +
+  geom_point()
+
+#Filter for teams with greater than certain ammount of observations
+# joined_stadium_data |>
+#   count(team_name) |>
+#   filter(n > 4)
+
+
+```
+```{r}
+#Some preliminary graphs
+
+# 1) Actual vs Expected Batting Average
+ggplot(joined_stadium_data, aes(x = xba, y = batting_avg, color = league_name)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.7, size = 2.5) +
+  labs(
+    title = "Actual vs. Expected Batting Average",
+    x = "Expected BA (xba)",
+    y = "Observed BA (batting_avg)"
+  ) +
+  theme_minimal()
+
+# 2) Actual vs Expected Slugging
+ggplot(joined_stadium_data, aes(x = xslg, y = slg_percent, color = league_name)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.7, size = 2.5) +
+  labs(
+    title = "Actual vs. Expected Slugging %",
+    x = "Expected SLG (xslg)",
+    y = "Observed SLG (slg_percent)"
+  ) +
+  theme_minimal()
+
+# 3) Park Effects vs. Hard-Hit % 
+ggplot(joined_stadium_data, aes(x = hr_park_effects, y = hard_hit_percent, color = ballpark)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "HR Park Effects vs. Hard-Hit %",
+    x = "HR Park Effects (100 = avg)",
+    y = "Hard-Hit %"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# 4) Extra Distance vs Home Runs
+ggplot(joined_stadium_data, aes(x = extra_distance, y = home_run, color = ballpark)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed") +
+  labs(
+    title = "Extra Distance vs. Home Runs",
+    x = "Extra Distance (yards)",
+    y = "Home Runs"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+```

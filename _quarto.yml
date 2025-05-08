@@ -9,10 +9,9 @@ project:
   output-dir: docs
 
 
-
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "Evaluating the Effects of Park Factors on Offensive Performance"
+  author: ["Cristian Cano", "Wandi Dlamini", "Izzy Flood", "Zach Marshak"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -29,7 +28,7 @@ book:
 
 
   sidebar:
-    title: "sidebar title"
+    title: "Heyy Batter Batter"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -37,11 +36,26 @@ book:
 
   chapters:
     - index.qmd
-
+    
+    - part: "Effective Teamwork"
+      chapters:
+      - src/et/ZachM.qmd
+      - src/et/WandiD.qmd
+      - src/et/CristianC.qmd
+      - src/et/Izzy F Effective Teamwork.qmd
+    
+    - part: "EDA"
+      chapters:
+      - src/EDA/ZachM_Eda.qmd
+      - src/EDA/WandiDEDA.qmd
+      - src/EDA/CristianC_EDA.qmd
+      - src/EDA/IzzyF_EDA.qmd
+      
+      
   appendices:
   - src/appx/proposal.qmd
-  - src/appx/case-study.qmd
-
+  - src/appx/case_study.qmd
+  
 
 
 format:
@@ -73,7 +87,6 @@ format:
 execute:
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
-
 
 
 editor: 

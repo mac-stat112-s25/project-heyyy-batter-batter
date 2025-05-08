@@ -1,0 +1,193 @@
+---
+title: "Zach M"
+format: html
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+```{r}
+#load packages
+library(tidyverse)
+library(baseballr)
+library(ggridges)
+```
+
+
+
+```{r}
+# get park data
+ballparks_stadium_data <- read_csv("../../data/ballparks_stadium_data_2022.csv")
+head(ballparks_stadium_data)
+```
+
+```{r}
+ggplot(ballparks_stadium_data, aes(x = center_field, y = hr_park_effects)) +
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+```{r}
+# get downloaded hitter stats
+`2022HitterStats` <- read_csv("../../data/2022HitterStats.csv")
+head(`2022HitterStats`)
+```
+
+
+```{r}
+# get player team info
+Player_team_info <- mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2022) |>
+  select(player_id, team_name, league_name)
+```
+
+
+```{r}
+# join hitter stats with players team
+Full_22_Hitter_stats <- `2022HitterStats` |>
+  left_join(Player_team_info, join_by(player_id))
+
+head(Full_22_Hitter_stats)
+```
+
+```{r}
+# Some graphs that we could use (These need effective viz like alt caps, also feel free to do other effective viz aspects like coloring for improvement!)
+
+#Density graph of On base % by different teams
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = team_name, fill = team_name)) +
+  geom_density_ridges(scale = 2, alpha = 0.7, size = 0.3) +
+  labs(x = "On Base %",
+       y = "Team",
+       title = "Distribution of OBP by Home Park (Ridgeline)") +
+  theme(legend.position = "none")
+```
+
+```{r}
+#same graph as above with effective viz applied
+#|fig-alt: "Ridgeline plot showing the distribution of On-Base Percentage across different MLB teams for the 2022 season. Each team's density curve illustrates the spread of player OBP values, with color differentiation enhancing team distinction. Denser areas indicate where players' on-base percentages are more concentrated within a team"
+
+ggplot(Full_22_Hitter_stats, aes(x = on_base_percent, y = reorder(team_name, on_base_percent), fill = team_name)) +
+  geom_density_ridges(
+    scale = 2.5, 
+    alpha = 0.9, 
+    size = 0.3, 
+    color = "white"
+  ) +
+  scale_fill_viridis_d(option = "plasma", begin = 0.1, end = 0.9) +  # broader color range
+  labs(
+    x = "On-Base Percentage",
+    y = "Team Name",
+    title = "Distribution of On-Base Percentage by Team (2022 Season)",
+    subtitle = "Ridgeline plot showing variability across teams",
+    caption = "Source: 2022 MLB Hitter Stats"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face = "italic"),
+    axis.title.y = element_text(margin = margin(r = 8)),
+    axis.title.x = element_text(margin = margin(t = 8)),
+    axis.text.y = element_text(size = 7)  # make team names smaller to avoid overlapping
+  )
+```
+
+
+```{r}
+# join park stats and hitting stats
+player_and_park_stats <- Full_22_Hitter_stats |>
+  left_join(ballparks_stadium_data) 
+```
+
+```{r}
+  ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = elevation)) +
+      geom_point()
+```
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = extra_distance)) +
+  geom_point()
+```
+
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = avg_temp)) +
+  geom_point()
+```
+
+
+
+```{r}
+#find which teams may have players more likely to over preform WOBA
+player_and_park_stats |>
+  filter(wobadiff > 0) |>
+  group_by(team_name) |>
+  count() |>
+  arrange(desc(n))
+```
+
+```{r}
+#find which team's players are likely to underpreform
+player_and_park_stats |>
+  filter(wobadiff < 0) |>
+  group_by(team_name) |>
+  count() |>
+  arrange(desc(n))
+```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in%c ( "Cleveland Guardians", "Houston Astros	", "Houston Astros", "Los Angeles Dodgers", "New York Yankees", "New York Mets")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point() 
+```
+
+```{r}
+player_and_park_stats |>
+  filter(team_name %in%c("Atlanta Braves", "Seattle Mariners", "Toronto Blue Jays")) |>
+  ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point() 
+```
+
+```{r}
+# Vis of teams with over six batters on the dataset
+player_and_park_stats |>
+  filter(team_name %in%c("Baltimore Orioles", "Houston Astros", "Los Angeles Dodgers", "New York Mets", "New York Yankees", "Seattle Mariners", "Toronto Blue Jays", "San Diego Padres")) |>
+ggplot(aes(x = woba, y = xwoba, color = team_name, size = hr_park_effects)) +
+  geom_point()
+```
+
+```{r}
+# Find what teams have enough players to be statistically significant
+player_and_park_stats |>
+  group_by(team_name) |>
+  count() |>
+  arrange(n)
+```
+
+```{r}
+ggplot(player_and_park_stats, aes(x = woba, y = xwoba, color = hr_park_effects)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~league_name)
+```
+
+```{r}
+player_and_park_stats |>
+  group_by(league_name) |>
+  summarise(mean(hr_park_effects))
+```
+
+```{r}
+# difference in expected vs actual slugging compared to park effects
+ggplot(player_and_park_stats, aes(x = hr_park_effects, y = xslgdiff)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+# difference in expected vs actual weighted on base avreage compared to park effects
+ggplot(player_and_park_stats, aes(x = hr_park_effects, y = wobadiff)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE)
+```

@@ -1,0 +1,215 @@
+---
+title: "Wandi D"
+format: html
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+
+```{r}
+# Load libraries
+library(baseballr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+library(readr)
+```
+
+
+
+```{r}
+expectedPerformance <- read_csv("../../data/wandiEDAdata/xWOBA.csv")
+homeSplit <- read_csv("../../data/wandiEDAdata/Splits Leaderboard Data Home.csv")
+awaySplit <- read_csv("../../data/wandiEDAdata/Splits Leaderboard Data Away.csv")
+parkFactors <- read_csv("../../data/wandiEDAdata/FanGraphs Park Factors Leaderboard.csv")
+```
+
+```{r}
+# Check the first few rows of each dataset
+head(expectedPerformance)
+head(homeSplit)
+head(awaySplit)
+head(parkFactors)
+
+# Check the structure of the datasets
+str(expectedPerformance)
+str(homeSplit)
+str(awaySplit)
+str(parkFactors)
+
+# Summary statistics to check for any missing data or outliers
+summary(expectedPerformance)
+summary(homeSplit)
+summary(awaySplit)
+summary(parkFactors)
+
+
+```
+```{r}
+# Mutate the expectedPerformance data to keep only the relevant columns
+expectedPerformanceClean <- expectedPerformance |>
+  select(year, `last_name, first_name`, woba, xwoba)  
+
+# Check the result
+head(expectedPerformanceClean)
+
+```
+```{r}
+homeSplitClean <- homeSplit |>
+  select(Season,Tm, wOBA)
+
+head(homeSplitClean)
+```
+
+```{r}
+awaySplitClean <- awaySplit |>
+  select(Season, Tm, wOBA)
+
+head(awaySplitClean)
+```
+
+```{r}
+parkFactorsClean <- parkFactors |>
+  select(Season, Team, HR)
+
+head(parkFactorsClean)
+```
+
+
+1. Team-Level Analysis (Park Factors + Home/Away Splits)
+
+A. Compare Home vs. Away Team wOBA
+
+```{r}
+# Merge home and away splits by Season and Team
+team_woba <- homeSplitClean |>
+  rename(wOBA_home = wOBA) |>
+  inner_join(awaySplitClean |> rename(wOBA_away = wOBA), 
+             by = c("Season", "Tm"))
+
+# Plotting Home vs. Away wOBA
+ggplot(team_woba, aes(x = wOBA_away, y = wOBA_home)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Team wOBA: Home vs. Away",
+       x = "wOBA (Away Games)",
+       y = "wOBA (Home Games)") +
+  theme_minimal()
+
+```
+
+ B. Join Park Factors (HR) to Team wOBA Difference
+
+```{r}
+team_name_key <- tibble(
+  Tm = c("ARI", "ATL", "BAL", "BOS", "CHC", "CHW", "CIN", "CLE", "COL", "DET", 
+         "HOU", "KCR", "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", "NYY", "OAK", 
+         "PHI", "PIT", "SDP", "SEA", "SFG", "STL", "TBR", "TEX", "TOR", "WSN"),
+  Team = c("Diamondbacks", "Braves", "Orioles", "Red Sox", "Cubs", "White Sox", "Reds", "Guardians", "Rockies", 
+           "Tigers", "Astros", "Royals", "Angels", "Dodgers", "Marlins", "Brewers", "Twins", "Mets", "Yankees", 
+           "Athletics", "Phillies", "Pirates", "Padres", "Mariners", "Giants", "Cardinals", "Rays", "Rangers", 
+           "Blue Jays", "Nationals")
+)
+
+
+```
+ 
+ 
+```{r}
+team_woba_diff <- team_woba |>
+  mutate(wOBA_diff = wOBA_home - wOBA_away)
+```
+
+
+```{r}
+team_woba_named <- team_woba_diff %>%
+  left_join(team_name_key, by = "Tm")
+```
+
+
+```{r}
+team_woba_with_hr <- team_woba_named |>
+  left_join(parkFactorsClean |>
+              select(Season, Team, HR),
+            by = c("Season", "Team"))
+```
+
+
+```{r} 
+ggplot(team_woba_with_hr, aes(x = HR, y = wOBA_diff)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Does Park HR Factor Explain wOBA Home Advantage?",
+       x = "Park HR Factor",
+       y = "wOBA Home - wOBA Away") +
+  theme_minimal()
+```
+ 
+**What is wOBA Home Advantage?**
+wOBA (weighted On-Base Average) is a statistic that measures a player's or team's overall offensive production, factoring in how valuable different outcomes (like walks, singles, home runs, etc.) are.
+
+wOBA Home Advantage refers to the difference in wOBA between a team’s home and away games. A positive value means the team performs better offensively at home, and a negative value means they perform better away.
+
+The Role of the Park HR Factor:
+The Park HR Factor is a measure of how friendly a particular stadium is to home runs. A higher HR factor means the park is more likely to produce home runs, either because of the park's dimensions (short fences, high altitude, etc.) or environmental factors (such as wind patterns or temperature).
+
+For example:
+
+A high HR factor (e.g., Coors Field in Colorado) means that home runs are easier to hit, leading to more home runs in games played there.
+
+A low HR factor (e.g., AT&T Park in San Francisco) means home runs are harder to come by, so teams are less likely to hit them there.
+
+Home Team Advantage and the HR Factor:
+When we say "teams playing in parks with higher HR factors tend to have a larger home wOBA advantage", here's why it makes sense:
+
+**Home Team Familiarity:**
+
+When a team plays at home, they are more familiar with the park's conditions (the size of the fences, the altitude, the wind patterns, etc.) than when they play on the road.
+
+If the home park has a high HR factor, the home team is more likely to have players who are accustomed to taking advantage of those conditions. For example, they may have batters who are better at hitting home runs in that stadium.
+
+**Stadium-Specific Factors:**
+
+A higher HR factor means that the park’s dimensions or other characteristics (e.g., higher altitude or more favorable hitting conditions) tend to favor home runs. This gives the home team a unique advantage because:
+
+They’re used to these conditions and might know how to better position themselves for successful home run-hitting.
+
+Opposing teams, however, might be less accustomed to these conditions and may struggle more to hit home runs when playing away.
+
+**Increased Offensive Output:**
+
+In a park with a high HR factor, home runs become a significant part of the offensive output. Home teams, who are familiar with how to hit home runs in those conditions, might hit more home runs than away teams.
+
+Home runs are an essential contributor to wOBA because they provide extra bases and are weighted highly in the formula. Teams that hit more home runs at home will likely see a higher wOBA at home than on the road.
+
+**Psychological/Environmental Factors:**
+
+Players might also feel more confident or relaxed in their home stadium, which could lead to better performance. The home crowd, the comfort of familiar surroundings, and the ability to adjust to park-specific quirks (such as how the ball travels) may all play a role in enhancing a team’s home offensive output.
+
+When facing an opposing pitcher who is not familiar with the stadium's dimensions or conditions, the home team might have a better opportunity to exploit these factors (e.g., hitting home runs more effectively).
+
+
+Interpretation of a Positive Slope:
+When we see a positive slope in the scatter plot of Park HR Factor (x-axis) vs. wOBA Home Advantage (y-axis), it suggests that as the Park HR Factor increases, the home wOBA advantage also increases. In other words, parks that are more home run-friendly (have a higher HR factor) tend to have a larger home wOBA advantage.
+
+Understanding the Implications:
+Higher HR Factor → More Home Runs at Home:
+
+A higher HR factor indicates that the stadium is more favorable for hitting home runs. This suggests that in parks with a higher HR factor, home runs are more frequent.
+
+As home runs are a valuable component of wOBA (since they provide more bases and contribute significantly to a team’s offensive output), teams playing in home run-friendly parks are likely to see a larger wOBA advantage at home.
+
+Home Team Exploiting Home Field:
+
+The positive slope implies that home teams are better able to exploit the park's home run advantages. They are more familiar with the park's dimensions and environmental factors (like altitude or wind), which allow them to take better advantage of the home run-friendly conditions.
+
+As a result, teams playing in these high HR factor parks may see a larger wOBA at home compared to when they play away games, where the environmental conditions may not favor home run hitting as much.
+
+The Home Field Advantage is Amplified:
+
+The positive relationship suggests that in parks where home runs are more likely to happen, the home team’s offensive output (wOBA) benefits disproportionately. The home wOBA advantage becomes more pronounced.
+
+Teams might have players who are better at hitting home runs in their own park (because of familiarity or park-specific factors), and that gives them an edge offensively when playing at home.

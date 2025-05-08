@@ -1,0 +1,17 @@
+---
+title: "Cristian C"
+format: html
+---
+
+## Effective Teamwork
+
+In the article, ["True Teamwork in Software Development"](https://medium.com/@martinbaun/true-teamwork-in-software-development-ca2bd3709adc), the authors talk about the following:
+
+1.  Open Communication
+2.  Feedback
+3.  Celebrating Successes
+4.  Learning from Failures
+5.  Everyone should commit to the set plans and the goals of collaboration will be achieved.
+
+
+
